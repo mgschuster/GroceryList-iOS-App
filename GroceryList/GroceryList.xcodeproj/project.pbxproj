@@ -8,22 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		84638E961FC461DC008ED90A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84638E951FC461DC008ED90A /* AppDelegate.swift */; };
-		84638E981FC461DC008ED90A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84638E971FC461DC008ED90A /* FirstViewController.swift */; };
-		84638E9A1FC461DC008ED90A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84638E991FC461DC008ED90A /* SecondViewController.swift */; };
+		84638E981FC461DC008ED90A /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84638E971FC461DC008ED90A /* FeedVC.swift */; };
+		84638E9A1FC461DC008ED90A /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84638E991FC461DC008ED90A /* GroupsVC.swift */; };
 		84638E9D1FC461DC008ED90A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84638E9B1FC461DC008ED90A /* Main.storyboard */; };
 		84638E9F1FC461DC008ED90A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84638E9E1FC461DC008ED90A /* Assets.xcassets */; };
 		84638EA21FC461DC008ED90A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84638EA01FC461DC008ED90A /* LaunchScreen.storyboard */; };
+		84F93B8B1FC463310057F802 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F93B8A1FC463310057F802 /* GoogleService-Info.plist */; };
+		84F93B921FC468300057F802 /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B911FC468300057F802 /* MeVC.swift */; };
+		84F93B941FC468490057F802 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B931FC468490057F802 /* LoginVC.swift */; };
+		84F93B961FC468570057F802 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B951FC468570057F802 /* CreateAccountVC.swift */; };
+		D142013594897ED281C2E257 /* Pods_GroceryList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517CD8E33CB80390FD7930A2 /* Pods_GroceryList.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		517CD8E33CB80390FD7930A2 /* Pods_GroceryList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroceryList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84638E921FC461DC008ED90A /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84638E951FC461DC008ED90A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		84638E971FC461DC008ED90A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		84638E991FC461DC008ED90A /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		84638E971FC461DC008ED90A /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		84638E991FC461DC008ED90A /* GroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsVC.swift; sourceTree = "<group>"; };
 		84638E9C1FC461DC008ED90A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84638E9E1FC461DC008ED90A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84638EA11FC461DC008ED90A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84638EA31FC461DC008ED90A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84F93B8A1FC463310057F802 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84F93B911FC468300057F802 /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
+		84F93B931FC468490057F802 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		84F93B951FC468570057F802 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
+		85214809EFC7ED4447AA8C71 /* Pods-GroceryList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryList/Pods-GroceryList.release.xcconfig"; sourceTree = "<group>"; };
+		9D9ECC924F66FFB1F701A10E /* Pods-GroceryList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryList/Pods-GroceryList.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D142013594897ED281C2E257 /* Pods_GroceryList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		286CA417EE0A7BC7473823D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				517CD8E33CB80390FD7930A2 /* Pods_GroceryList.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		84638E891FC461DC008ED90A = {
 			isa = PBXGroup;
 			children = (
 				84638E941FC461DC008ED90A /* GroceryList */,
 				84638E931FC461DC008ED90A /* Products */,
+				CDE4CC6A3E6F2A9912773AEA /* Pods */,
+				286CA417EE0A7BC7473823D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +79,68 @@
 		84638E941FC461DC008ED90A /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
+				84F93B901FC465A00057F802 /* Services */,
+				84F93B8F1FC4659B0057F802 /* Extensions */,
+				84F93B8E1FC465960057F802 /* Model */,
+				84F93B8D1FC465920057F802 /* View */,
+				84F93B8C1FC465780057F802 /* Controller */,
 				84638E951FC461DC008ED90A /* AppDelegate.swift */,
-				84638E971FC461DC008ED90A /* FirstViewController.swift */,
-				84638E991FC461DC008ED90A /* SecondViewController.swift */,
 				84638E9B1FC461DC008ED90A /* Main.storyboard */,
 				84638E9E1FC461DC008ED90A /* Assets.xcassets */,
 				84638EA01FC461DC008ED90A /* LaunchScreen.storyboard */,
+				84F93B8A1FC463310057F802 /* GoogleService-Info.plist */,
 				84638EA31FC461DC008ED90A /* Info.plist */,
 			);
 			path = GroceryList;
+			sourceTree = "<group>";
+		};
+		84F93B8C1FC465780057F802 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				84638E971FC461DC008ED90A /* FeedVC.swift */,
+				84638E991FC461DC008ED90A /* GroupsVC.swift */,
+				84F93B911FC468300057F802 /* MeVC.swift */,
+				84F93B931FC468490057F802 /* LoginVC.swift */,
+				84F93B951FC468570057F802 /* CreateAccountVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		84F93B8D1FC465920057F802 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84F93B8E1FC465960057F802 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84F93B8F1FC4659B0057F802 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		84F93B901FC465A00057F802 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CDE4CC6A3E6F2A9912773AEA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D9ECC924F66FFB1F701A10E /* Pods-GroceryList.debug.xcconfig */,
+				85214809EFC7ED4447AA8C71 /* Pods-GroceryList.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +150,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84638EA61FC461DC008ED90A /* Build configuration list for PBXNativeTarget "GroceryList" */;
 			buildPhases = (
+				040B9BBE153CB60125ECD53F /* [CP] Check Pods Manifest.lock */,
 				84638E8E1FC461DC008ED90A /* Sources */,
 				84638E8F1FC461DC008ED90A /* Frameworks */,
 				84638E901FC461DC008ED90A /* Resources */,
+				5F3100B5B87033C554589764 /* [CP] Embed Pods Frameworks */,
+				3EA219AC32F5555C08027E85 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84638EA21FC461DC008ED90A /* LaunchScreen.storyboard in Resources */,
+				84F93B8B1FC463310057F802 /* GoogleService-Info.plist in Resources */,
 				84638E9F1FC461DC008ED90A /* Assets.xcassets in Resources */,
 				84638E9D1FC461DC008ED90A /* Main.storyboard in Resources */,
 			);
@@ -134,14 +214,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		040B9BBE153CB60125ECD53F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3EA219AC32F5555C08027E85 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GroceryList/Pods-GroceryList-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F3100B5B87033C554589764 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GroceryList/Pods-GroceryList-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84638E8E1FC461DC008ED90A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84638E9A1FC461DC008ED90A /* SecondViewController.swift in Sources */,
+				84F93B921FC468300057F802 /* MeVC.swift in Sources */,
+				84638E9A1FC461DC008ED90A /* GroupsVC.swift in Sources */,
+				84F93B961FC468570057F802 /* CreateAccountVC.swift in Sources */,
 				84638E961FC461DC008ED90A /* AppDelegate.swift in Sources */,
-				84638E981FC461DC008ED90A /* FirstViewController.swift in Sources */,
+				84638E981FC461DC008ED90A /* FeedVC.swift in Sources */,
+				84F93B941FC468490057F802 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +407,7 @@
 		};
 		84638EA71FC461DC008ED90A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D9ECC924F66FFB1F701A10E /* Pods-GroceryList.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -291,6 +423,7 @@
 		};
 		84638EA81FC461DC008ED90A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85214809EFC7ED4447AA8C71 /* Pods-GroceryList.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
