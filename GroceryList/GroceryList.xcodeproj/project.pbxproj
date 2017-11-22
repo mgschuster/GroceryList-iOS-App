@@ -13,7 +13,6 @@
 		84638E9D1FC461DC008ED90A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84638E9B1FC461DC008ED90A /* Main.storyboard */; };
 		84638E9F1FC461DC008ED90A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84638E9E1FC461DC008ED90A /* Assets.xcassets */; };
 		84638EA21FC461DC008ED90A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84638EA01FC461DC008ED90A /* LaunchScreen.storyboard */; };
-		84F93B8B1FC463310057F802 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F93B8A1FC463310057F802 /* GoogleService-Info.plist */; };
 		84F93B921FC468300057F802 /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B911FC468300057F802 /* MeVC.swift */; };
 		84F93B941FC468490057F802 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B931FC468490057F802 /* LoginVC.swift */; };
 		84F93B961FC468570057F802 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B951FC468570057F802 /* CreateAccountVC.swift */; };
@@ -21,6 +20,9 @@
 		84F93B9A1FC473C00057F802 /* WhitePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B991FC473C00057F802 /* WhitePlaceholder.swift */; };
 		84F93B9C1FC474590057F802 /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B9B1FC474590057F802 /* ShadowButton.swift */; };
 		84F93B9E1FC5B99B0057F802 /* BluePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B9D1FC5B99B0057F802 /* BluePlaceholder.swift */; };
+		84F93BA01FC5CC250057F802 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B9F1FC5CC250057F802 /* DataService.swift */; };
+		84F93BA21FC5CC3A0057F802 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93BA11FC5CC3A0057F802 /* AuthService.swift */; };
+		84F93BA41FC5D4D40057F802 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F93BA31FC5D4D40057F802 /* GoogleService-Info.plist */; };
 		D142013594897ED281C2E257 /* Pods_GroceryList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517CD8E33CB80390FD7930A2 /* Pods_GroceryList.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +36,6 @@
 		84638E9E1FC461DC008ED90A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84638EA11FC461DC008ED90A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84638EA31FC461DC008ED90A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84F93B8A1FC463310057F802 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84F93B911FC468300057F802 /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		84F93B931FC468490057F802 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		84F93B951FC468570057F802 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
@@ -42,6 +43,9 @@
 		84F93B991FC473C00057F802 /* WhitePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitePlaceholder.swift; sourceTree = "<group>"; };
 		84F93B9B1FC474590057F802 /* ShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
 		84F93B9D1FC5B99B0057F802 /* BluePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePlaceholder.swift; sourceTree = "<group>"; };
+		84F93B9F1FC5CC250057F802 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		84F93BA11FC5CC3A0057F802 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		84F93BA31FC5D4D40057F802 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85214809EFC7ED4447AA8C71 /* Pods-GroceryList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryList/Pods-GroceryList.release.xcconfig"; sourceTree = "<group>"; };
 		9D9ECC924F66FFB1F701A10E /* Pods-GroceryList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryList/Pods-GroceryList.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,7 +100,7 @@
 				84638E9B1FC461DC008ED90A /* Main.storyboard */,
 				84638E9E1FC461DC008ED90A /* Assets.xcassets */,
 				84638EA01FC461DC008ED90A /* LaunchScreen.storyboard */,
-				84F93B8A1FC463310057F802 /* GoogleService-Info.plist */,
+				84F93BA31FC5D4D40057F802 /* GoogleService-Info.plist */,
 				84638EA31FC461DC008ED90A /* Info.plist */,
 			);
 			path = GroceryList;
@@ -142,6 +146,8 @@
 		84F93B901FC465A00057F802 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				84F93B9F1FC5CC250057F802 /* DataService.swift */,
+				84F93BA11FC5CC3A0057F802 /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -218,7 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84638EA21FC461DC008ED90A /* LaunchScreen.storyboard in Resources */,
-				84F93B8B1FC463310057F802 /* GoogleService-Info.plist in Resources */,
+				84F93BA41FC5D4D40057F802 /* GoogleService-Info.plist in Resources */,
 				84638E9F1FC461DC008ED90A /* Assets.xcassets in Resources */,
 				84638E9D1FC461DC008ED90A /* Main.storyboard in Resources */,
 			);
@@ -282,8 +288,10 @@
 				84F93B921FC468300057F802 /* MeVC.swift in Sources */,
 				84F93B9C1FC474590057F802 /* ShadowButton.swift in Sources */,
 				84638E9A1FC461DC008ED90A /* GroupsVC.swift in Sources */,
+				84F93BA21FC5CC3A0057F802 /* AuthService.swift in Sources */,
 				84F93B9E1FC5B99B0057F802 /* BluePlaceholder.swift in Sources */,
 				84F93B961FC468570057F802 /* CreateAccountVC.swift in Sources */,
+				84F93BA01FC5CC250057F802 /* DataService.swift in Sources */,
 				84F93B9A1FC473C00057F802 /* WhitePlaceholder.swift in Sources */,
 				84638E961FC461DC008ED90A /* AppDelegate.swift in Sources */,
 				84638E981FC461DC008ED90A /* FeedVC.swift in Sources */,
