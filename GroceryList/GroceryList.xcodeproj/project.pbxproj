@@ -18,8 +18,9 @@
 		84F93B941FC468490057F802 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B931FC468490057F802 /* LoginVC.swift */; };
 		84F93B961FC468570057F802 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B951FC468570057F802 /* CreateAccountVC.swift */; };
 		84F93B981FC473960057F802 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B971FC473960057F802 /* ShadowView.swift */; };
-		84F93B9A1FC473C00057F802 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B991FC473C00057F802 /* InsetTextField.swift */; };
+		84F93B9A1FC473C00057F802 /* WhitePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B991FC473C00057F802 /* WhitePlaceholder.swift */; };
 		84F93B9C1FC474590057F802 /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B9B1FC474590057F802 /* ShadowButton.swift */; };
+		84F93B9E1FC5B99B0057F802 /* BluePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93B9D1FC5B99B0057F802 /* BluePlaceholder.swift */; };
 		D142013594897ED281C2E257 /* Pods_GroceryList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517CD8E33CB80390FD7930A2 /* Pods_GroceryList.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,8 +39,9 @@
 		84F93B931FC468490057F802 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		84F93B951FC468570057F802 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		84F93B971FC473960057F802 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
-		84F93B991FC473C00057F802 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
+		84F93B991FC473C00057F802 /* WhitePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitePlaceholder.swift; sourceTree = "<group>"; };
 		84F93B9B1FC474590057F802 /* ShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
+		84F93B9D1FC5B99B0057F802 /* BluePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePlaceholder.swift; sourceTree = "<group>"; };
 		85214809EFC7ED4447AA8C71 /* Pods-GroceryList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryList/Pods-GroceryList.release.xcconfig"; sourceTree = "<group>"; };
 		9D9ECC924F66FFB1F701A10E /* Pods-GroceryList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryList/Pods-GroceryList.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,8 +118,9 @@
 			isa = PBXGroup;
 			children = (
 				84F93B971FC473960057F802 /* ShadowView.swift */,
-				84F93B991FC473C00057F802 /* InsetTextField.swift */,
+				84F93B991FC473C00057F802 /* WhitePlaceholder.swift */,
 				84F93B9B1FC474590057F802 /* ShadowButton.swift */,
+				84F93B9D1FC5B99B0057F802 /* BluePlaceholder.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -279,8 +282,9 @@
 				84F93B921FC468300057F802 /* MeVC.swift in Sources */,
 				84F93B9C1FC474590057F802 /* ShadowButton.swift in Sources */,
 				84638E9A1FC461DC008ED90A /* GroupsVC.swift in Sources */,
+				84F93B9E1FC5B99B0057F802 /* BluePlaceholder.swift in Sources */,
 				84F93B961FC468570057F802 /* CreateAccountVC.swift in Sources */,
-				84F93B9A1FC473C00057F802 /* InsetTextField.swift in Sources */,
+				84F93B9A1FC473C00057F802 /* WhitePlaceholder.swift in Sources */,
 				84638E961FC461DC008ED90A /* AppDelegate.swift in Sources */,
 				84638E981FC461DC008ED90A /* FeedVC.swift in Sources */,
 				84F93B941FC468490057F802 /* LoginVC.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InsetTextField: UITextField {
+class WhitePlaceholder: UITextField {
 
     override func awakeFromNib() {
         super.awakeFromNib()
