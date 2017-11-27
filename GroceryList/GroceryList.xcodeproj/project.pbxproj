@@ -91,9 +91,9 @@
 		84638E941FC461DC008ED90A /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
+				E7BEEE181FCCAEE40075FE19 /* Extensions */,
 				84F93B901FC465A00057F802 /* Services */,
-				E71808411FCCA175007B7E07 /* Extensions */,
-				E71808421FCCA18A007B7E07 /* Model */,
+				E7BEEE191FCCAEEA0075FE19 /* Model */,
 				84F93B8D1FC465920057F802 /* View */,
 				84F93B8C1FC465780057F802 /* Controller */,
 				84638E951FC461DC008ED90A /* AppDelegate.swift */,
@@ -147,14 +147,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		E71808411FCCA175007B7E07 /* Extensions */ = {
+		E7BEEE181FCCAEE40075FE19 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		E71808421FCCA18A007B7E07 /* Model */ = {
+		E7BEEE191FCCAEEA0075FE19 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
