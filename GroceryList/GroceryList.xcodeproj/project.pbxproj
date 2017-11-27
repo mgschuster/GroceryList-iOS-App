@@ -92,8 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				84F93B901FC465A00057F802 /* Services */,
-				84F93B8F1FC4659B0057F802 /* Extensions */,
-				84F93B8E1FC465960057F802 /* Model */,
+				E71808411FCCA175007B7E07 /* Extensions */,
+				E71808421FCCA18A007B7E07 /* Model */,
 				84F93B8D1FC465920057F802 /* View */,
 				84F93B8C1FC465780057F802 /* Controller */,
 				84638E951FC461DC008ED90A /* AppDelegate.swift */,
@@ -129,20 +129,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		84F93B8E1FC465960057F802 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		84F93B8F1FC4659B0057F802 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		84F93B901FC465A00057F802 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +145,20 @@
 				85214809EFC7ED4447AA8C71 /* Pods-GroceryList.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E71808411FCCA175007B7E07 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E71808421FCCA18A007B7E07 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
