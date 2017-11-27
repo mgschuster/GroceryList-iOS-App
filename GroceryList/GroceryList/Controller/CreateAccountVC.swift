@@ -24,6 +24,20 @@ class CreateAccountVC: UIViewController {
     
     // Actions
     @IBAction func signUpBtnWasPressed(_ sender: Any) {
+        if usernameField.text != nil && emailField.text != nil && passwordField.text != nil && confirmPasswordField.text != nil {
+            if passwordField.text == confirmPasswordField.text {
+                AuthService.instance.registerUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, andUsername: self.usernameField.text!, userCreationComplete: { (success, registrationError) in
+                    if success {
+                        AuthService.instance.loginUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, loginComplete: { (success, nil) in
+                            self.dismiss(animated: true, completion: nil)
+                            print("Successfully registered user")
+                        })
+                    } else {
+                        print(String(describing: registrationError?.localizedDescription))
+                    }
+                })
+            }
+        }
     }
     
     @IBAction func closeBtnWasPressed(_ sender: Any) {

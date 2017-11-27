@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginVC: UIViewController {
     
@@ -17,12 +18,28 @@ class LoginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser != nil {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     // Actions
     @IBAction func loginBtnWasPressed(_ sender: Any) {
+        if emailField.text != nil && passwordField.text != nil {
+            AuthService.instance.loginUser(withEmail: emailField.text!, andPassword: passwordField.text!, loginComplete: { (success, loginError) in
+                if success {
+                    self.dismiss(animated: true, completion: nil)
+                    print("Logged in successfully")
+                } else {
+                    print(String(describing: loginError?.localizedDescription))
+                }
+            })
+        }
     }
     
     @IBAction func signUpBtnWasPressed(_ sender: Any) {
