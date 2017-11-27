@@ -7,47 +7,27 @@
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-<<<<<<< HEAD
-			<integer>1</integer>
-=======
 			<integer>2</integer>
->>>>>>> Auth-and-Data-service
 		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-<<<<<<< HEAD
-			<integer>0</integer>
-=======
 			<integer>1</integer>
->>>>>>> Auth-and-Data-service
 		</dict>
 		<key>Pods-GroceryList.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-<<<<<<< HEAD
-			<integer>4</integer>
-=======
 			<integer>5</integer>
->>>>>>> Auth-and-Data-service
 		</dict>
 		<key>leveldb-library.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-<<<<<<< HEAD
-			<integer>2</integer>
-=======
 			<integer>3</integer>
->>>>>>> Auth-and-Data-service
 		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-<<<<<<< HEAD
-			<integer>3</integer>
-=======
 			<integer>4</integer>
->>>>>>> Auth-and-Data-service
 		</dict>
 	</dict>
 </dict>

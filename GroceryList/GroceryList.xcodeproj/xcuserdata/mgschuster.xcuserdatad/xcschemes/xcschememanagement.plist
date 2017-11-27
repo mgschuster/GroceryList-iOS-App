@@ -7,11 +7,7 @@
 		<key>GroceryList.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-<<<<<<< HEAD
-			<integer>5</integer>
-=======
 			<integer>0</integer>
->>>>>>> Auth-and-Data-service
 		</dict>
 	</dict>
 </dict>
