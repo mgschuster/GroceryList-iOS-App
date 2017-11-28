@@ -10,15 +10,25 @@ import UIKit
 
 class MyListCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    // Outlets
+    @IBOutlet weak var checkmark: UIImageView!
+    @IBOutlet weak var productLbl: UILabel!
+    @IBOutlet weak var descriptionLbl: UILabel!
+    
+    // Variables
+    var showing = false
+    
+    func configureCell(product: String, withDescription description: String, isSelected: Bool) {
+        self.productLbl.text = product
+        self.descriptionLbl.text = description
+        if isSelected {
+            self.checkmark.isHidden = false
+        } else {
+            self.checkmark.isHidden = true
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
 }
