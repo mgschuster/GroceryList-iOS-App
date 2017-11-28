@@ -59,23 +59,6 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
             uncheckPopup.addAction(cancelAction)
             present(uncheckPopup, animated: true, completion: nil)
         }
-        
-//        let logoutPopup = UIAlertController(title: "Check off?", message: "Check off this item from your list?", preferredStyle: .actionSheet)
-//        let logoutAction = UIAlertAction(title: "CHECK", style: .destructive) { (buttonTapped) in
-//            do {
-//                if selectedCell.checkmark.isHidden {
-//                    selectedCell.checkmark.isHidden = false
-//                } else {
-//                    selectedCell.checkmark.isHidden = true
-//                }
-//            } catch {
-//                print(error)
-//            }
-//        }
-//        let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
-//        logoutPopup.addAction(logoutAction)
-//        logoutPopup.addAction(cancelAction)
-//        present(logoutPopup, animated: true, completion: nil)
     }
 }
 
