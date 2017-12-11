@@ -40,7 +40,31 @@ class DataService {
     }
     
     func uploadItem(withItem item: String, andDescription description: String, forUID uid: String, sendComplete: @escaping (_ status: Bool) -> ()) {
-        REF_USERS.child(uid).child("grocery list").updateChildValues([item: description])
+        REF_USERS.child(uid).child("grocery list").child(item).updateChildValues(["description": description, "isSelected": false])
         sendComplete(true)
+    }
+    
+    func getAllFeedMessages(forUID uid: String, handler: @escaping (_ groceryList: [GroceryList]) -> ()) {
+        var groceryListArray = [GroceryList]()
+        REF_USERS.child(uid).child("grocery list").observeSingleEvent(of: .value) { (groceryListSnapshot) in
+            guard let groceryListSnapshot = groceryListSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for item in groceryListSnapshot {
+                let itemName = item.key
+                let description = item.childSnapshot(forPath: "description").value as! String
+                let selected = item.childSnapshot(forPath: "isSelected").value as! Bool
+                let groceryList = GroceryList(item: itemName, description: description, isSelected: selected)
+                groceryListArray.append(groceryList)
+            }
+            handler(groceryListArray)
+        }
+    }
+    
+    func checkOffItem(forUID uid: String, andItemName name: String) {
+        REF_USERS.child(uid).child("grocery list").child(name).updateChildValues(["isSelected": true])
+    }
+    
+    func uncheckItem(forUID uid: String, andItemName name: String) {
+        REF_USERS.child(uid).child("grocery list").child(name).updateChildValues(["isSelected": false])
     }
 }
