@@ -38,4 +38,9 @@ class DataService {
     func createDBUser(uid: String, userData: Dictionary<String, Any>) {
         REF_USERS.child(uid).updateChildValues(userData)
     }
+    
+    func uploadItem(withItem item: String, andDescription description: String, forUID uid: String, sendComplete: @escaping (_ status: Bool) -> ()) {
+        REF_USERS.child(uid).child("grocery list").updateChildValues([item: description])
+        sendComplete(true)
+    }
 }
