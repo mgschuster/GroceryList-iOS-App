@@ -179,20 +179,6 @@
                                     <constraint firstItem="BDP-KQ-dsr" firstAttribute="leading" secondItem="LEk-5R-MnN" secondAttribute="leading" constant="20" id="fCJ-N7-oKb"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHW-7Z-P4a">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="N8V-iT-a9B"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                                <state key="normal" title=" ADD ITEM" image="add-grocery-item">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendBtnWasPressed:" destination="EWh-YQ-zdt" eventType="touchUpInside" id="ZP7-ZZ-YPU"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-j6-Ado">
                                 <rect key="frame" x="50" y="125" width="275" height="106"/>
                                 <subviews>
@@ -212,7 +198,7 @@
                                             <constraint firstAttribute="height" constant="1" id="Fs5-rN-1dB"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DESCRIPTION (quantity, weight, etc...)" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="2BK-AV-YDr" customClass="BluePlaceholder" customModule="GroceryList" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DESCRIPTION" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="2BK-AV-YDr" customClass="BluePlaceholder" customModule="GroceryList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="57" width="275" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="m0h-rz-k7W"/>
@@ -230,18 +216,32 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHW-7Z-P4a" customClass="ShadowButton" customModule="GroceryList" customModuleProvider="target">
+                                <rect key="frame" x="100" y="281" width="175" height="50"/>
+                                <color key="backgroundColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="N8V-iT-a9B"/>
+                                    <constraint firstAttribute="width" constant="175" id="lCI-jS-Jfz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <state key="normal" title=" ADD ITEM" image="add-grocery-item">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendBtnWasPressed:" destination="EWh-YQ-zdt" eventType="touchUpInside" id="ZP7-ZZ-YPU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="OHW-7Z-P4a" firstAttribute="top" secondItem="mA3-j6-Ado" secondAttribute="bottom" constant="50" id="CPE-WM-qWf"/>
                             <constraint firstItem="FLd-tg-c1v" firstAttribute="trailing" secondItem="mA3-j6-Ado" secondAttribute="trailing" constant="50" id="JWm-74-omA"/>
                             <constraint firstItem="LEk-5R-MnN" firstAttribute="top" secondItem="6I7-jQ-Ret" secondAttribute="top" id="Lzh-yM-97R"/>
                             <constraint firstItem="FLd-tg-c1v" firstAttribute="trailing" secondItem="LEk-5R-MnN" secondAttribute="trailing" id="NH3-7y-EoF"/>
-                            <constraint firstItem="OHW-7Z-P4a" firstAttribute="trailing" secondItem="FLd-tg-c1v" secondAttribute="trailing" id="VZE-0v-Qsg"/>
-                            <constraint firstItem="OHW-7Z-P4a" firstAttribute="leading" secondItem="FLd-tg-c1v" secondAttribute="leading" id="WKm-Kh-8bc"/>
+                            <constraint firstItem="OHW-7Z-P4a" firstAttribute="centerX" secondItem="6I7-jQ-Ret" secondAttribute="centerX" id="PhG-Vl-Yrv"/>
                             <constraint firstItem="mA3-j6-Ado" firstAttribute="leading" secondItem="FLd-tg-c1v" secondAttribute="leading" constant="50" id="fLn-v1-YPv"/>
                             <constraint firstItem="mA3-j6-Ado" firstAttribute="top" secondItem="LEk-5R-MnN" secondAttribute="bottom" constant="50" id="hvZ-bU-0rp"/>
                             <constraint firstItem="mA3-j6-Ado" firstAttribute="centerX" secondItem="6I7-jQ-Ret" secondAttribute="centerX" id="mKx-lP-pXv"/>
-                            <constraint firstItem="OHW-7Z-P4a" firstAttribute="bottom" secondItem="FLd-tg-c1v" secondAttribute="bottom" id="u3e-4t-OJH"/>
                             <constraint firstItem="LEk-5R-MnN" firstAttribute="leading" secondItem="6I7-jQ-Ret" secondAttribute="leading" id="udU-Yc-G31"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FLd-tg-c1v"/>
