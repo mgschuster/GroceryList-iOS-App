@@ -43,4 +43,31 @@ class DataService {
         REF_USERS.child(uid).child("grocery list").updateChildValues([item: description])
         sendComplete(true)
     }
+    
+    func getAllFeedMessages(forUID uid: String, handler: @escaping (_ groceryList: [GroceryList]) -> ()) {
+        var groceryListArray = [GroceryList]()
+        REF_USERS.child(uid).child("grocery list").observeSingleEvent(of: .value) { (groceryListSnapshot) in
+            guard let groceryListSnapshot = groceryListSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for item in groceryListSnapshot {
+                let itemName = item.key
+                let description = item.value as! String
+                let groceryList = GroceryList(item: itemName, description: description)
+                groceryListArray.append(groceryList)
+            }
+            handler(groceryListArray)
+        }
+        
+//        REF_USERS.observeSingleEvent(of: .value) { (feedMessageSnapshot) in
+//            guard let feedMessageSnapshot = feedMessageSnapshot.children.allObjects as? [DataSnapshot] else { return }
+//
+//            for message in feedMessageSnapshot {
+//                let content = message.childSnapshot(forPath: "content").value as! String
+//                let senderId = message.childSnapshot(forPath: "senderId").value as! String
+//                let message = Message(content: content, senderId: senderId)
+//                messageArray.append(message)
+//            }
+//            handler(messageArray)
+//        }
+    }
 }

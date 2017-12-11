@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FeedVC: UIViewController {
     
@@ -14,11 +15,20 @@ class FeedVC: UIViewController {
     @IBOutlet weak var myListTableView: UITableView!
     
     // Variables
+    var groceryListArray = [GroceryList]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         myListTableView.delegate = self
         myListTableView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DataService.instance.getAllFeedMessages(forUID: (Auth.auth().currentUser?.uid)!) { (returnedGroceryListArray) in
+            self.groceryListArray = returnedGroceryListArray
+            self.myListTableView.reloadData()
+        }
     }
 }
 
@@ -28,12 +38,14 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return groceryListArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "myListCell") as? MyListCell else { return UITableViewCell() }
         cell.selectionStyle = .none
+        let groceryList = groceryListArray[indexPath.row]
+        cell.configureCell(product: groceryList.item, withDescription: groceryList.description, isSelected: false)
         return cell
     }
     
