@@ -141,10 +141,10 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
-        <!--View Controller-->
+        <!--Create ItemVC-->
         <scene sceneID="QPL-OV-Pwu">
             <objects>
-                <viewController id="EWh-YQ-zdt" sceneMemberID="viewController">
+                <viewController id="EWh-YQ-zdt" customClass="CreateItemVC" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6I7-jQ-Ret">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,6 +165,9 @@
                                             <constraint firstAttribute="height" constant="33" id="zH3-bS-Oqc"/>
                                         </constraints>
                                         <state key="normal" image="x-button"/>
+                                        <connections>
+                                            <action selector="closeBtnWasPressed:" destination="EWh-YQ-zdt" eventType="touchUpInside" id="OU6-9w-qOo"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -186,6 +189,9 @@
                                 <state key="normal" title=" ADD ITEM" image="add-grocery-item">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendBtnWasPressed:" destination="EWh-YQ-zdt" eventType="touchUpInside" id="ZP7-ZZ-YPU"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-j6-Ado">
                                 <rect key="frame" x="50" y="125" width="275" height="106"/>
@@ -240,6 +246,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FLd-tg-c1v"/>
                     </view>
+                    <connections>
+                        <outlet property="addBtn" destination="OHW-7Z-P4a" id="5mj-pq-JMz"/>
+                        <outlet property="descriptionField" destination="2BK-AV-YDr" id="jCu-Fv-UMf"/>
+                        <outlet property="itemField" destination="MFh-X9-Zq1" id="qTg-5k-nNa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWE-D0-l6y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
