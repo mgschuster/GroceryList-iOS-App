@@ -198,7 +198,7 @@
                                             <constraint firstAttribute="height" constant="1" id="Fs5-rN-1dB"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DESCRIPTION" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="2BK-AV-YDr" customClass="BluePlaceholder" customModule="GroceryList" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DESCRIPTION (optional)" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="2BK-AV-YDr" customClass="BluePlaceholder" customModule="GroceryList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="57" width="275" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="m0h-rz-k7W"/>

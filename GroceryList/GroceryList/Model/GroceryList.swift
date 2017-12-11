@@ -11,6 +11,7 @@ import Foundation
 class GroceryList {
     private var _item: String
     private var _description: String
+    private var _isSelected: Bool
     
     var item: String {
         return _item
@@ -20,8 +21,13 @@ class GroceryList {
         return _description
     }
     
-    init(item: String, description: String) {
+    var isSelected: Bool {
+        return _isSelected
+    }
+    
+    init(item: String, description: String, isSelected: Bool) {
         self._item = item
         self._description = description
+        self._isSelected = isSelected
     }
 }

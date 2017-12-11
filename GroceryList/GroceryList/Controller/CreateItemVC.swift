@@ -22,10 +22,14 @@ class CreateItemVC: UIViewController {
         descriptionField.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     // Actions
     @IBAction func sendBtnWasPressed(_ sender: Any) {
-        if itemField.text != nil && descriptionField.text != nil {
-            addBtn.isEnabled = false
+        if itemField.text != "" && itemField.text != "ITEM" && itemField.text != nil {
+            addBtn.isEnabled = true
 
             let uid = Auth.auth().currentUser?.uid
 

@@ -40,7 +40,7 @@ class DataService {
     }
     
     func uploadItem(withItem item: String, andDescription description: String, forUID uid: String, sendComplete: @escaping (_ status: Bool) -> ()) {
-        REF_USERS.child(uid).child("grocery list").updateChildValues([item: description])
+        REF_USERS.child(uid).child("grocery list").child(item).updateChildValues(["description": description, "isSelected": false])
         sendComplete(true)
     }
     
@@ -51,23 +51,20 @@ class DataService {
             
             for item in groceryListSnapshot {
                 let itemName = item.key
-                let description = item.value as! String
-                let groceryList = GroceryList(item: itemName, description: description)
+                let description = item.childSnapshot(forPath: "description").value as! String
+                let selected = item.childSnapshot(forPath: "isSelected").value as! Bool
+                let groceryList = GroceryList(item: itemName, description: description, isSelected: selected)
                 groceryListArray.append(groceryList)
             }
             handler(groceryListArray)
         }
-        
-//        REF_USERS.observeSingleEvent(of: .value) { (feedMessageSnapshot) in
-//            guard let feedMessageSnapshot = feedMessageSnapshot.children.allObjects as? [DataSnapshot] else { return }
-//
-//            for message in feedMessageSnapshot {
-//                let content = message.childSnapshot(forPath: "content").value as! String
-//                let senderId = message.childSnapshot(forPath: "senderId").value as! String
-//                let message = Message(content: content, senderId: senderId)
-//                messageArray.append(message)
-//            }
-//            handler(messageArray)
-//        }
+    }
+    
+    func checkOffItem(forUID uid: String, andItemName name: String) {
+        REF_USERS.child(uid).child("grocery list").child(name).updateChildValues(["isSelected": true])
+    }
+    
+    func uncheckItem(forUID uid: String, andItemName name: String) {
+        REF_USERS.child(uid).child("grocery list").child(name).updateChildValues(["isSelected": false])
     }
 }
