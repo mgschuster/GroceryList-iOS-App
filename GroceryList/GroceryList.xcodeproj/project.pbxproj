@@ -24,6 +24,7 @@
 		84F93BA21FC5CC3A0057F802 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93BA11FC5CC3A0057F802 /* AuthService.swift */; };
 		D142013594897ED281C2E257 /* Pods_GroceryList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517CD8E33CB80390FD7930A2 /* Pods_GroceryList.framework */; };
 		E71177B51FCE05860062072B /* CreateItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71177B41FCE05850062072B /* CreateItemVC.swift */; };
+		E71177B71FDEFB510062072B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71177B61FDEFB510062072B /* UIViewExtension.swift */; };
 		E78C5E9B1FCDD22D00327A34 /* MyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C5E9A1FCDD22D00327A34 /* MyListCell.swift */; };
 		E78C5E9D1FCDD24100327A34 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C5E9C1FCDD24100327A34 /* GroupCell.swift */; };
 		E79A64F81FCCB95000DB05B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E79A64F71FCCB95000DB05B6 /* GoogleService-Info.plist */; };
@@ -51,6 +52,7 @@
 		85214809EFC7ED4447AA8C71 /* Pods-GroceryList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryList/Pods-GroceryList.release.xcconfig"; sourceTree = "<group>"; };
 		9D9ECC924F66FFB1F701A10E /* Pods-GroceryList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryList/Pods-GroceryList.debug.xcconfig"; sourceTree = "<group>"; };
 		E71177B41FCE05850062072B /* CreateItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemVC.swift; sourceTree = "<group>"; };
+		E71177B61FDEFB510062072B /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E78C5E9A1FCDD22D00327A34 /* MyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCell.swift; sourceTree = "<group>"; };
 		E78C5E9C1FCDD24100327A34 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		E79A64F71FCCB95000DB05B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Grocery List Google/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		E7BEEE181FCCAEE40075FE19 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E71177B61FDEFB510062072B /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				84F93BA21FC5CC3A0057F802 /* AuthService.swift in Sources */,
 				E78C5E9B1FCDD22D00327A34 /* MyListCell.swift in Sources */,
 				84F93B9E1FC5B99B0057F802 /* BluePlaceholder.swift in Sources */,
+				E71177B71FDEFB510062072B /* UIViewExtension.swift in Sources */,
 				84F93B961FC468570057F802 /* CreateAccountVC.swift in Sources */,
 				E78C5E9D1FCDD24100327A34 /* GroupCell.swift in Sources */,
 				84F93BA01FC5CC250057F802 /* DataService.swift in Sources */,

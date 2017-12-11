@@ -24,11 +24,11 @@ class CreateItemVC: UIViewController {
     
     // Actions
     @IBAction func sendBtnWasPressed(_ sender: Any) {
-        if itemField.text != nil && descriptionField.text != nil && itemField.text != "ITEM" && descriptionField.text != "DESCRIPTION (quantity, weight, etc...)" {
+        if itemField.text != nil && descriptionField.text != nil {
             addBtn.isEnabled = false
-            
+
             let uid = Auth.auth().currentUser?.uid
-            
+
             DataService.instance.uploadItem(withItem: itemField.text!, andDescription: descriptionField.text!, forUID: uid!, sendComplete: { (isComplete) in
                 if isComplete {
                     self.addBtn.isEnabled = true
