@@ -29,9 +29,13 @@ class FeedVC: UIViewController {
     }
     
     func reloadGroceryList() {
-        DataService.instance.getAllFeedMessages(forUID: (Auth.auth().currentUser?.uid)!) { (returnedGroceryListArray) in
-            self.groceryListArray = returnedGroceryListArray
-            self.myListTableView.reloadData()
+        if Auth.auth().currentUser != nil {
+            DataService.instance.getAllFeedMessages(forUID: (Auth.auth().currentUser?.uid)!) { (returnedGroceryListArray) in
+                self.groceryListArray = returnedGroceryListArray
+                self.myListTableView.reloadData()
+            }
+        } else {
+            return
         }
     }
 }
