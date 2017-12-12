@@ -36,10 +36,11 @@ class CreateAccountVC: UIViewController {
                             print("Successfully registered user")
                         })
                     } else if String(describing: registrationError?.localizedDescription) == "Optional(\"The password must be 6 characters long or more.\")" {
-                        self.warningLbl.text = "Password must be 6+ characters long."
-                    } else if String(describing: registrationError?.localizedDescription) ==
-                        "Optional(\"The email address is badly formatted.\")" {
-                        self.warningLbl.text = "Invalid email. Please try again."
+                            self.warningLbl.text = "Password must be 6+ characters long."
+                    } else if String(describing: registrationError?.localizedDescription) == "Optional(\"The email address is badly formatted.\")" {
+                            self.warningLbl.text = "Invalid email. Please try again."
+                    } else if String(describing: registrationError?.localizedDescription) == "Optional(\"The email address is already in use by another account.\")"{
+                            self.warningLbl.text = "An account with that email already exists. Please try logging in."
                     } else {
                         print(String(describing: registrationError?.localizedDescription))
                     }
