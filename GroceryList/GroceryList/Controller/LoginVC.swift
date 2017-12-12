@@ -19,7 +19,8 @@ class LoginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        emailField.delegate = self
+        passwordField.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,5 +52,11 @@ class LoginVC: UIViewController {
         let CreateAccountVC = storyboard?.instantiateViewController(withIdentifier: "CreateAccountVC")
         present(CreateAccountVC!, animated: true, completion: nil)
     }
-    
+}
+
+extension LoginVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }
