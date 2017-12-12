@@ -67,4 +67,8 @@ class DataService {
     func uncheckItem(forUID uid: String, andItemName name: String) {
         REF_USERS.child(uid).child("grocery list").child(name).updateChildValues(["isSelected": false])
     }
+    
+    func removeItem(forUID uid: String, andItem item: String) {
+        REF_USERS.child(uid).child("grocery list").child(item).removeValue()
+    }
 }
