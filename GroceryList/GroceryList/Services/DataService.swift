@@ -18,6 +18,8 @@ class DataService {
     private var _REF_USERS = DB_BASE.child("users")
     private var _REF_GROUPS = DB_BASE.child("groups")
     private var _REF_FEED = DB_BASE.child("feed")
+    private var _REF_USERNAMES = DB_BASE.child("usernames")
+    private var _REF_EMAILS = DB_BASE.child("emails")
     
     var REF_BASE: DatabaseReference {
         return _REF_BASE
@@ -35,8 +37,40 @@ class DataService {
         return _REF_FEED
     }
     
+    var REF_USERNAMES: DatabaseReference {
+        return _REF_USERNAMES
+    }
+    
+    var REF_EMAILS: DatabaseReference {
+        return _REF_EMAILS
+    }
+    
     func createDBUser(uid: String, userData: Dictionary<String, Any>) {
         REF_USERS.child(uid).updateChildValues(userData)
+    }
+    
+    func addUsername(uid: String, username: String) {
+        REF_USERNAMES.updateChildValues([username: uid])
+    }
+    
+    func usernameAvailable(username: String, handler: @escaping (_ available: Bool) -> ()) {
+        var available = true
+        REF_USERNAMES.observeSingleEvent(of: .value) { (usernameSnapshot) in
+            guard let usernameSnapshot = usernameSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for user in usernameSnapshot {
+                print(user.key)
+                if user.key == username {
+                    print("equal username")
+                    available = false
+                    break
+                } else {
+                    print("available username")
+                    available = true
+                }
+            }
+            handler(available)
+        }
     }
     
     func uploadItem(withItem item: String, andDescription description: String, forUID uid: String, sendComplete: @escaping (_ status: Bool) -> ()) {
