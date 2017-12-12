@@ -38,7 +38,7 @@ class LoginVC: UIViewController {
                     self.dismiss(animated: true, completion: nil)
                     print("Logged in successfully")
                 } else if String(describing: loginError?.localizedDescription) == "Optional(\"There is no user record corresponding to this identifier. The user may have been deleted.\")" {
-                    self.warningLbl.text = "No user found. Please create an account below"
+                    self.warningLbl.text = "No user found. Please create an account below."
                 } else if String(describing: loginError?.localizedDescription) == "Optional(\"The password is invalid or the user does not have a password.\")" {
                     self.warningLbl.text = "Incorrect email or password, please try again."
                 } else {

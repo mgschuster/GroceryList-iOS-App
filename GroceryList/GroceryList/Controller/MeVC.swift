@@ -11,11 +11,22 @@ import Firebase
 
 class MeVC: UIViewController {
 
+    // Outlets
+    @IBOutlet weak var usernameLbl: UILabel!
+    @IBOutlet weak var emailLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DataService.instance.printUsername(forUID: (Auth.auth().currentUser?.uid)!) { (returnedUsername) in
+            self.usernameLbl.text = returnedUsername
+        }
+        emailLbl.text = Auth.auth().currentUser?.email
+    }
+    
     @IBAction func logoutBtnPressed(_ sender: Any) {
         let logoutPopup = UIAlertController(title: "Sign Out?", message: "Are you sure you want to sign out?", preferredStyle: .actionSheet)
         let logoutAction = UIAlertAction(title: "SIGN OUT", style: .destructive) { (buttonTapped) in

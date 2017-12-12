@@ -53,23 +53,24 @@ class DataService {
         REF_USERNAMES.updateChildValues([username: uid])
     }
     
-    func usernameAvailable(username: String, handler: @escaping (_ available: Bool) -> ()) {
-        var available = true
+    func usernames(handler: @escaping (_ usernameList: [String]) -> ()) {
+        var usernameArray = [String]()
+        
         REF_USERNAMES.observeSingleEvent(of: .value) { (usernameSnapshot) in
             guard let usernameSnapshot = usernameSnapshot.children.allObjects as? [DataSnapshot] else { return }
             
             for user in usernameSnapshot {
-                print(user.key)
-                if user.key == username {
-                    print("equal username")
-                    available = false
-                    break
-                } else {
-                    print("available username")
-                    available = true
-                }
+                let usernames = user.key
+                usernameArray.append(usernames)
             }
-            handler(available)
+            handler(usernameArray)
+        }
+    }
+    
+    func printUsername(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
+        REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            let username = snapshot.childSnapshot(forPath: "username").value as! String
+            handler(username)
         }
     }
     
