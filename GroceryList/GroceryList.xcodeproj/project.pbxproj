@@ -29,6 +29,8 @@
 		E78C5E9B1FCDD22D00327A34 /* MyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C5E9A1FCDD22D00327A34 /* MyListCell.swift */; };
 		E78C5E9D1FCDD24100327A34 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C5E9C1FCDD24100327A34 /* GroupCell.swift */; };
 		E79A64F81FCCB95000DB05B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E79A64F71FCCB95000DB05B6 /* GoogleService-Info.plist */; };
+		E79D40971FE4356A00CD5A8C /* CreateGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */; };
+		E79D40991FE438D900CD5A8C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40981FE438D900CD5A8C /* UserCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		E78C5E9A1FCDD22D00327A34 /* MyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCell.swift; sourceTree = "<group>"; };
 		E78C5E9C1FCDD24100327A34 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		E79A64F71FCCB95000DB05B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Grocery List Google/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupsVC.swift; sourceTree = "<group>"; };
+		E79D40981FE438D900CD5A8C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 				84F93B931FC468490057F802 /* LoginVC.swift */,
 				84F93B951FC468570057F802 /* CreateAccountVC.swift */,
 				E71177B41FCE05850062072B /* CreateItemVC.swift */,
+				E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				84F93B9D1FC5B99B0057F802 /* BluePlaceholder.swift */,
 				E78C5E9A1FCDD22D00327A34 /* MyListCell.swift */,
 				E78C5E9C1FCDD24100327A34 /* GroupCell.swift */,
+				E79D40981FE438D900CD5A8C /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -306,6 +312,7 @@
 				84F93BA21FC5CC3A0057F802 /* AuthService.swift in Sources */,
 				E78C5E9B1FCDD22D00327A34 /* MyListCell.swift in Sources */,
 				84F93B9E1FC5B99B0057F802 /* BluePlaceholder.swift in Sources */,
+				E79D40991FE438D900CD5A8C /* UserCell.swift in Sources */,
 				E71177B71FDEFB510062072B /* UIViewExtension.swift in Sources */,
 				84F93B961FC468570057F802 /* CreateAccountVC.swift in Sources */,
 				E71177B91FDF04780062072B /* GroceryList.swift in Sources */,
@@ -316,6 +323,7 @@
 				84638E981FC461DC008ED90A /* FeedVC.swift in Sources */,
 				E71177B51FCE05860062072B /* CreateItemVC.swift in Sources */,
 				84F93B941FC468490057F802 /* LoginVC.swift in Sources */,
+				E79D40971FE4356A00CD5A8C /* CreateGroupsVC.swift in Sources */,
 				84F93B981FC473960057F802 /* ShadowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
