@@ -60,30 +60,40 @@ class CreateAccountVC: UIViewController {
     // Actions
     @IBAction func signUpBtnWasPressed(_ sender: Any) {
         if usernameField.text != nil && usernameField.text != "" && usernameField.text != "USERNAME" && emailField.text != "" && passwordField.text != nil && confirmPasswordField.text != nil {
+            
             let usernameAvailable = self.usernameAvailable(username: usernameField.text!)
-            if usernameAvailable {
-                if passwordField.text == confirmPasswordField.text {
-                    AuthService.instance.registerUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, andUsername: self.usernameField.text!, userCreationComplete: { (success, registrationError) in
-                        if success {
-                            AuthService.instance.loginUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, loginComplete: { (success, nil) in
-                                self.dismiss(animated: true, completion: nil)
-                                print("Successfully registered user")
+            
+            if usernameField.text!.count >= 5 && usernameField.text!.count <= 17 {
+                if !usernameField.text!.contains(" ") {
+                    if usernameAvailable {
+                        if passwordField.text == confirmPasswordField.text {
+                            AuthService.instance.registerUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, andUsername: self.usernameField.text!, userCreationComplete: { (success, registrationError) in
+                                if success {
+                                    AuthService.instance.loginUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, loginComplete: { (success, nil) in
+                                        self.dismiss(animated: true, completion: nil)
+                                        print("Successfully registered user")
+                                    })
+                                } else if String(describing: registrationError?.localizedDescription) == "Optional(\"The password must be 6 characters long or more.\")" {
+                                    self.warningLbl.text = "Password must be 6+ characters long."
+                                } else if String(describing: registrationError?.localizedDescription) == "Optional(\"The email address is badly formatted.\")" {
+                                    self.warningLbl.text = "Invalid email. Please try again."
+                                } else if String(describing: registrationError?.localizedDescription) == "Optional(\"The email address is already in use by another account.\")"{
+                                    self.warningLbl.text = "An account with that email already exists. Please try logging in."
+                                } else {
+                                    print(String(describing: registrationError?.localizedDescription))
+                                }
                             })
-                        } else if String(describing: registrationError?.localizedDescription) == "Optional(\"The password must be 6 characters long or more.\")" {
-                            self.warningLbl.text = "Password must be 6+ characters long."
-                        } else if String(describing: registrationError?.localizedDescription) == "Optional(\"The email address is badly formatted.\")" {
-                            self.warningLbl.text = "Invalid email. Please try again."
-                        } else if String(describing: registrationError?.localizedDescription) == "Optional(\"The email address is already in use by another account.\")"{
-                            self.warningLbl.text = "An account with that email already exists. Please try logging in."
                         } else {
-                            print(String(describing: registrationError?.localizedDescription))
+                            warningLbl.text = "Passwords do not match."
                         }
-                    })
+                    } else {
+                        self.warningLbl.text = "An account with that username already exists."
+                    }
                 } else {
-                    warningLbl.text = "Passwords do not match."
+                    self.warningLbl.text = "Username must not contain a space."
                 }
             } else {
-                self.warningLbl.text = "An account with that username already exists."
+                self.warningLbl.text = "Username must be between 5 and 17 characters."
             }
         } else {
             warningLbl.text = "Please fill in all forms above."
