@@ -159,7 +159,7 @@ class DataService {
         REF_USERS.child(uid).child("grocery list").child(item).removeValue()
     }
     
-    func removeGroup(forGroupUID groupUid: String) {
-        REF_GROUPS.child(groupUid).removeValue()
+    func removeFromGroup(forGroupUID groupUid: String, andUsername username: String) {
+        REF_GROUPS.child(groupUid).child("members").child(username).removeValue()
     }
 }
