@@ -95,6 +95,46 @@ class DataService {
         }
     }
     
+    func getUsernames(forSearchQuery query: String, handler: @escaping (_ emailArray: [String]) -> ()) {
+        var usernameArray = [String]()
+        var currentUser = ""
+        
+        printUsername(forUID: (Auth.auth().currentUser?.uid)!) { (returnedUsername) in
+            currentUser = returnedUsername
+        }
+        
+        REF_USERS.observe(.value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for user in userSnapshot {
+                let username = user.childSnapshot(forPath: "username").value as! String
+                if username.contains(query) == true && username != currentUser {
+                    usernameArray.append(username)
+                }
+            }
+            handler(usernameArray)
+        }
+    }
+    
+    func getIds(forUsernames usernames: [String], handler: @escaping (_ uidArray: [String]) -> ()) {
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            var idArray = [String]()
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for user in userSnapshot {
+                let username = user.childSnapshot(forPath: "username").value as! String
+                if usernames.contains(username) {
+                    idArray.append(user.key)
+                }
+            }
+            handler(idArray)
+        }
+    }
+    
+    func createGroup(withTitle title: String, andDescription description: String, forUsernames usernames: [String], andMaster master: String, handler: @escaping (_ groupCreated: Bool) -> ()) {
+        REF_GROUPS.childByAutoId().updateChildValues(["title": title, "master": master, "description": description, "members": usernames])
+        handler(true)
+    }
+    
     func checkOffItem(forUID uid: String, andItemName name: String) {
         REF_USERS.child(uid).child("grocery list").child(name).updateChildValues(["isSelected": true])
     }

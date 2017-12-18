@@ -15,6 +15,7 @@ class CreateItemVC: UIViewController {
     @IBOutlet weak var itemField: BluePlaceholder!
     @IBOutlet weak var descriptionField: BluePlaceholder!
     @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var warningLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,8 @@ class CreateItemVC: UIViewController {
                     print("There was an error")
                 }
             })
+        } else {
+            warningLbl.text = "Please fill in the form above."
         }
     }
     

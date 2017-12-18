@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateGroupsVC: UIViewController {
     
@@ -17,6 +18,7 @@ class CreateGroupsVC: UIViewController {
     @IBOutlet weak var usernameSearchTextField: BluePlaceholder!
     @IBOutlet weak var groupMemberLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var warningLbl: UILabel!
     
     
     // Variables
@@ -30,6 +32,7 @@ class CreateGroupsVC: UIViewController {
         groupTextField.delegate = self
         descriptionTextField.delegate = self
         usernameSearchTextField.delegate = self
+        usernameSearchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,9 +40,38 @@ class CreateGroupsVC: UIViewController {
         checkmarkBtn.isHidden = true
     }
     
+    @objc func textFieldDidChange() {
+        if usernameSearchTextField.text == "" {
+            usernameArray = []
+            tableView.reloadData()
+        } else {
+            DataService.instance.getUsernames(forSearchQuery: usernameSearchTextField.text!, handler: { (returnedUsernameArray) in
+                self.usernameArray = returnedUsernameArray
+                self.tableView.reloadData()
+            })
+        }
+    }
+    
     // Actions
     @IBAction func checkmarkBtnWasPressed(_ sender: Any) {
-        
+        if groupTextField.text != "" && descriptionTextField.text != "DESCRIPTION (optional)" {
+            DataService.instance.getIds(forUsernames: chosenUserArray, handler: { (usernameIdsArray) in
+                var usernameIds = usernameIdsArray
+                let currentUserId = Auth.auth().currentUser?.uid
+                
+                usernameIds.append(currentUserId!)
+                
+                DataService.instance.createGroup(withTitle: self.groupTextField.text!, andDescription: self.descriptionTextField.text!, forUsernames: usernameIds, andMaster: currentUserId!, handler: { (groupCreated) in
+                    if groupCreated {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        print("Group could not be created. Please try again.")
+                    }
+                })
+            })
+        } else {
+            warningLbl.text = "Please fill in the form above."
+        }
     }
     
     @IBAction func closeBtnWasPressed(_ sender: Any) {
@@ -53,14 +85,39 @@ extension CreateGroupsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return usernameArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserCell else { return UITableViewCell() }
-        cell.configureCell(username: "TJ_Schoost11", isSelected: true)
+        cell.selectionStyle = .none
+        
+        if chosenUserArray.contains(usernameArray[indexPath.row]) {
+            cell.configureCell(username: usernameArray[indexPath.row], isSelected: true)
+        } else {
+            cell.configureCell(username: usernameArray[indexPath.row], isSelected: false)
+        }
+        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? UserCell else { return }
+        if !chosenUserArray.contains(cell.usernameLbl.text!) {
+            chosenUserArray.append(cell.usernameLbl.text!)
+            groupMemberLbl.text = chosenUserArray.joined(separator: ", ")
+            checkmarkBtn.isHidden = false
+        } else {
+            chosenUserArray = chosenUserArray.filter({ $0 != cell.usernameLbl.text! })
+            if chosenUserArray.count >= 1 {
+                groupMemberLbl.text = chosenUserArray.joined(separator: ", ")
+            } else {
+                groupMemberLbl.text = "Add people to your group"
+                checkmarkBtn.isHidden = true
+            }
+        }
+    }
+    
 }
 
 extension CreateGroupsVC: UITextFieldDelegate {

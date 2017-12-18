@@ -9,16 +9,13 @@
 import UIKit
 
 class GroupCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    // Outlets
+    @IBOutlet weak var groupTitleLbl: UILabel!
+    @IBOutlet weak var descriptionLbl: UILabel!
+    
+    func configureCell(title: String, description: String) {
+        self.groupTitleLbl.text = title
+        self.descriptionLbl.text = description
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
