@@ -55,6 +55,7 @@ class CreateGroupsVC: UIViewController {
     // Actions
     @IBAction func checkmarkBtnWasPressed(_ sender: Any) {
         if groupTextField.text != "" && descriptionTextField.text != "DESCRIPTION (optional)" {
+            
             DataService.instance.getIds(forUsernames: chosenUserArray, handler: { (usernameIdsArray) in
                 var usernameIds = usernameIdsArray
                 let currentUserId = Auth.auth().currentUser?.uid

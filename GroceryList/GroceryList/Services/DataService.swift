@@ -17,7 +17,6 @@ class DataService {
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.child("users")
     private var _REF_GROUPS = DB_BASE.child("groups")
-    private var _REF_FEED = DB_BASE.child("feed")
     private var _REF_USERNAMES = DB_BASE.child("usernames")
     private var _REF_EMAILS = DB_BASE.child("emails")
     
@@ -31,10 +30,6 @@ class DataService {
     
     var REF_GROUPS: DatabaseReference {
         return _REF_GROUPS
-    }
-    
-    var REF_FEED: DatabaseReference {
-        return _REF_FEED
     }
     
     var REF_USERNAMES: DatabaseReference {
@@ -135,6 +130,23 @@ class DataService {
         handler(true)
     }
     
+    func getAllGroups(handler: @escaping (_ groupsArray: [Group]) -> ()) {
+        var groupsArray = [Group]()
+        REF_GROUPS.observeSingleEvent(of: .value) { (groupSnapshot) in
+            guard let groupSnapshot = groupSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for group in groupSnapshot {
+                let memberArray = group.childSnapshot(forPath: "members").value as! [String]
+                if memberArray.contains((Auth.auth().currentUser?.uid)!) {
+                    let title = group.childSnapshot(forPath: "title").value as! String
+                    let description = group.childSnapshot(forPath: "description").value as! String
+                    let group = Group(title: title, description: description, key: group.key, members: memberArray)
+                    groupsArray.append(group)
+                }
+            }
+            handler(groupsArray)
+        }
+    }
+    
     func checkOffItem(forUID uid: String, andItemName name: String) {
         REF_USERS.child(uid).child("grocery list").child(name).updateChildValues(["isSelected": true])
     }
@@ -145,5 +157,9 @@ class DataService {
     
     func removeItem(forUID uid: String, andItem item: String) {
         REF_USERS.child(uid).child("grocery list").child(item).removeValue()
+    }
+    
+    func removeFromGroup(forGroupUID groupUid: String, andUsername username: String) {
+        REF_GROUPS.child(groupUid).child("members").child(username).removeValue()
     }
 }

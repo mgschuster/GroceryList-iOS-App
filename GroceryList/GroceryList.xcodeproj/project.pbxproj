@@ -31,6 +31,7 @@
 		E79A64F81FCCB95000DB05B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E79A64F71FCCB95000DB05B6 /* GoogleService-Info.plist */; };
 		E79D40971FE4356A00CD5A8C /* CreateGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */; };
 		E79D40991FE438D900CD5A8C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40981FE438D900CD5A8C /* UserCell.swift */; };
+		E7DCA7A81FE82D5500E011D9 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DCA7A71FE82D5500E011D9 /* Group.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		E79A64F71FCCB95000DB05B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Grocery List Google/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupsVC.swift; sourceTree = "<group>"; };
 		E79D40981FE438D900CD5A8C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		E7DCA7A71FE82D5500E011D9 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				E71177B81FDF04780062072B /* GroceryList.swift */,
+				E7DCA7A71FE82D5500E011D9 /* Group.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				84638E9A1FC461DC008ED90A /* GroupsVC.swift in Sources */,
 				84F93BA21FC5CC3A0057F802 /* AuthService.swift in Sources */,
 				E78C5E9B1FCDD22D00327A34 /* MyListCell.swift in Sources */,
+				E7DCA7A81FE82D5500E011D9 /* Group.swift in Sources */,
 				84F93B9E1FC5B99B0057F802 /* BluePlaceholder.swift in Sources */,
 				E79D40991FE438D900CD5A8C /* UserCell.swift in Sources */,
 				E71177B71FDEFB510062072B /* UIViewExtension.swift in Sources */,
