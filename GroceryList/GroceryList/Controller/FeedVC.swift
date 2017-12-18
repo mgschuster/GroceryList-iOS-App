@@ -72,7 +72,7 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let uid = Auth.auth().currentUser?.uid
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE ITEM") { (rowAction, indexPath) in
             guard let selectedCell = tableView.cellForRow(at: indexPath) as? MyListCell else { return }
             DataService.instance.removeItem(forUID: uid!, andItem: selectedCell.productLbl.text!)
             self.reloadGroceryList()

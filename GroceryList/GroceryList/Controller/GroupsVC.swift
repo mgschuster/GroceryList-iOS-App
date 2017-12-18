@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class GroupsVC: UIViewController {
     
@@ -53,5 +54,17 @@ extension GroupsVC: UITableViewDelegate, UITableViewDataSource {
         let group = groupsArray[indexPath.row]
         cell.configureCell(title: group.groupTitle, description: group.groupDesc)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let uid = Auth.auth().currentUser?.uid
+        let selectedGroup = groupsArray[indexPath.row]
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "LEAVE GROUP") { (rowAction, indexPath) in
+            DataService.instance.removeUserFromGroup(fromGroupUid: selectedGroup.key, andUserUid: uid!)
+            self.reloadGroupsList()
+        }
+        
+        deleteAction.backgroundColor = #colorLiteral(red: 0.2685465515, green: 0.6267361641, blue: 0.2813494205, alpha: 1)
+        return [deleteAction]
     }
 }
