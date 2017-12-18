@@ -125,8 +125,8 @@ class DataService {
         }
     }
     
-    func createGroup(withTitle title: String, andDescription description: String, forUsernames usernames: [String], andMaster master: String, handler: @escaping (_ groupCreated: Bool) -> ()) {
-        REF_GROUPS.childByAutoId().updateChildValues(["title": title, "master": master, "description": description, "members": usernames])
+    func createGroup(withTitle title: String, andDescription description: String, forUsernames usernames: [String], handler: @escaping (_ groupCreated: Bool) -> ()) {
+        REF_GROUPS.childByAutoId().updateChildValues(["title": title, "description": description, "members": usernames])
         handler(true)
     }
     
@@ -159,7 +159,23 @@ class DataService {
         REF_USERS.child(uid).child("grocery list").child(item).removeValue()
     }
     
-    func removeFromGroup(forGroupUID groupUid: String, andUsername username: String) {
-        REF_GROUPS.child(groupUid).child("members").child(username).removeValue()
+    func removeGroup(forGroupUID groupUid: String) {
+        REF_GROUPS.child(groupUid).removeValue()
+    }
+    
+    func removeUserFromGroup(fromGroupUid groupUid: String, andUserUid uid: String) {
+        REF_GROUPS.child(groupUid).child("members").observeSingleEvent(of: .value) { (snapshot) in
+            if let users = snapshot.value as? [String] {
+                if users.count > 1 {
+                    for i in 0..<users.count {
+                        if users[i] == uid {
+                            self.REF_GROUPS.child(groupUid).child("members").child("\(i)").removeValue()
+                        }
+                    }
+                } else {
+                    self.REF_GROUPS.child(groupUid).removeValue()
+                }
+            }
+        }
     }
 }

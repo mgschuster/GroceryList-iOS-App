@@ -62,7 +62,7 @@ class CreateGroupsVC: UIViewController {
                 
                 usernameIds.append(currentUserId!)
                 
-                DataService.instance.createGroup(withTitle: self.groupTextField.text!, andDescription: self.descriptionTextField.text!, forUsernames: usernameIds, andMaster: currentUserId!, handler: { (groupCreated) in
+                DataService.instance.createGroup(withTitle: self.groupTextField.text!, andDescription: self.descriptionTextField.text!, forUsernames: usernameIds, handler: { (groupCreated) in
                     if groupCreated {
                         self.dismiss(animated: true, completion: nil)
                     } else {
