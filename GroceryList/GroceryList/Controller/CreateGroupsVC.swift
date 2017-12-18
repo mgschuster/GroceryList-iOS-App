@@ -30,11 +30,24 @@ class CreateGroupsVC: UIViewController {
         groupTextField.delegate = self
         descriptionTextField.delegate = self
         usernameSearchTextField.delegate = self
+        usernameSearchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkmarkBtn.isHidden = true
+    }
+    
+    @objc func textFieldDidChange() {
+        if usernameSearchTextField.text == "" {
+            usernameArray = []
+            tableView.reloadData()
+        } else {
+            DataService.instance.getUsernames(forSearchQuery: usernameSearchTextField.text!, handler: { (returnedUsernameArray) in
+                self.usernameArray = returnedUsernameArray
+                self.tableView.reloadData()
+            })
+        }
     }
     
     // Actions
@@ -53,14 +66,39 @@ extension CreateGroupsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return usernameArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserCell else { return UITableViewCell() }
-        cell.configureCell(username: "TJ_Schoost11", isSelected: true)
+        cell.selectionStyle = .none
+        
+        if chosenUserArray.contains(usernameArray[indexPath.row]) {
+            cell.configureCell(username: usernameArray[indexPath.row], isSelected: true)
+        } else {
+            cell.configureCell(username: usernameArray[indexPath.row], isSelected: false)
+        }
+        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? UserCell else { return }
+        if !chosenUserArray.contains(cell.usernameLbl.text!) {
+            chosenUserArray.append(cell.usernameLbl.text!)
+            groupMemberLbl.text = chosenUserArray.joined(separator: ", ")
+            checkmarkBtn.isHidden = false
+        } else {
+            chosenUserArray = chosenUserArray.filter({ $0 != cell.usernameLbl.text! })
+            if chosenUserArray.count >= 1 {
+                groupMemberLbl.text = chosenUserArray.joined(separator: ", ")
+            } else {
+                groupMemberLbl.text = "Add people to your group"
+                checkmarkBtn.isHidden = true
+            }
+        }
+    }
+    
 }
 
 extension CreateGroupsVC: UITextFieldDelegate {
