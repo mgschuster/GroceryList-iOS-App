@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateGroupsVC: UIViewController {
     
@@ -17,6 +18,7 @@ class CreateGroupsVC: UIViewController {
     @IBOutlet weak var usernameSearchTextField: BluePlaceholder!
     @IBOutlet weak var groupMemberLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var warningLbl: UILabel!
     
     
     // Variables
@@ -52,7 +54,24 @@ class CreateGroupsVC: UIViewController {
     
     // Actions
     @IBAction func checkmarkBtnWasPressed(_ sender: Any) {
-        
+        if groupTextField.text != "" && descriptionTextField.text != "DESCRIPTION (optional)" {
+            DataService.instance.getIds(forUsernames: chosenUserArray, handler: { (usernameIdsArray) in
+                var usernameIds = usernameIdsArray
+                let currentUserId = Auth.auth().currentUser?.uid
+                
+                usernameIds.append(currentUserId!)
+                
+                DataService.instance.createGroup(withTitle: self.groupTextField.text!, andDescription: self.descriptionTextField.text!, forUsernames: usernameIds, andMaster: currentUserId!, handler: { (groupCreated) in
+                    if groupCreated {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        print("Group could not be created. Please try again.")
+                    }
+                })
+            })
+        } else {
+            warningLbl.text = "Please fill in the form above."
+        }
     }
     
     @IBAction func closeBtnWasPressed(_ sender: Any) {
