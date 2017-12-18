@@ -56,6 +56,12 @@ extension GroupsVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let groupGroceryListVC = storyboard?.instantiateViewController(withIdentifier: "GroupGroceryListVC") as? GroupGroceryListVC else { return }
+        groupGroceryListVC.initData(forGroup: groupsArray[indexPath.row])
+        present(groupGroceryListVC, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let uid = Auth.auth().currentUser?.uid
         let selectedGroup = groupsArray[indexPath.row]
