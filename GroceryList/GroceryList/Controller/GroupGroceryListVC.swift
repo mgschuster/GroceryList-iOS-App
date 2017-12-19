@@ -17,6 +17,7 @@ class GroupGroceryListVC: UIViewController {
     
     // Variables
     var group: Group?
+    var groupListArray = [GroupList]()
     
     func initData(forGroup group: Group) {
         self.group = group
@@ -24,6 +25,13 @@ class GroupGroceryListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        reloadGroupList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,4 +53,29 @@ class GroupGroceryListVC: UIViewController {
         present(addGroupItemVC, animated: true, completion: nil)
     }
     
+    func reloadGroupList() {
+        DataService.instance.getAllGroupLists(forUID: (group?.key)!) { (returnedGroupListArray) in
+            self.groupListArray = returnedGroupListArray
+            self.tableView.reloadData()
+        }
+    }
+    
+}
+
+extension GroupGroceryListVC: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return groupListArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupGroceryListCell") as? GroupGroceryListCell else { return UITableViewCell() }
+        cell.selectionStyle = .none
+        let groupList = groupListArray[indexPath.row]
+        cell.configureCell(item: groupList.item, description: groupList.description, addedBy: groupList.addedBy, markedBy: groupList.markedOffBy, isSelected: groupList.isSelected)
+        return cell
+    }
 }

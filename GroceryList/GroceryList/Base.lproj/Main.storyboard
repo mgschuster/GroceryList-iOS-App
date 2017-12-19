@@ -528,53 +528,61 @@
                                 <color key="separatorColor" white="0.77000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupListCell" rowHeight="130" id="HrO-ag-e5i" customClass="GroupGroceryListCell" customModule="GroceryList" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupGroceryListCell" rowHeight="130" id="HrO-ag-e5i" customClass="GroupGroceryListCell" customModule="GroceryList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HrO-ag-e5i" id="Bbu-vo-BXg">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="dLH-KR-cc1">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dLH-KR-cc1">
                                                     <rect key="frame" x="15" y="11" width="300" height="108"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ice Cream" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ebu-aJ-jgb">
-                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="45" id="xA6-NH-ST2"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
-                                                            <color key="textColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Gallon of chocolate chip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="mYd-zP-nzO">
-                                                            <rect key="frame" x="0.0" y="48" width="300" height="25"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="25" id="o3R-EA-82H"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
-                                                            <color key="textColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Added by: TJ_Schoost 11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZ7-Fz-yMs">
-                                                            <rect key="frame" x="0.0" y="76" width="115" height="16"/>
-                                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="10"/>
-                                                            <color key="textColor" red="0.66415461494787209" green="0.45482521908616536" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marked-off by: TJ_Schoost 11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSM-OH-bEc">
-                                                            <rect key="frame" x="0.0" y="95" width="134.5" height="13"/>
-                                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="10"/>
-                                                            <color key="textColor" red="0.66415461490000005" green="0.45482521910000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eBe-Vx-lkE">
+                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="58.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chocolate Chips" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ebu-aJ-jgb">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="40" id="xA6-NH-ST2"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="27"/>
+                                                                    <color key="textColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" regular or white" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="mYd-zP-nzO">
+                                                                    <rect key="frame" x="0.0" y="40" width="300" height="18.5"/>
+                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                                                    <color key="textColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="kN4-3z-MpW">
+                                                            <rect key="frame" x="0.0" y="73.5" width="300" height="34.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" Added by: TJ_Schoost11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZ7-Fz-yMs">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="115" height="21.5"/>
+                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="10"/>
+                                                                    <color key="textColor" red="0.66415461494787209" green="0.45482521908616536" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Marked off by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSM-OH-bEc">
+                                                                    <rect key="frame" x="0.0" y="21.5" width="72" height="13"/>
+                                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="10"/>
+                                                                    <color key="textColor" red="0.66415461490000005" green="0.45482521910000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="Ebu-aJ-jgb" secondAttribute="trailing" id="I5G-ny-sAf"/>
-                                                        <constraint firstItem="Ebu-aJ-jgb" firstAttribute="leading" secondItem="dLH-KR-cc1" secondAttribute="leading" id="byv-zv-jvb"/>
-                                                        <constraint firstAttribute="trailing" secondItem="mYd-zP-nzO" secondAttribute="trailing" id="ogQ-K5-5yI"/>
-                                                        <constraint firstItem="Ebu-aJ-jgb" firstAttribute="top" secondItem="dLH-KR-cc1" secondAttribute="top" id="tpA-0D-L6k"/>
-                                                        <constraint firstItem="mYd-zP-nzO" firstAttribute="leading" secondItem="dLH-KR-cc1" secondAttribute="leading" id="yYK-Ap-MnS"/>
+                                                        <constraint firstAttribute="bottom" secondItem="kN4-3z-MpW" secondAttribute="bottom" id="0l7-Ar-h1y"/>
+                                                        <constraint firstAttribute="trailing" secondItem="eBe-Vx-lkE" secondAttribute="trailing" id="2Rq-yw-BZF"/>
+                                                        <constraint firstItem="eBe-Vx-lkE" firstAttribute="top" secondItem="dLH-KR-cc1" secondAttribute="top" id="IJL-Sr-4sY"/>
+                                                        <constraint firstItem="kN4-3z-MpW" firstAttribute="leading" secondItem="dLH-KR-cc1" secondAttribute="leading" id="K8k-fh-GvX"/>
+                                                        <constraint firstAttribute="trailing" secondItem="kN4-3z-MpW" secondAttribute="trailing" id="KyB-6t-qGk"/>
+                                                        <constraint firstItem="eBe-Vx-lkE" firstAttribute="leading" secondItem="dLH-KR-cc1" secondAttribute="leading" id="ccF-Tp-3KL"/>
                                                     </constraints>
                                                 </stackView>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check-mark" translatesAutoresizingMaskIntoConstraints="NO" id="lHm-LX-bRq">

@@ -90,6 +90,24 @@ class DataService {
         }
     }
     
+    func getAllGroupLists(forUID uid: String, handler: @escaping (_ groceryList: [GroupList]) -> ()){
+        var groupListArray = [GroupList]()
+        REF_GROUPS.child(uid).child("grocery list").observeSingleEvent(of: .value) { (groupGroceryListSnapshot) in
+            guard let groupList = groupGroceryListSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for item in groupList {
+                let itemName = item.key
+                let description = item.childSnapshot(forPath: "description").value as! String
+                let selected = item.childSnapshot(forPath: "isSelected").value as! Bool
+                let addedBy = item.childSnapshot(forPath: "added by").value as! String
+                let markedOffBy = item.childSnapshot(forPath: "marked off by").value as! String
+                let groupList = GroupList(item: itemName, description: description, isSelected: selected, addedBy: addedBy, markedOffBy: markedOffBy)
+                groupListArray.append(groupList)
+            }
+            handler(groupListArray)
+        }
+    }
+    
     func getUsernames(forSearchQuery query: String, handler: @escaping (_ emailArray: [String]) -> ()) {
         var usernameArray = [String]()
         var currentUser = ""
