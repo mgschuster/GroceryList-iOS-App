@@ -40,7 +40,6 @@ class CreateItemVC: UIViewController {
                     self.dismiss(animated: true, completion: nil)
                 } else {
                     self.addBtn.isEnabled = true
-                    print("There was an error")
                 }
             })
         } else {

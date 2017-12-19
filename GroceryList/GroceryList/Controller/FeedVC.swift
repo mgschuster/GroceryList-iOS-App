@@ -13,6 +13,7 @@ class FeedVC: UIViewController {
     
     // Outlets
     @IBOutlet weak var myListTableView: UITableView!
+    @IBOutlet weak var trashBtn: UIButton!
     
     // Variables
     var groceryListArray = [GroceryList]()
@@ -28,11 +29,30 @@ class FeedVC: UIViewController {
         reloadGroceryList()
     }
     
+    // Actions
+    @IBAction func deleteBtnWasPressed(_ sender: Any) {
+        let logoutPopup = UIAlertController(title: "Delete all items?", message: "Are you sure you want to delete all items?", preferredStyle: .actionSheet)
+        let logoutAction = UIAlertAction(title: "DELETE ALL ITEMS", style: .destructive) { (buttonTapped) in
+            let userUID = Auth.auth().currentUser?.uid
+            DataService.instance.removeAllItems(forUID: userUID!)
+            self.reloadGroceryList()
+        }
+        let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+        logoutPopup.addAction(logoutAction)
+        logoutPopup.addAction(cancelAction)
+        present(logoutPopup, animated: true, completion: nil)
+    }
+    
     func reloadGroceryList() {
         if Auth.auth().currentUser != nil {
             DataService.instance.getAllFeedMessages(forUID: (Auth.auth().currentUser?.uid)!) { (returnedGroceryListArray) in
                 self.groceryListArray = returnedGroceryListArray
                 self.myListTableView.reloadData()
+                if !self.groceryListArray.isEmpty {
+                    self.trashBtn.isHidden = false
+                } else {
+                    self.trashBtn.isHidden = true
+                }
             }
         } else {
             return
