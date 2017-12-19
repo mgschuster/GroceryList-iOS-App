@@ -496,7 +496,7 @@
                                         </constraints>
                                         <state key="normal" image="add-list"/>
                                         <connections>
-                                            <segue destination="pNc-sg-Tfv" kind="presentation" id="D5D-cx-Gy6"/>
+                                            <action selector="createNewItemBtnWasPressed:" destination="lkB-CR-Fjt" eventType="touchUpInside" id="WWn-2l-eWJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nco-59-Uwc">
@@ -642,7 +642,7 @@
         <!--Add Group ItemVC-->
         <scene sceneID="mhv-tL-eax">
             <objects>
-                <viewController id="pNc-sg-Tfv" customClass="AddGroupItemVC" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddGroupItemVC" id="pNc-sg-Tfv" customClass="AddGroupItemVC" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qi5-qw-Dtd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -63,14 +63,13 @@ extension GroupsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let uid = Auth.auth().currentUser?.uid
         let selectedGroup = groupsArray[indexPath.row]
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "LEAVE GROUP") { (rowAction, indexPath) in
-            DataService.instance.removeUserFromGroup(fromGroupUid: selectedGroup.key, andUserUid: uid!)
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE GROUP") { (rowAction, indexPath) in
+            DataService.instance.removeGroup(forGroupUID: selectedGroup.key)
             self.reloadGroupsList()
         }
         
-        deleteAction.backgroundColor = #colorLiteral(red: 0.2685465515, green: 0.6267361641, blue: 0.2813494205, alpha: 1)
+        deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         return [deleteAction]
     }
 }

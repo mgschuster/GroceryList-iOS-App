@@ -32,6 +32,7 @@
 		E79D40971FE4356A00CD5A8C /* CreateGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */; };
 		E79D40991FE438D900CD5A8C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40981FE438D900CD5A8C /* UserCell.swift */; };
 		E7DCA7A81FE82D5500E011D9 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DCA7A71FE82D5500E011D9 /* Group.swift */; };
+		E7F161521FE9596700A78BA3 /* GroupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F161511FE9596700A78BA3 /* GroupList.swift */; };
 		E7FC61E61FE8790D00F3B00D /* GroupGroceryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC61E51FE8790D00F3B00D /* GroupGroceryListCell.swift */; };
 		E7FC61E81FE8799700F3B00D /* GroupGroceryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC61E71FE8799700F3B00D /* GroupGroceryListVC.swift */; };
 		E7FC61EA1FE87E3800F3B00D /* AddGroupItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC61E91FE87E3800F3B00D /* AddGroupItemVC.swift */; };
@@ -67,6 +68,7 @@
 		E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupsVC.swift; sourceTree = "<group>"; };
 		E79D40981FE438D900CD5A8C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		E7DCA7A71FE82D5500E011D9 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		E7F161511FE9596700A78BA3 /* GroupList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupList.swift; sourceTree = "<group>"; };
 		E7FC61E51FE8790D00F3B00D /* GroupGroceryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGroceryListCell.swift; sourceTree = "<group>"; };
 		E7FC61E71FE8799700F3B00D /* GroupGroceryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGroceryListVC.swift; sourceTree = "<group>"; };
 		E7FC61E91FE87E3800F3B00D /* AddGroupItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupItemVC.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				E71177B81FDF04780062072B /* GroceryList.swift */,
 				E7DCA7A71FE82D5500E011D9 /* Group.swift */,
+				E7F161511FE9596700A78BA3 /* GroupList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				84638E961FC461DC008ED90A /* AppDelegate.swift in Sources */,
 				84638E981FC461DC008ED90A /* FeedVC.swift in Sources */,
 				E71177B51FCE05860062072B /* CreateItemVC.swift in Sources */,
+				E7F161521FE9596700A78BA3 /* GroupList.swift in Sources */,
 				84F93B941FC468490057F802 /* LoginVC.swift in Sources */,
 				E79D40971FE4356A00CD5A8C /* CreateGroupsVC.swift in Sources */,
 				84F93B981FC473960057F802 /* ShadowView.swift in Sources */,

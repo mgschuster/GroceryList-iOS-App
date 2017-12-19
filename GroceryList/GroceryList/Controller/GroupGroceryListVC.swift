@@ -39,4 +39,10 @@ class GroupGroceryListVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func createNewItemBtnWasPressed(_ sender: Any) {
+        guard let addGroupItemVC = storyboard?.instantiateViewController(withIdentifier: "AddGroupItemVC") as? AddGroupItemVC else { return }
+        addGroupItemVC.initData(forGroup: group!)
+        present(addGroupItemVC, animated: true, completion: nil)
+    }
+    
 }

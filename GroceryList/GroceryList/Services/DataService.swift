@@ -144,6 +144,24 @@ class DataService {
         handler(true)
     }
     
+    func getUsernames(forIds uids: [String], handler: @escaping (_ uidArray: [String]) -> ()) {
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            var idArray = [String]()
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for user in userSnapshot {
+                for i in 0..<uids.count {
+                    if uids[i] == user.key {
+                        let uid = user.key
+                        idArray.append(uid)
+                        break
+                    } else {
+                        break
+                    }
+                }
+            }
+        }
+    }
+    
     func getAllGroups(handler: @escaping (_ groupsArray: [Group]) -> ()) {
         var groupsArray = [Group]()
         REF_GROUPS.observeSingleEvent(of: .value) { (groupSnapshot) in
@@ -159,6 +177,11 @@ class DataService {
             }
             handler(groupsArray)
         }
+    }
+    
+    func createGroupItem(forGroupUid uid: String, andItem item: String, andDescription description: String, addedBy: String, sendComplete: @escaping (_ status: Bool) -> ()) {
+        REF_GROUPS.child(uid).child("grocery list").child(item).updateChildValues(["description": description, "added by": addedBy, "marked off by": "", "isSelected": false])
+        sendComplete(true)
     }
     
     func checkOffItem(forUID uid: String, andItemName name: String) {
