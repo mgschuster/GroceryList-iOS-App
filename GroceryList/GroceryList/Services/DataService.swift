@@ -131,8 +131,8 @@ class DataService {
             guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for user in userSnapshot {
                 if group.members.contains(user.key) {
-                    let email = user.childSnapshot(forPath: "username").value as! String
-                    usernameArray.append(email)
+                    let username = user.childSnapshot(forPath: "username").value as! String
+                    usernameArray.append(username)
                 }
             }
             handler(usernameArray)
