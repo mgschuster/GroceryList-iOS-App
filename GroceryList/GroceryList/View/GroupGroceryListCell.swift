@@ -21,7 +21,7 @@ class GroupGroceryListCell: UITableViewCell {
         self.itemLbl.text = item
         self.descriptionLbl.text = description
         self.addedByLbl.text = "Added by: \(addedBy)"
-        self.markedByLbl.text = "Marked off by: \(markedBy)"
+        self.markedByLbl.text = "Checked off by: \(markedBy)"
         if isSelected {
             self.checkmark.isHidden = false
         } else {
