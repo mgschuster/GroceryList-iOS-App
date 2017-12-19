@@ -71,7 +71,6 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "myListCell") as? MyListCell else { return UITableViewCell() }
-        cell.selectionStyle = .none
         let groceryList = groceryListArray[indexPath.row]
         cell.configureCell(product: groceryList.item, withDescription: groceryList.description, isSelected: groceryList.isSelected)
         return cell
@@ -88,6 +87,8 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
                 DataService.instance.uncheckItem(forUID: uid!, andItemName: selectedCell.productLbl.text!)
                 self.reloadGroceryList()
         }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

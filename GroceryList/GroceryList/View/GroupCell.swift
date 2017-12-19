@@ -18,4 +18,16 @@ class GroupCell: UITableViewCell {
         self.groupTitleLbl.text = title
         self.descriptionLbl.text = description
     }
+    
+    @IBInspectable var selectionColor: UIColor = .gray {
+        didSet {
+            configureSelectedBackgroundView()
+        }
+    }
+    
+    func configureSelectedBackgroundView() {
+        let view = UIView()
+        view.backgroundColor = selectionColor
+        selectedBackgroundView = view
+    }
 }

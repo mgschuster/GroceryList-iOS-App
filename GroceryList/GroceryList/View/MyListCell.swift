@@ -31,4 +31,16 @@ class MyListCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    @IBInspectable var selectionColor: UIColor = .gray {
+        didSet {
+            configureSelectedBackgroundView()
+        }
+    }
+    
+    func configureSelectedBackgroundView() {
+        let view = UIView()
+        view.backgroundColor = selectionColor
+        selectedBackgroundView = view
+    }
 }
