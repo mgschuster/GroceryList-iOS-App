@@ -31,6 +31,7 @@
 		E79A64F81FCCB95000DB05B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E79A64F71FCCB95000DB05B6 /* GoogleService-Info.plist */; };
 		E79D40971FE4356A00CD5A8C /* CreateGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */; };
 		E79D40991FE438D900CD5A8C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40981FE438D900CD5A8C /* UserCell.swift */; };
+		E7B36ED01FE9ADD500447063 /* UIViewControllerExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B36ECF1FE9ADD500447063 /* UIViewControllerExtenstion.swift */; };
 		E7DCA7A81FE82D5500E011D9 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DCA7A71FE82D5500E011D9 /* Group.swift */; };
 		E7F161521FE9596700A78BA3 /* GroupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F161511FE9596700A78BA3 /* GroupList.swift */; };
 		E7FC61E61FE8790D00F3B00D /* GroupGroceryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC61E51FE8790D00F3B00D /* GroupGroceryListCell.swift */; };
@@ -67,6 +68,7 @@
 		E79A64F71FCCB95000DB05B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Grocery List Google/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupsVC.swift; sourceTree = "<group>"; };
 		E79D40981FE438D900CD5A8C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		E7B36ECF1FE9ADD500447063 /* UIViewControllerExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtenstion.swift; sourceTree = "<group>"; };
 		E7DCA7A71FE82D5500E011D9 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E7F161511FE9596700A78BA3 /* GroupList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupList.swift; sourceTree = "<group>"; };
 		E7FC61E51FE8790D00F3B00D /* GroupGroceryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGroceryListCell.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				E71177B61FDEFB510062072B /* UIViewExtension.swift */,
+				E7B36ECF1FE9ADD500447063 /* UIViewControllerExtenstion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				84F93BA21FC5CC3A0057F802 /* AuthService.swift in Sources */,
 				E78C5E9B1FCDD22D00327A34 /* MyListCell.swift in Sources */,
 				E7FC61E61FE8790D00F3B00D /* GroupGroceryListCell.swift in Sources */,
+				E7B36ED01FE9ADD500447063 /* UIViewControllerExtenstion.swift in Sources */,
 				E7FC61E81FE8799700F3B00D /* GroupGroceryListVC.swift in Sources */,
 				E7DCA7A81FE82D5500E011D9 /* Group.swift in Sources */,
 				84F93B9E1FC5B99B0057F802 /* BluePlaceholder.swift in Sources */,

@@ -206,6 +206,10 @@ class DataService {
         REF_GROUPS.child(uid).child("grocery list").child(item).updateChildValues(["marked off by": username, "isSelected": true])
     }
     
+    func uncheckUser(forGroupUid uid: String, andItem item: String) {
+        REF_GROUPS.child(uid).child("grocery list").child(item).updateChildValues(["marked off by": "- -", "isSelected": false])
+    }
+    
     func checkOffItem(forUID uid: String, andItemName name: String) {
         REF_USERS.child(uid).child("grocery list").child(name).updateChildValues(["isSelected": true])
     }

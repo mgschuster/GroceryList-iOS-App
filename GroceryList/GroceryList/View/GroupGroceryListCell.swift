@@ -24,8 +24,10 @@ class GroupGroceryListCell: UITableViewCell {
         self.markedByLbl.text = "Checked off by: \(markedBy)"
         if isSelected {
             self.checkmark.isHidden = false
+            self.markedByLbl.textColor = #colorLiteral(red: 0.2685465515, green: 0.6267361641, blue: 0.2813494205, alpha: 1)
         } else {
             self.checkmark.isHidden = true
+            self.markedByLbl.textColor = #colorLiteral(red: 0.662745098, green: 0.4549019608, blue: 1, alpha: 1)
         }
     }
 }

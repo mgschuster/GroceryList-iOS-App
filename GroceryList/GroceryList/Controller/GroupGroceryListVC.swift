@@ -47,7 +47,7 @@ class GroupGroceryListVC: UIViewController {
     
     // Actions
     @IBAction func backBtnWasPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismissDetail()
     }
     
     @IBAction func createNewItemBtnWasPressed(_ sender: Any) {
@@ -95,13 +95,26 @@ extension GroupGroceryListVC: UITableViewDataSource, UITableViewDelegate {
         
         let currentCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell
         
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
-            guard let selectedCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell else { return }
-            DataService.instance.removeGroupItem(forUID: uid, andItem: selectedCell.itemLbl.text!)
-            self.reloadGroupList()
+        if (currentCell?.addedByLbl.text?.contains(currentUser))! {
+            let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
+                guard let selectedCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell else { return }
+                DataService.instance.removeGroupItem(forUID: uid, andItem: selectedCell.itemLbl.text!)
+                self.reloadGroupList()
+            }
+            deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+            rowActionsArray.append(deleteAction)
         }
-        deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-        rowActionsArray.append(deleteAction)
+        
+        if (currentCell?.markedByLbl.text?.contains(currentUser))! {
+            let uncheckAction = UITableViewRowAction(style: .default, title: "UNCHECK", handler: { (rowAction, indexPath) in
+                guard let selectedCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell else { return }
+                let groupUID = (self.group?.key)!
+                DataService.instance.uncheckUser(forGroupUid: groupUID, andItem: selectedCell.itemLbl.text!)
+                self.reloadGroupList()
+            })
+            uncheckAction.backgroundColor = #colorLiteral(red: 0.2117647059, green: 0.5607843137, blue: 1, alpha: 1)
+            rowActionsArray.append(uncheckAction)
+        }
         
         if (currentCell?.checkmark.isHidden)! {
             let markOffAction = UITableViewRowAction(style: .default, title: "CHECK OFF") { (rowAction, indexPath) in
