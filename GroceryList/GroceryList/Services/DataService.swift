@@ -48,6 +48,10 @@ class DataService {
         REF_USERNAMES.updateChildValues([username: uid])
     }
     
+    func addNameName(uid: String) {
+        REF_USERNAMES.updateChildValues(["name name": ""])
+    }
+    
     func usernames(handler: @escaping (_ usernameList: [String]) -> ()) {
         var usernameArray = [String]()
         
@@ -69,8 +73,20 @@ class DataService {
         }
     }
     
+    func printNameName(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
+        REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            let nameName = snapshot.childSnapshot(forPath: "name name").value as! String
+            handler(nameName)
+        }
+    }
+    
     func uploadItem(withItem item: String, andDescription description: String, forUID uid: String, sendComplete: @escaping (_ status: Bool) -> ()) {
         REF_USERS.child(uid).child("grocery list").child(item).updateChildValues(["description": description, "isSelected": false])
+        sendComplete(true)
+    }
+    
+    func uploadNameName(forUID uid: String, andName name: String, sendComplete: @escaping (_ status: Bool) -> ()) {
+        REF_USERS.child(uid).updateChildValues(["name name": name])
         sendComplete(true)
     }
     
