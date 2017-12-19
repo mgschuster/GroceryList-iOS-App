@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class GroupGroceryListVC: UIViewController {
     
@@ -18,6 +19,7 @@ class GroupGroceryListVC: UIViewController {
     // Variables
     var group: Group?
     var groupListArray = [GroupList]()
+    var currentUser = ""
     
     func initData(forGroup group: Group) {
         self.group = group
@@ -32,6 +34,7 @@ class GroupGroceryListVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         reloadGroupList()
+        getCurrentUsername()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +63,13 @@ class GroupGroceryListVC: UIViewController {
         }
     }
     
+    func getCurrentUsername() {
+        let userUID = (Auth.auth().currentUser?.uid)!
+        DataService.instance.printUsername(forUID: userUID) { (returnedUsername) in
+            self.currentUser = returnedUsername
+        }
+    }
+    
 }
 
 extension GroupGroceryListVC: UITableViewDataSource, UITableViewDelegate {
@@ -77,5 +87,33 @@ extension GroupGroceryListVC: UITableViewDataSource, UITableViewDelegate {
         let groupList = groupListArray[indexPath.row]
         cell.configureCell(item: groupList.item, description: groupList.description, addedBy: groupList.addedBy, markedBy: groupList.markedOffBy, isSelected: groupList.isSelected)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let uid = (group?.key)!
+        var rowActionsArray = [UITableViewRowAction]()
+        
+        let currentCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
+            guard let selectedCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell else { return }
+            DataService.instance.removeGroupItem(forUID: uid, andItem: selectedCell.itemLbl.text!)
+            self.reloadGroupList()
+        }
+        deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        rowActionsArray.append(deleteAction)
+        
+        if (currentCell?.checkmark.isHidden)! {
+            let markOffAction = UITableViewRowAction(style: .default, title: "CHECK OFF") { (rowAction, indexPath) in
+                guard let selectedCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell else { return }
+                let username = self.currentUser
+                let groupUID = (self.group?.key)!
+                DataService.instance.markeOffUser(forGroupUid: groupUID, andItem: selectedCell.itemLbl.text!, withUser: username)
+                self.reloadGroupList()
+            }
+            markOffAction.backgroundColor = #colorLiteral(red: 0.2685465515, green: 0.6267361641, blue: 0.2813494205, alpha: 1)
+            rowActionsArray.append(markOffAction)
+        }
+        return rowActionsArray
     }
 }
