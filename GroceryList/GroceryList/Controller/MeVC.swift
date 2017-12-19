@@ -18,7 +18,6 @@ class MeVC: UIViewController {
     @IBOutlet weak var nameTextField: BluePlaceholder!
     @IBOutlet weak var warningLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
-    @IBOutlet weak var addNameWarningLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +32,15 @@ class MeVC: UIViewController {
         
         warningLbl.text = ""
         
-        reloadNameName()
-        
         emailLbl.text = Auth.auth().currentUser?.email
         if nameLbl.text != "" {
             nameBtn.setTitle("Update Name", for: .normal)
-            addNameWarningLbl.text = " "
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadNameName()
     }
     
     func reloadNameName() {

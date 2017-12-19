@@ -49,7 +49,7 @@ class DataService {
     }
     
     func addNameName(uid: String) {
-        REF_USERNAMES.updateChildValues(["name name": ""])
+        REF_USERS.child(uid).updateChildValues(["name name": ""])
     }
     
     func usernames(handler: @escaping (_ usernameList: [String]) -> ()) {
