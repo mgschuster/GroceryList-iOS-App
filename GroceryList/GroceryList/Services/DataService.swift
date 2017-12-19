@@ -202,6 +202,10 @@ class DataService {
         sendComplete(true)
     }
     
+    func markeOffUser(forGroupUid uid: String, andItem item: String, withUser username: String) {
+        REF_GROUPS.child(uid).child("grocery list").child(item).updateChildValues(["marked off by": username, "isSelected": true])
+    }
+    
     func checkOffItem(forUID uid: String, andItemName name: String) {
         REF_USERS.child(uid).child("grocery list").child(name).updateChildValues(["isSelected": true])
     }
@@ -212,6 +216,10 @@ class DataService {
     
     func removeItem(forUID uid: String, andItem item: String) {
         REF_USERS.child(uid).child("grocery list").child(item).removeValue()
+    }
+    
+    func removeGroupItem(forUID uid: String, andItem item: String) {
+        REF_GROUPS.child(uid).child("grocery list").child(item).removeValue()
     }
     
     func removeAllItems(forUID uid: String) {
