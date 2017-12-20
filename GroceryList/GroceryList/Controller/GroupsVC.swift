@@ -29,11 +29,9 @@ class GroupsVC: UIViewController {
     }
     
     func reloadGroupsList() {
-        DataService.instance.REF_GROUPS.observe(.value) { (snapshot) in
-            DataService.instance.getAllGroups { (returnedGroupsArray) in
-                self.groupsArray = returnedGroupsArray
-                self.groupsTableView.reloadData()
-            }
+        DataService.instance.getAllGroups { (returnedGroupsArray) in
+            self.groupsArray = returnedGroupsArray
+            self.groupsTableView.reloadData()
         }
     }
 }
@@ -64,8 +62,19 @@ extension GroupsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let selectedGroup = groupsArray[indexPath.row]
         let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE GROUP") { (rowAction, indexPath) in
-            DataService.instance.removeGroup(forGroupUID: selectedGroup.key)
-            self.reloadGroupsList()
+            
+            let deleteGroupPopup = UIAlertController(title: "Delete Group?", message: "Deleting the group will remove all users and erase the group from memory. This cannot be undone.", preferredStyle: .actionSheet)
+            
+            let logoutAction = UIAlertAction(title: "DELETE", style: .destructive) { (buttonTapped) in
+                DataService.instance.removeGroup(forGroupUID: selectedGroup.key)
+                self.reloadGroupsList()
+            }
+            
+            let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+            deleteGroupPopup.addAction(logoutAction)
+            deleteGroupPopup.addAction(cancelAction)
+            self.present(deleteGroupPopup, animated: true, completion: nil)
+            
         }
         
         deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
