@@ -29,6 +29,10 @@ class GroupGroceryListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         groupTitleLbl.text = group?.groupTitle
+        reloadUsers()
+    }
+    
+    func reloadUsers() {
         DataService.instance.getUsernamesFor(group: group!) { (returnedUsernames) in
             self.groupMembersLbl.text = returnedUsernames.joined(separator: ", ")
         }
@@ -39,4 +43,9 @@ class GroupGroceryListVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func addUserBtnWasPressed(_ sender: Any) {
+        guard let addNewUserVC = storyboard?.instantiateViewController(withIdentifier: "AddNewUserVC") as? AddNewUserVC else { return }
+        addNewUserVC.initData(forGroup: group!)
+        present(addNewUserVC, animated: true, completion: nil)
+    }
 }

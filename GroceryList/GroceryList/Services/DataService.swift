@@ -111,6 +111,40 @@ class DataService {
         }
     }
     
+    func getNewUsernames(forSearchQuery query: String, andUsernames usernames: [String], handler: @escaping (_ usernameArray: [String]) -> ()) {
+        var usernameArray = [String]()
+        var currentUser = ""
+        
+        printUsername(forUID: (Auth.auth().currentUser?.uid)!) { (returnedUsername) in
+            currentUser = returnedUsername
+        }
+        
+        REF_USERS.observe(.value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for user in userSnapshot {
+                let username = user.childSnapshot(forPath: "username").value as! String
+                if username.contains(query) && username != currentUser {
+                    usernameArray.append(username)
+                }
+            }
+            
+            for i in 0..<usernameArray.count {
+                for j in 0..<usernames.count {
+                    if usernameArray[i] == usernames[j] {
+                        usernameArray.remove(at: i)
+                        break
+                    }
+                }
+            }
+            
+            print(usernameArray)
+            print(usernames)
+            
+            handler(usernameArray)
+        }
+    }
+    
     func getIds(forUsernames usernames: [String], handler: @escaping (_ uidArray: [String]) -> ()) {
         REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
             var idArray = [String]()
@@ -141,6 +175,18 @@ class DataService {
     
     func createGroup(withTitle title: String, andDescription description: String, forUsernames usernames: [String], handler: @escaping (_ groupCreated: Bool) -> ()) {
         REF_GROUPS.childByAutoId().updateChildValues(["title": title, "description": description, "members": usernames])
+        handler(true)
+    }
+    
+    func addUsersToGroup(forGroupUID groupUid: String, andNewUsers newUsernames: [String], andCurrentUsers currentUsers: [String], handler: @escaping (_ usersAdded: Bool) -> ()) {
+        var finalUsernames = [String]()
+        for i in 0..<currentUsers.count {
+            finalUsernames.append(currentUsers[i])
+        }
+        for i in 0..<newUsernames.count {
+            finalUsernames.append(newUsernames[i])
+        }
+        REF_GROUPS.child(groupUid).updateChildValues(["members": finalUsernames])
         handler(true)
     }
     

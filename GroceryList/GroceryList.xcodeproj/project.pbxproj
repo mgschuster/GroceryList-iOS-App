@@ -32,6 +32,8 @@
 		E79D40971FE4356A00CD5A8C /* CreateGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */; };
 		E79D40991FE438D900CD5A8C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40981FE438D900CD5A8C /* UserCell.swift */; };
 		E7DCA7A81FE82D5500E011D9 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DCA7A71FE82D5500E011D9 /* Group.swift */; };
+		E7FB0D521FE8C08C002D1672 /* NewUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB0D511FE8C08C002D1672 /* NewUserCell.swift */; };
+		E7FB0D541FE8C0A4002D1672 /* AddNewUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB0D531FE8C0A4002D1672 /* AddNewUserVC.swift */; };
 		E7FC61E61FE8790D00F3B00D /* GroupGroceryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC61E51FE8790D00F3B00D /* GroupGroceryListCell.swift */; };
 		E7FC61E81FE8799700F3B00D /* GroupGroceryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC61E71FE8799700F3B00D /* GroupGroceryListVC.swift */; };
 		E7FC61EA1FE87E3800F3B00D /* AddGroupItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC61E91FE87E3800F3B00D /* AddGroupItemVC.swift */; };
@@ -67,6 +69,8 @@
 		E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupsVC.swift; sourceTree = "<group>"; };
 		E79D40981FE438D900CD5A8C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		E7DCA7A71FE82D5500E011D9 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		E7FB0D511FE8C08C002D1672 /* NewUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserCell.swift; sourceTree = "<group>"; };
+		E7FB0D531FE8C0A4002D1672 /* AddNewUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewUserVC.swift; sourceTree = "<group>"; };
 		E7FC61E51FE8790D00F3B00D /* GroupGroceryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGroceryListCell.swift; sourceTree = "<group>"; };
 		E7FC61E71FE8799700F3B00D /* GroupGroceryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGroceryListVC.swift; sourceTree = "<group>"; };
 		E7FC61E91FE87E3800F3B00D /* AddGroupItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupItemVC.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */,
 				E7FC61E71FE8799700F3B00D /* GroupGroceryListVC.swift */,
 				E7FC61E91FE87E3800F3B00D /* AddGroupItemVC.swift */,
+				E7FB0D531FE8C0A4002D1672 /* AddNewUserVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 				E78C5E9C1FCDD24100327A34 /* GroupCell.swift */,
 				E79D40981FE438D900CD5A8C /* UserCell.swift */,
 				E7FC61E51FE8790D00F3B00D /* GroupGroceryListCell.swift */,
+				E7FB0D511FE8C08C002D1672 /* NewUserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -323,7 +329,9 @@
 				84638E9A1FC461DC008ED90A /* GroupsVC.swift in Sources */,
 				84F93BA21FC5CC3A0057F802 /* AuthService.swift in Sources */,
 				E78C5E9B1FCDD22D00327A34 /* MyListCell.swift in Sources */,
+				E7FB0D521FE8C08C002D1672 /* NewUserCell.swift in Sources */,
 				E7FC61E61FE8790D00F3B00D /* GroupGroceryListCell.swift in Sources */,
+				E7FB0D541FE8C0A4002D1672 /* AddNewUserVC.swift in Sources */,
 				E7FC61E81FE8799700F3B00D /* GroupGroceryListVC.swift in Sources */,
 				E7DCA7A81FE82D5500E011D9 /* Group.swift in Sources */,
 				84F93B9E1FC5B99B0057F802 /* BluePlaceholder.swift in Sources */,
