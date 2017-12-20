@@ -22,6 +22,7 @@ class MeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,6 +85,7 @@ class MeVC: UIViewController {
                 })
             } else {
                 warningLbl.text = "That is the same name as above."
+                nameTextField.text = ""
             }
         } else {
             warningLbl.text = "Please fill in the form above."

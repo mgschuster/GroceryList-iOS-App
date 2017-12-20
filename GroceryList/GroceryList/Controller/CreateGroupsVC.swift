@@ -33,6 +33,7 @@ class CreateGroupsVC: UIViewController {
         descriptionTextField.delegate = self
         usernameSearchTextField.delegate = self
         usernameSearchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {

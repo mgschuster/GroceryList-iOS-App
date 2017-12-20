@@ -21,6 +21,7 @@ class CreateItemVC: UIViewController {
         super.viewDidLoad()
         itemField.delegate = self
         descriptionField.delegate = self
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewDidAppear(_ animated: Bool) {

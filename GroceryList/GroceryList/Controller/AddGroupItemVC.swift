@@ -29,6 +29,7 @@ class AddGroupItemVC: UIViewController {
         super.viewDidLoad()
         itemTextField.delegate = self
         descriptionTextField.delegate = self
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewDidAppear(_ animated: Bool) {

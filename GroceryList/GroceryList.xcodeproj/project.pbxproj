@@ -32,6 +32,7 @@
 		E79D40971FE4356A00CD5A8C /* CreateGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */; };
 		E79D40991FE438D900CD5A8C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40981FE438D900CD5A8C /* UserCell.swift */; };
 		E7B36ED01FE9ADD500447063 /* UIViewControllerExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B36ECF1FE9ADD500447063 /* UIViewControllerExtenstion.swift */; };
+		E7B46A4C1FEA16F900D8B6C1 /* HideKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B46A4B1FEA16F900D8B6C1 /* HideKeyboardExtension.swift */; };
 		E7DCA7A81FE82D5500E011D9 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DCA7A71FE82D5500E011D9 /* Group.swift */; };
 		E7F161521FE9596700A78BA3 /* GroupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F161511FE9596700A78BA3 /* GroupList.swift */; };
 		E7FC61E61FE8790D00F3B00D /* GroupGroceryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC61E51FE8790D00F3B00D /* GroupGroceryListCell.swift */; };
@@ -69,6 +70,7 @@
 		E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupsVC.swift; sourceTree = "<group>"; };
 		E79D40981FE438D900CD5A8C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		E7B36ECF1FE9ADD500447063 /* UIViewControllerExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtenstion.swift; sourceTree = "<group>"; };
+		E7B46A4B1FEA16F900D8B6C1 /* HideKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardExtension.swift; sourceTree = "<group>"; };
 		E7DCA7A71FE82D5500E011D9 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E7F161511FE9596700A78BA3 /* GroupList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupList.swift; sourceTree = "<group>"; };
 		E7FC61E51FE8790D00F3B00D /* GroupGroceryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGroceryListCell.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				E71177B61FDEFB510062072B /* UIViewExtension.swift */,
 				E7B36ECF1FE9ADD500447063 /* UIViewControllerExtenstion.swift */,
+				E7B46A4B1FEA16F900D8B6C1 /* HideKeyboardExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				E71177B51FCE05860062072B /* CreateItemVC.swift in Sources */,
 				E7F161521FE9596700A78BA3 /* GroupList.swift in Sources */,
 				84F93B941FC468490057F802 /* LoginVC.swift in Sources */,
+				E7B46A4C1FEA16F900D8B6C1 /* HideKeyboardExtension.swift in Sources */,
 				E79D40971FE4356A00CD5A8C /* CreateGroupsVC.swift in Sources */,
 				84F93B981FC473960057F802 /* ShadowView.swift in Sources */,
 				E7FC61EA1FE87E3800F3B00D /* AddGroupItemVC.swift in Sources */,

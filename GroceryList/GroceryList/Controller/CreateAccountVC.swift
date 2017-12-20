@@ -26,6 +26,7 @@ class CreateAccountVC: UIViewController {
         emailField.delegate = self
         passwordField.delegate = self
         confirmPasswordField.delegate = self
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewDidAppear(_ animated: Bool) {

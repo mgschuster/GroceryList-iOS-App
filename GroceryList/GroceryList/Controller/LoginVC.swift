@@ -21,6 +21,7 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         emailField.delegate = self
         passwordField.delegate = self
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewDidAppear(_ animated: Bool) {
