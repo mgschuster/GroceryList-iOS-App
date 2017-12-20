@@ -37,6 +37,7 @@ class CreateItemVC: UIViewController {
 
             DataService.instance.uploadItem(withItem: itemField.text!, andDescription: descriptionField.text!, forUID: uid!, sendComplete: { (isComplete) in
                 if isComplete {
+                    self.successHaptic()
                     self.addBtn.isEnabled = true
                     self.dismiss(animated: true, completion: nil)
                 } else {
@@ -44,14 +45,15 @@ class CreateItemVC: UIViewController {
                 }
             })
         } else {
+            errorHaptic()
             warningLbl.text = "Please fill in the form above."
         }
     }
     
     @IBAction func closeBtnWasPressed(_ sender: Any) {
+        lightHaptic()
         dismiss(animated: true, completion: nil)
-    }
-    
+    }    
 }
 
 extension CreateItemVC: UITextFieldDelegate {

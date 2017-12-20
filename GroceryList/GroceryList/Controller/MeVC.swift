@@ -51,9 +51,11 @@ class MeVC: UIViewController {
     }
     
     @IBAction func logoutBtnPressed(_ sender: Any) {
+        lightHaptic()
         let logoutPopup = UIAlertController(title: "Sign Out?", message: "Are you sure you want to sign out?", preferredStyle: .actionSheet)
         let logoutAction = UIAlertAction(title: "SIGN OUT", style: .destructive) { (buttonTapped) in
             do {
+                self.warningHaptic()
                 try Auth.auth().signOut()
                 let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
                 self.present(loginVC!, animated: true, completion: nil)
@@ -75,6 +77,7 @@ class MeVC: UIViewController {
                 
                 DataService.instance.uploadNameName(forUID: uid!, andName: nameTextField.text!, sendComplete: { (isComplete) in
                     if isComplete {
+                        self.successHaptic()
                         self.nameBtn.isEnabled = true
                         self.reloadNameName()
                         self.nameTextField.text = ""
@@ -84,10 +87,12 @@ class MeVC: UIViewController {
                     }
                 })
             } else {
+                errorHaptic()
                 warningLbl.text = "That is the same name as above."
                 nameTextField.text = ""
             }
         } else {
+            errorHaptic()
             warningLbl.text = "Please fill in the form above."
         }
     }

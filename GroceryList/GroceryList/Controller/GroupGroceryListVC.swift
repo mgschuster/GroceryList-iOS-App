@@ -47,12 +47,14 @@ class GroupGroceryListVC: UIViewController {
     
     // Actions
     @IBAction func backBtnWasPressed(_ sender: Any) {
+        lightHaptic()
         dismissDetail()
     }
     
     @IBAction func createNewItemBtnWasPressed(_ sender: Any) {
         guard let addGroupItemVC = storyboard?.instantiateViewController(withIdentifier: "AddGroupItemVC") as? AddGroupItemVC else { return }
         addGroupItemVC.initData(forGroup: group!)
+        lightHaptic()
         present(addGroupItemVC, animated: true, completion: nil)
     }
     
@@ -97,6 +99,7 @@ extension GroupGroceryListVC: UITableViewDataSource, UITableViewDelegate {
         
         if (currentCell?.addedByLbl.text?.contains(currentUser))! {
             let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
+                self.warningHaptic()
                 guard let selectedCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell else { return }
                 
                 if selectedCell.checkmark.isHidden == false {
@@ -112,6 +115,7 @@ extension GroupGroceryListVC: UITableViewDataSource, UITableViewDelegate {
         
         if (currentCell?.markedByLbl.text?.contains(currentUser))! {
             let uncheckAction = UITableViewRowAction(style: .default, title: "UNCHECK", handler: { (rowAction, indexPath) in
+                self.successHaptic()
                 guard let selectedCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell else { return }
                 let groupUID = (self.group?.key)!
                 DataService.instance.uncheckUser(forGroupUid: groupUID, andItem: selectedCell.itemLbl.text!)
@@ -123,6 +127,7 @@ extension GroupGroceryListVC: UITableViewDataSource, UITableViewDelegate {
         
         if (currentCell?.checkmark.isHidden)! {
             let markOffAction = UITableViewRowAction(style: .default, title: "CHECK OFF") { (rowAction, indexPath) in
+                self.successHaptic()
                 guard let selectedCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell else { return }
                 let username = self.currentUser
                 let groupUID = (self.group?.key)!
