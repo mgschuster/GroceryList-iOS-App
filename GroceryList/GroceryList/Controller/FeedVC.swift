@@ -31,16 +31,27 @@ class FeedVC: UIViewController {
     
     // Actions
     @IBAction func deleteBtnWasPressed(_ sender: Any) {
+        lightHaptic()
+        
         let logoutPopup = UIAlertController(title: "Delete all items?", message: "Are you sure you want to delete all items?", preferredStyle: .actionSheet)
+        
         let logoutAction = UIAlertAction(title: "DELETE ALL ITEMS", style: .destructive) { (buttonTapped) in
+            self.warningHaptic()
             let userUID = Auth.auth().currentUser?.uid
             DataService.instance.removeAllItems(forUID: userUID!)
             self.reloadGroceryList()
         }
-        let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+        
+        let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel) { (buttonTapped) in
+        }
+        
         logoutPopup.addAction(logoutAction)
         logoutPopup.addAction(cancelAction)
         present(logoutPopup, animated: true, completion: nil)
+    }
+    
+    @IBAction func addItemBtnWasPressed(_ sender: Any) {
+        lightHaptic()
     }
     
     func reloadGroceryList() {
@@ -94,6 +105,7 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let uid = Auth.auth().currentUser?.uid
         let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE ITEM") { (rowAction, indexPath) in
+            self.warningHaptic()
             guard let selectedCell = tableView.cellForRow(at: indexPath) as? MyListCell else { return }
             DataService.instance.removeItem(forUID: uid!, andItem: selectedCell.productLbl.text!)
             self.reloadGroceryList()

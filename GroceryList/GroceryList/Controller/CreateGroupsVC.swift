@@ -65,6 +65,7 @@ class CreateGroupsVC: UIViewController {
                 
                 DataService.instance.createGroup(withTitle: self.groupTextField.text!, andDescription: self.descriptionTextField.text!, forUsernames: usernameIds, handler: { (groupCreated) in
                     if groupCreated {
+                        self.successHaptic()
                         self.dismiss(animated: true, completion: nil)
                     } else {
                         print("Group could not be created. Please try again.")
@@ -72,11 +73,13 @@ class CreateGroupsVC: UIViewController {
                 })
             })
         } else {
+            errorHaptic()
             warningLbl.text = "Please fill in the form above."
         }
     }
     
     @IBAction func closeBtnWasPressed(_ sender: Any) {
+        lightHaptic()
         dismiss(animated: true, completion: nil)
     }
 }
@@ -104,6 +107,7 @@ extension CreateGroupsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        lightHaptic()
         guard let cell = tableView.cellForRow(at: indexPath) as? UserCell else { return }
         if !chosenUserArray.contains(cell.usernameLbl.text!) {
             chosenUserArray.append(cell.usernameLbl.text!)

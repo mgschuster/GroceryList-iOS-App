@@ -53,6 +53,7 @@ class AddGroupItemVC: UIViewController {
             DataService.instance.createGroupItem(forGroupUid: (group?.key)!, andItem: itemTextField.text!, andDescription: descriptionTextField.text!, addedBy: currentUser, sendComplete: { (isComplete) in
                 if isComplete {
                     DataService.instance.increaseListCount(forGroupUid: (self.group?.key)!)
+                    self.successHaptic()
                     self.addBtn.isEnabled = true
                     self.dismiss(animated: true, completion: nil)
                 } else {
@@ -60,11 +61,13 @@ class AddGroupItemVC: UIViewController {
                 }
             })
         } else {
+            errorHaptic()
             warningLbl.text = "Please fill in the form above."
         }
     }
     
     @IBAction func closeBtnWasPressed(_ sender: Any) {
+        lightHaptic()
         dismiss(animated: true, completion: nil)
     }
 }

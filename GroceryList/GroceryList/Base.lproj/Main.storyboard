@@ -41,6 +41,7 @@
                                         </constraints>
                                         <state key="normal" image="add-list"/>
                                         <connections>
+                                            <action selector="addItemBtnWasPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Dms-2o-RQl"/>
                                             <segue destination="EWh-YQ-zdt" kind="presentation" id="E4g-2O-NJz"/>
                                         </connections>
                                     </button>
@@ -446,6 +447,7 @@
                                         </constraints>
                                         <state key="normal" image="add-group"/>
                                         <connections>
+                                            <action selector="createGroupBtnWasPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="gDc-AM-rqz"/>
                                             <segue destination="joH-BT-Nf3" kind="presentation" id="ifN-4q-Xrz"/>
                                         </connections>
                                     </button>
