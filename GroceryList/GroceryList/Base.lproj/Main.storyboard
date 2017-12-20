@@ -347,11 +347,11 @@
                                 <rect key="frame" x="125" y="314.5" width="125" height="40"/>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="9pf-iS-blU"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="125" id="9pf-iS-blU"/>
                                     <constraint firstAttribute="height" constant="40" id="gQx-s8-zjO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
-                                <state key="normal" title="ADD NAME">
+                                <state key="normal" title="UPDATE NAME">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -473,10 +473,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qy8-ne-Kzi">
-                                                    <rect key="frame" x="15" y="11" width="310" height="68"/>
+                                                    <rect key="frame" x="15" y="11" width="260" height="68"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="eXH-KZ-A0n">
-                                                            <rect key="frame" x="0.0" y="0.0" width="310" height="45"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 Of July" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="eXH-KZ-A0n">
+                                                            <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="45" id="O2t-bj-XkD"/>
                                                             </constraints>
@@ -484,8 +484,8 @@
                                                             <color key="textColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="rf8-NR-ctz">
-                                                            <rect key="frame" x="0.0" y="45" width="310" height="23"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocery List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="rf8-NR-ctz">
+                                                            <rect key="frame" x="0.0" y="45" width="260" height="23"/>
                                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
                                                             <color key="textColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -506,13 +506,27 @@
                                                         <constraint firstAttribute="width" constant="25" id="U2K-hN-OKP"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRJ-iW-Xeb" customClass="CircleLabel" customModule="GroceryList" customModuleProvider="target">
+                                                    <rect key="frame" x="283" y="35" width="45" height="21"/>
+                                                    <color key="backgroundColor" white="0.8141741071428571" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="Dyf-ky-08C"/>
+                                                        <constraint firstAttribute="height" constant="21" id="Q7Z-ad-2Gn"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="11"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="PRJ-iW-Xeb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rYe-Pt-A7x" secondAttribute="leading" constant="20" symbolic="YES" id="AgJ-E5-pX5"/>
                                                 <constraint firstItem="qy8-ne-Kzi" firstAttribute="leading" secondItem="rYe-Pt-A7x" secondAttribute="leadingMargin" id="OAN-FV-34X"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="qy8-ne-Kzi" secondAttribute="bottom" id="T6T-zR-fNg"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="qy8-ne-Kzi" secondAttribute="trailing" constant="35" id="TGw-dc-urf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="qy8-ne-Kzi" secondAttribute="trailing" constant="85" id="TGw-dc-urf"/>
                                                 <constraint firstItem="Cdf-XL-rhk" firstAttribute="centerY" secondItem="rYe-Pt-A7x" secondAttribute="centerY" id="auy-Ca-C2L"/>
+                                                <constraint firstItem="Cdf-XL-rhk" firstAttribute="leading" secondItem="PRJ-iW-Xeb" secondAttribute="trailing" constant="7" id="n0g-NE-mgt"/>
                                                 <constraint firstItem="Cdf-XL-rhk" firstAttribute="trailing" secondItem="rYe-Pt-A7x" secondAttribute="trailingMargin" id="sGX-eF-SjH"/>
+                                                <constraint firstItem="PRJ-iW-Xeb" firstAttribute="centerY" secondItem="Cdf-XL-rhk" secondAttribute="centerY" id="txv-J9-WOe"/>
                                                 <constraint firstItem="qy8-ne-Kzi" firstAttribute="top" secondItem="rYe-Pt-A7x" secondAttribute="topMargin" id="wjK-N3-XMe"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -524,6 +538,7 @@
                                         <connections>
                                             <outlet property="descriptionLbl" destination="rf8-NR-ctz" id="3xq-uV-S2H"/>
                                             <outlet property="groupTitleLbl" destination="eXH-KZ-A0n" id="VBh-nV-gIR"/>
+                                            <outlet property="listCountLbl" destination="PRJ-iW-Xeb" id="e5d-s4-AuT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -564,7 +579,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="tcc-Jd-gMy">
                                         <rect key="frame" x="63" y="30.5" width="250" height="32.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="9w8-0K-XtD"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="9w8-0K-XtD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

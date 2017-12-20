@@ -98,6 +98,11 @@ extension GroupGroceryListVC: UITableViewDataSource, UITableViewDelegate {
         if (currentCell?.addedByLbl.text?.contains(currentUser))! {
             let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
                 guard let selectedCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell else { return }
+                
+                if selectedCell.checkmark.isHidden == false {
+                    DataService.instance.decreaseListCheckCount(forGroupUid: uid)
+                }
+                
                 DataService.instance.removeGroupItem(forUID: uid, andItem: selectedCell.itemLbl.text!)
                 self.reloadGroupList()
             }

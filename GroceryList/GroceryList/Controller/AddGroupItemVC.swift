@@ -52,6 +52,7 @@ class AddGroupItemVC: UIViewController {
             
             DataService.instance.createGroupItem(forGroupUid: (group?.key)!, andItem: itemTextField.text!, andDescription: descriptionTextField.text!, addedBy: currentUser, sendComplete: { (isComplete) in
                 if isComplete {
+                    DataService.instance.increaseListCount(forGroupUid: (self.group?.key)!)
                     self.addBtn.isEnabled = true
                     self.dismiss(animated: true, completion: nil)
                 } else {

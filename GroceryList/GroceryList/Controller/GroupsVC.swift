@@ -49,7 +49,7 @@ extension GroupsVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = groupsTableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as? GroupCell else { return UITableViewCell() }
         
         let group = groupsArray[indexPath.row]
-        cell.configureCell(title: group.groupTitle, description: group.groupDesc)
+        cell.configureCell(title: group.groupTitle, description: group.groupDesc, listCount: group.listCount, listCheckCount: group.listCheckCount)
         return cell
     }
     

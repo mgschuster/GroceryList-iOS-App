@@ -174,7 +174,7 @@ class DataService {
     }
     
     func createGroup(withTitle title: String, andDescription description: String, forUsernames usernames: [String], handler: @escaping (_ groupCreated: Bool) -> ()) {
-        REF_GROUPS.childByAutoId().updateChildValues(["title": title, "description": description, "members": usernames])
+        REF_GROUPS.childByAutoId().updateChildValues(["title": title, "description": description, "list count": 0, "list check count": 0, "members": usernames])
         handler(true)
     }
     
@@ -205,11 +205,49 @@ class DataService {
                 if memberArray.contains((Auth.auth().currentUser?.uid)!) {
                     let title = group.childSnapshot(forPath: "title").value as! String
                     let description = group.childSnapshot(forPath: "description").value as! String
-                    let group = Group(title: title, description: description, key: group.key, members: memberArray)
+                    let listCount = group.childSnapshot(forPath: "list count").value as! Int
+                    let listCheckCount = group.childSnapshot(forPath: "list check count").value as! Int
+                    let group = Group(title: title, description: description, key: group.key, members: memberArray, listCount: listCount, listCheckCount: listCheckCount)
                     groupsArray.append(group)
                 }
             }
             handler(groupsArray)
+        }
+    }
+    
+    func increaseListCount(forGroupUid uid: String) {
+        REF_GROUPS.child(uid).child("list count").observeSingleEvent(of: .value) { (snapshot) in
+            let listCount = snapshot.value as! Int
+            var value = listCount
+            value = value + 1
+            self.REF_GROUPS.child(uid).updateChildValues(["list count": value])
+        }
+    }
+    
+    func decreaseListCount(forGroupUid uid: String) {
+        REF_GROUPS.child(uid).child("list count").observeSingleEvent(of: .value) { (snapshot) in
+            let listCount = snapshot.value as! Int
+            var value = listCount
+            value = value - 1
+            self.REF_GROUPS.child(uid).updateChildValues(["list count": value])
+        }
+    }
+    
+    func increaseListCheckCount(forGroupUid uid: String) {
+        REF_GROUPS.child(uid).child("list check count").observeSingleEvent(of: .value) { (snapshot) in
+            let listCheckCount = snapshot.value as! Int
+            var value = listCheckCount
+            value = value + 1
+            self.REF_GROUPS.child(uid).updateChildValues(["list check count": value])
+        }
+    }
+    
+    func decreaseListCheckCount(forGroupUid uid: String) {
+        REF_GROUPS.child(uid).child("list check count").observeSingleEvent(of: .value) { (snapshot) in
+            let listCheckCount = snapshot.value as! Int
+            var value = listCheckCount
+            value = value - 1
+            self.REF_GROUPS.child(uid).updateChildValues(["list check count": value])
         }
     }
     
@@ -220,10 +258,12 @@ class DataService {
     
     func markeOffUser(forGroupUid uid: String, andItem item: String, withUser username: String) {
         REF_GROUPS.child(uid).child("grocery list").child(item).updateChildValues(["marked off by": username, "isSelected": true])
+        increaseListCheckCount(forGroupUid: uid)
     }
     
     func uncheckUser(forGroupUid uid: String, andItem item: String) {
         REF_GROUPS.child(uid).child("grocery list").child(item).updateChildValues(["marked off by": "- -", "isSelected": false])
+        decreaseListCheckCount(forGroupUid: uid)
     }
     
     func checkOffItem(forUID uid: String, andItemName name: String) {
@@ -240,6 +280,7 @@ class DataService {
     
     func removeGroupItem(forUID uid: String, andItem item: String) {
         REF_GROUPS.child(uid).child("grocery list").child(item).removeValue()
+        decreaseListCount(forGroupUid: uid)
     }
     
     func removeAllItems(forUID uid: String) {

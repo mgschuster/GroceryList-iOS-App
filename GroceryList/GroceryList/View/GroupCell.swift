@@ -13,10 +13,18 @@ class GroupCell: UITableViewCell {
     // Outlets
     @IBOutlet weak var groupTitleLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
+    @IBOutlet weak var listCountLbl: CircleLabel!
     
-    func configureCell(title: String, description: String) {
+    func configureCell(title: String, description: String, listCount: Int, listCheckCount: Int) {
         self.groupTitleLbl.text = title
         self.descriptionLbl.text = description
+        
+        if listCount == 0 {
+            self.listCountLbl.isHidden = true
+        } else {
+            self.listCountLbl.isHidden = false
+            self.listCountLbl.text = "\(listCheckCount) / \(listCount)"
+        }
     }
     
     @IBInspectable var selectionColor: UIColor = .gray {
