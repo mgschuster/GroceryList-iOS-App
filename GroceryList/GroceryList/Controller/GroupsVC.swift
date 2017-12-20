@@ -30,7 +30,6 @@ class GroupsVC: UIViewController {
     
     // Actions
     @IBAction func createGroupBtnWasPressed(_ sender: Any) {
-        lightHaptic()
     }
     
     

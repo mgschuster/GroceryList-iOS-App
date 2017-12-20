@@ -51,7 +51,6 @@ class CreateItemVC: UIViewController {
     }
     
     @IBAction func closeBtnWasPressed(_ sender: Any) {
-        lightHaptic()
         dismiss(animated: true, completion: nil)
     }    
 }

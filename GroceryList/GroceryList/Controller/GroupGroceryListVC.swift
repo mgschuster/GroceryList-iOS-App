@@ -47,14 +47,12 @@ class GroupGroceryListVC: UIViewController {
     
     // Actions
     @IBAction func backBtnWasPressed(_ sender: Any) {
-        lightHaptic()
         dismissDetail()
     }
     
     @IBAction func createNewItemBtnWasPressed(_ sender: Any) {
         guard let addGroupItemVC = storyboard?.instantiateViewController(withIdentifier: "AddGroupItemVC") as? AddGroupItemVC else { return }
         addGroupItemVC.initData(forGroup: group!)
-        lightHaptic()
         present(addGroupItemVC, animated: true, completion: nil)
     }
     

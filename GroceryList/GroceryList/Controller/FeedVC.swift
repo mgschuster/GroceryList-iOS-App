@@ -31,7 +31,6 @@ class FeedVC: UIViewController {
     
     // Actions
     @IBAction func deleteBtnWasPressed(_ sender: Any) {
-        lightHaptic()
         
         let logoutPopup = UIAlertController(title: "Delete all items?", message: "Are you sure you want to delete all items?", preferredStyle: .actionSheet)
         
@@ -51,7 +50,6 @@ class FeedVC: UIViewController {
     }
     
     @IBAction func addItemBtnWasPressed(_ sender: Any) {
-        lightHaptic()
     }
     
     func reloadGroceryList() {

@@ -51,7 +51,6 @@ class MeVC: UIViewController {
     }
     
     @IBAction func logoutBtnPressed(_ sender: Any) {
-        lightHaptic()
         let logoutPopup = UIAlertController(title: "Sign Out?", message: "Are you sure you want to sign out?", preferredStyle: .actionSheet)
         let logoutAction = UIAlertAction(title: "SIGN OUT", style: .destructive) { (buttonTapped) in
             do {
