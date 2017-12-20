@@ -129,10 +129,12 @@ class DataService {
                 }
             }
             
+            var returnedUserArray = [String]()
+            
             for i in 0..<usernameArray.count {
                 for j in 0..<usernames.count {
-                    if usernameArray[i] == usernames[j] {
-                        usernameArray.remove(at: i)
+                    if usernameArray[i] != usernames[j] {
+                        returnedUserArray.append(usernameArray[i])
                         break
                     }
                 }
@@ -140,8 +142,9 @@ class DataService {
             
             print(usernameArray)
             print(usernames)
+            print(returnedUserArray)
             
-            handler(usernameArray)
+            handler(returnedUserArray)
         }
     }
     
