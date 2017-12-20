@@ -36,13 +36,17 @@ class LoginVC: UIViewController {
         if emailField.text != nil && passwordField.text != nil {
             AuthService.instance.loginUser(withEmail: emailField.text!, andPassword: passwordField.text!, loginComplete: { (success, loginError) in
                 if success {
+                    self.successHaptic()
                     self.dismiss(animated: true, completion: nil)
                     print("Logged in successfully")
                 } else if String(describing: loginError?.localizedDescription) == "Optional(\"There is no user record corresponding to this identifier. The user may have been deleted.\")" {
+                    self.errorHaptic()
                     self.warningLbl.text = "No user with that email was found. Please create an account below."
                 } else if String(describing: loginError?.localizedDescription) == "Optional(\"The password is invalid or the user does not have a password.\")" {
+                    self.errorHaptic()
                     self.warningLbl.text = "Incorrect email or password, please try again."
                 } else if String(describing: loginError?.localizedDescription) == "Optional(\"The email address is badly formatted.\")" {
+                    self.errorHaptic()
                     self.warningLbl.text = "Please insert correct email above."
                 } else {
                     print(String(describing: loginError?.localizedDescription))
@@ -52,6 +56,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func signUpBtnWasPressed(_ sender: Any) {
+        lightHaptic()
         let CreateAccountVC = storyboard?.instantiateViewController(withIdentifier: "CreateAccountVC")
         present(CreateAccountVC!, animated: true, completion: nil)
     }

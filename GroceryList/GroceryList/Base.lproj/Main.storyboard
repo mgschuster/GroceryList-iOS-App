@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhr-uT-oak">
-                                        <rect key="frame" x="148" y="30" width="80" height="32.5"/>
+                                        <rect key="frame" x="147.5" y="30" width="80" height="32.5"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -172,8 +172,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LEk-5R-MnN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Grocery Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHd-za-e05">
-                                        <rect key="frame" x="84.5" y="30.5" width="207" height="32.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHd-za-e05">
+                                        <rect key="frame" x="136" y="30.5" width="104.5" height="32.5"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -237,7 +237,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SO-fn-A5N">
                                         <rect key="frame" x="0.0" y="114" width="275" height="12"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="9"/>
-                                        <color key="textColor" red="0.26854655150000001" green="0.62673616409999999" blue="0.2813494205" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -283,7 +283,7 @@
             </objects>
             <point key="canvasLocation" x="1472.8" y="-664.31784107946032"/>
         </scene>
-        <!--Me-->
+        <!--Profile-->
         <scene sceneID="oDF-qL-Ct3">
             <objects>
                 <viewController id="yUY-PP-jqE" customClass="MeVC" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
@@ -384,7 +384,7 @@
                                             <constraint firstAttribute="height" constant="15" id="Zeg-El-zPP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="9"/>
-                                        <color key="textColor" red="0.26854655150000001" green="0.62673616409999999" blue="0.2813494205" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -407,7 +407,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6CQ-KJ-Y1p"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" image="me-tab" id="G0I-pN-fqG"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="me-tab" id="G0I-pN-fqG"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="emailLbl" destination="zVz-Mu-Eer" id="A1L-1X-jhl"/>
@@ -510,7 +510,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRJ-iW-Xeb" customClass="CircleLabel" customModule="GroceryList" customModuleProvider="target">
                                                     <rect key="frame" x="283" y="35" width="45" height="21"/>
-                                                    <color key="backgroundColor" white="0.8141741071428571" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.7717633928571429" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="Dyf-ky-08C"/>
                                                         <constraint firstAttribute="height" constant="21" id="Q7Z-ad-2Gn"/>
@@ -534,7 +534,7 @@
                                         </tableViewCellContentView>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
-                                                <color key="value" red="0.66274509803921566" green="0.45490196078431372" blue="1" alpha="0.23250440140845072" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="0.23195422535211269" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -959,7 +959,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTE-Ph-K7r">
                                         <rect key="frame" x="0.0" y="114" width="275" height="12"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="9"/>
-                                        <color key="textColor" red="0.26854655150000001" green="0.62673616409999999" blue="0.2813494205" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -984,8 +984,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TJ_Schoost11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBW-qu-wpG">
-                                                    <rect key="frame" x="92" y="10.5" width="90.5" height="19.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBW-qu-wpG">
+                                                    <rect key="frame" x="135" y="10.5" width="5" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                     <color key="textColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>

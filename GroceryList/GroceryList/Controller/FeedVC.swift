@@ -88,6 +88,7 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        successHaptic()
         let uid = Auth.auth().currentUser?.uid
         guard let selectedCell = tableView.cellForRow(at: indexPath) as? MyListCell else { return }
         
@@ -104,7 +105,7 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let uid = Auth.auth().currentUser?.uid
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE ITEM") { (rowAction, indexPath) in
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
             self.warningHaptic()
             guard let selectedCell = tableView.cellForRow(at: indexPath) as? MyListCell else { return }
             DataService.instance.removeItem(forUID: uid!, andItem: selectedCell.productLbl.text!)
