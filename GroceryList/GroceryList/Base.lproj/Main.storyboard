@@ -510,7 +510,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRJ-iW-Xeb" customClass="CircleLabel" customModule="GroceryList" customModuleProvider="target">
                                                     <rect key="frame" x="283" y="35" width="45" height="21"/>
-                                                    <color key="backgroundColor" white="0.7717633928571429" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" red="0.72941176470588232" green="0.72941176470588232" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="Dyf-ky-08C"/>
                                                         <constraint firstAttribute="height" constant="21" id="Q7Z-ad-2Gn"/>

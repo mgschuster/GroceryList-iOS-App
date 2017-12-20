@@ -25,6 +25,12 @@ class GroupCell: UITableViewCell {
             self.listCountLbl.isHidden = false
             self.listCountLbl.text = "\(listCheckCount) / \(listCount)"
         }
+        
+        if listCount == listCheckCount {
+            self.listCountLbl.backgroundColor = #colorLiteral(red: 0.262745098, green: 0.6274509804, blue: 0.2784313725, alpha: 1)
+        } else {
+            self.listCountLbl.backgroundColor = #colorLiteral(red: 0.7099999785, green: 0.7099999785, blue: 0.7099999785, alpha: 1)
+        }
     }
     
     @IBInspectable var selectionColor: UIColor = .gray {
