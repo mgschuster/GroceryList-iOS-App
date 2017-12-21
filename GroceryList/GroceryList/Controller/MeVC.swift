@@ -18,6 +18,7 @@ class MeVC: UIViewController {
     @IBOutlet weak var nameTextField: BluePlaceholder!
     @IBOutlet weak var warningLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
