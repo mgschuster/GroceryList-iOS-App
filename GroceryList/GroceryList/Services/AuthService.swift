@@ -23,6 +23,11 @@ class AuthService {
             DataService.instance.createDBUser(uid: user.uid, userData: userData)
             DataService.instance.addUsername(uid: user.uid, username: username)
             DataService.instance.addNameName(uid: user.uid)
+            
+            Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+                print(error.debugDescription)
+            })
+            
             userCreationComplete(true, nil)
         }
     }

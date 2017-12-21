@@ -23,6 +23,7 @@ class MeVC: UIViewController {
         super.viewDidLoad()
         nameTextField.delegate = self
         self.hideKeyboardWhenTappedAround()
+        nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,6 +43,10 @@ class MeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadNameName()
+    }
+    
+    @objc func textFieldDidChange() {
+        warningLbl.text = ""
     }
     
     func reloadNameName() {

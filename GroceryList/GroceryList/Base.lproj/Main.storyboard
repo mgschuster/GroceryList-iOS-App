@@ -200,7 +200,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-j6-Ado">
-                                <rect key="frame" x="50" y="125" width="275" height="126"/>
+                                <rect key="frame" x="50" y="125" width="275" height="125"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ITEM" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="MFh-X9-Zq1" customClass="BluePlaceholder" customModule="GroceryList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
@@ -235,7 +235,10 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SO-fn-A5N">
-                                        <rect key="frame" x="0.0" y="114" width="275" height="12"/>
+                                        <rect key="frame" x="0.0" y="114" width="275" height="11"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="11" id="sdW-ss-sHc"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="9"/>
                                         <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -243,7 +246,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHW-7Z-P4a" customClass="ShadowButton" customModule="GroceryList" customModuleProvider="target">
-                                <rect key="frame" x="100" y="301" width="175" height="50"/>
+                                <rect key="frame" x="100" y="300" width="175" height="50"/>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="N8V-iT-a9B"/>
@@ -322,22 +325,31 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="fgX-X1-ye5">
-                                <rect key="frame" x="0.0" y="120" width="375" height="80.5"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dk-6o-a5t">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="32.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="hgD-8N-264"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                         <color key="textColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVz-Mu-Eer">
-                                        <rect key="frame" x="0.0" y="39.5" width="375" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="39.5" width="375" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="aik-jq-qOR"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                         <color key="textColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Es5-aB-sYl">
-                                        <rect key="frame" x="0.0" y="66" width="375" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="65.5" width="375" height="14.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="39k-i7-CHg"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="11"/>
                                         <color key="textColor" red="0.26854655150000001" green="0.62673616409999999" blue="0.2813494205" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -345,7 +357,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMb-M3-fL2" customClass="ShadowButton" customModule="GroceryList" customModuleProvider="target">
-                                <rect key="frame" x="125" y="314.5" width="125" height="40"/>
+                                <rect key="frame" x="125" y="314" width="125" height="40"/>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="125" id="9pf-iS-blU"/>
@@ -360,7 +372,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JSL-mQ-mb7">
-                                <rect key="frame" x="50" y="221.5" width="275" height="72"/>
+                                <rect key="frame" x="50" y="221" width="275" height="72"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="NAME..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wZC-ZN-Wd7" customClass="BluePlaceholder" customModule="GroceryList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
@@ -785,7 +797,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gSN-2F-l4O">
-                                <rect key="frame" x="50" y="125" width="275" height="126"/>
+                                <rect key="frame" x="50" y="125" width="275" height="125"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ITEM" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="FhT-il-7Y9" customClass="BluePlaceholder" customModule="GroceryList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
@@ -820,7 +832,10 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGo-Ec-AHc">
-                                        <rect key="frame" x="0.0" y="114" width="275" height="12"/>
+                                        <rect key="frame" x="0.0" y="114" width="275" height="11"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="11" id="Kjp-1Q-dpt"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="9"/>
                                         <color key="textColor" red="0.26854655150000001" green="0.62673616409999999" blue="0.2813494205" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -828,7 +843,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odF-9Z-7oJ" customClass="ShadowButton" customModule="GroceryList" customModuleProvider="target">
-                                <rect key="frame" x="100" y="301" width="175" height="50"/>
+                                <rect key="frame" x="100" y="300" width="175" height="50"/>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="175" id="3QI-qV-fPT"/>
@@ -922,7 +937,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KAf-fZ-IBY">
-                                <rect key="frame" x="50" y="100" width="275" height="126"/>
+                                <rect key="frame" x="50" y="100" width="275" height="125"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="GROUP NAME" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Jto-me-yUu" customClass="BluePlaceholder" customModule="GroceryList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
@@ -957,7 +972,10 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTE-Ph-K7r">
-                                        <rect key="frame" x="0.0" y="114" width="275" height="12"/>
+                                        <rect key="frame" x="0.0" y="114" width="275" height="11"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="11" id="qSy-qe-KkI"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="9"/>
                                         <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -965,7 +983,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add people to your group" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="K39-TD-UEa">
-                                <rect key="frame" x="20" y="251" width="335" height="50"/>
+                                <rect key="frame" x="20" y="250" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kmu-Dc-9CR"/>
                                 </constraints>
@@ -974,7 +992,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tMl-AV-oyV">
-                                <rect key="frame" x="50" y="376" width="275" height="241"/>
+                                <rect key="frame" x="50" y="375" width="275" height="242"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="40" id="jH6-uv-pxT" customClass="UserCell" customModule="GroceryList" customModuleProvider="target">
@@ -1003,7 +1021,7 @@
                                 </prototypes>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="s8G-H8-2pS">
-                                <rect key="frame" x="50" y="312" width="275" height="49"/>
+                                <rect key="frame" x="50" y="311" width="275" height="49"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="USERNAME..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a0c-MS-lj7" customClass="BluePlaceholder" customModule="GroceryList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
@@ -1071,7 +1089,7 @@
                                 <rect key="frame" x="0.0" y="245" width="375" height="422"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XXG-f2-37e">
-                                        <rect key="frame" x="50" y="7" width="275" height="126"/>
+                                        <rect key="frame" x="50" y="7" width="275" height="125"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="EMAIL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="geG-Z1-tHq" customClass="WhitePlaceholder" customModule="GroceryList" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
@@ -1106,18 +1124,34 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vec-kV-7Xc">
-                                                <rect key="frame" x="0.0" y="114" width="275" height="12"/>
+                                                <rect key="frame" x="0.0" y="114" width="275" height="11"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="11" id="7IU-JK-3rY"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="9"/>
                                                 <color key="textColor" red="0.62223270820640431" green="1" blue="0.34769673085696917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z4i-2y-rah">
-                                        <rect key="frame" x="50" y="163" width="275" height="64"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RId-Lg-QMm">
+                                        <rect key="frame" x="25" y="141" width="325" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="QTx-uC-eNa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="11"/>
+                                        <state key="normal" title="RESEND VERIFICATION CODE">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="verificationCodeBtnWasPressed:" destination="hVC-1c-Z3L" eventType="touchUpInside" id="IWz-RH-PJ9"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="z4i-2y-rah">
+                                        <rect key="frame" x="25" y="175" width="325" height="89"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bie-u9-neK" customClass="ShadowButton" customModule="GroceryList" customModuleProvider="target">
-                                                <rect key="frame" x="62.5" y="0.0" width="150" height="35"/>
+                                                <rect key="frame" x="87.5" y="0.0" width="150" height="35"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="PUa-qu-VQy"/>
@@ -1132,8 +1166,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfp-Zw-AZz">
-                                                <rect key="frame" x="36" y="43" width="203" height="21"/>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="11"/>
+                                                <rect key="frame" x="6" y="42" width="313" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="dBc-iu-L1s"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                 <state key="normal" title="Don't have an account? Sign up for free!">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -1141,9 +1178,22 @@
                                                     <action selector="signUpBtnWasPressed:" destination="hVC-1c-Z3L" eventType="touchUpInside" id="cVM-J1-fNP"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvT-iK-2aE">
+                                                <rect key="frame" x="121.5" y="74" width="82" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="15" id="KAd-GZ-kDf"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="11"/>
+                                                <state key="normal" title="Reset Password?">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="resetPswdBtnWasPressed:" destination="hVC-1c-Z3L" eventType="touchUpInside" id="wF6-0y-afz"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="64" id="h2K-bl-oXL"/>
+                                            <constraint firstAttribute="height" constant="89" id="h2K-bl-oXL"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -1151,11 +1201,15 @@
                                 <constraints>
                                     <constraint firstItem="XXG-f2-37e" firstAttribute="leading" secondItem="hAq-Kg-DbR" secondAttribute="leading" constant="50" id="2C0-KJ-5eo"/>
                                     <constraint firstItem="XXG-f2-37e" firstAttribute="top" secondItem="hAq-Kg-DbR" secondAttribute="top" constant="7" id="HKF-Wz-oF8"/>
+                                    <constraint firstItem="RId-Lg-QMm" firstAttribute="centerX" secondItem="hAq-Kg-DbR" secondAttribute="centerX" id="NQe-dg-A2V"/>
+                                    <constraint firstAttribute="trailing" secondItem="RId-Lg-QMm" secondAttribute="trailing" constant="25" id="RCJ-ea-biU"/>
                                     <constraint firstItem="z4i-2y-rah" firstAttribute="centerX" secondItem="hAq-Kg-DbR" secondAttribute="centerX" id="WiB-HN-NuG"/>
-                                    <constraint firstItem="z4i-2y-rah" firstAttribute="leading" secondItem="hAq-Kg-DbR" secondAttribute="leading" constant="50" id="Y2j-xw-DF9"/>
-                                    <constraint firstItem="z4i-2y-rah" firstAttribute="top" secondItem="XXG-f2-37e" secondAttribute="bottom" constant="30" id="ZEs-UX-NTH"/>
+                                    <constraint firstItem="z4i-2y-rah" firstAttribute="leading" secondItem="hAq-Kg-DbR" secondAttribute="leading" constant="25" id="Y2j-xw-DF9"/>
                                     <constraint firstAttribute="trailing" secondItem="XXG-f2-37e" secondAttribute="trailing" constant="50" id="gFb-DS-sbT"/>
-                                    <constraint firstAttribute="trailing" secondItem="z4i-2y-rah" secondAttribute="trailing" constant="50" id="pgb-Cl-Mry"/>
+                                    <constraint firstAttribute="trailing" secondItem="z4i-2y-rah" secondAttribute="trailing" constant="25" id="pgb-Cl-Mry"/>
+                                    <constraint firstItem="RId-Lg-QMm" firstAttribute="leading" secondItem="hAq-Kg-DbR" secondAttribute="leading" constant="25" id="vaH-MD-19M"/>
+                                    <constraint firstItem="RId-Lg-QMm" firstAttribute="top" secondItem="XXG-f2-37e" secondAttribute="bottom" constant="9" id="w2p-7m-Y00"/>
+                                    <constraint firstItem="z4i-2y-rah" firstAttribute="top" secondItem="RId-Lg-QMm" secondAttribute="bottom" constant="19" id="zh8-xl-8gg"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="fRB-Hf-3D3">
@@ -1180,6 +1234,8 @@
                     <connections>
                         <outlet property="emailField" destination="geG-Z1-tHq" id="gBC-qx-4p1"/>
                         <outlet property="passwordField" destination="14i-J0-6nF" id="yKP-i7-9Bq"/>
+                        <outlet property="resetPasswordBtn" destination="kvT-iK-2aE" id="WRW-MV-8n4"/>
+                        <outlet property="verificationCodeBtn" destination="RId-Lg-QMm" id="KzT-AK-aV7"/>
                         <outlet property="warningLbl" destination="vec-kV-7Xc" id="czM-42-IG3"/>
                     </connections>
                 </viewController>
@@ -1235,6 +1291,9 @@
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Iz-AY-API">
                                                 <rect key="frame" x="0.0" y="114" width="275" height="12"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="12" id="Hzn-Ws-8xv"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="9"/>
                                                 <color key="textColor" red="0.62223270819999998" green="1" blue="0.34769673089999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1242,7 +1301,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Xe-HZ-GUC" customClass="ShadowButton" customModule="GroceryList" customModuleProvider="target">
-                                        <rect key="frame" x="112" y="163" width="150" height="35"/>
+                                        <rect key="frame" x="112" y="148" width="150" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="1Ge-3X-Yrt"/>
@@ -1260,7 +1319,7 @@
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="1Xe-HZ-GUC" firstAttribute="centerX" secondItem="Id7-RU-6So" secondAttribute="centerX" id="3cl-5X-unv"/>
-                                    <constraint firstItem="1Xe-HZ-GUC" firstAttribute="top" secondItem="9dU-4R-G3t" secondAttribute="bottom" constant="30" id="9jg-yt-McE"/>
+                                    <constraint firstItem="1Xe-HZ-GUC" firstAttribute="top" secondItem="9dU-4R-G3t" secondAttribute="bottom" constant="15" id="9jg-yt-McE"/>
                                     <constraint firstItem="9dU-4R-G3t" firstAttribute="top" secondItem="Id7-RU-6So" secondAttribute="top" constant="7" id="Gy0-hM-ROH"/>
                                     <constraint firstItem="9dU-4R-G3t" firstAttribute="leading" secondItem="Id7-RU-6So" secondAttribute="leading" constant="50" id="bZ6-qG-dOM"/>
                                     <constraint firstAttribute="trailing" secondItem="9dU-4R-G3t" secondAttribute="trailing" constant="50" id="gtz-Fd-tZj"/>

@@ -22,10 +22,16 @@ class CreateItemVC: UIViewController {
         itemField.delegate = self
         descriptionField.delegate = self
         self.hideKeyboardWhenTappedAround()
+        itemField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        warningLbl.text = ""
+    }
+    
+    @objc func textFieldDidChange() {
+        warningLbl.text = ""
     }
     
     // Actions
