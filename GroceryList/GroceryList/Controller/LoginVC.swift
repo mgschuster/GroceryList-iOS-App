@@ -39,6 +39,7 @@ class LoginVC: UIViewController {
         verificationCodeBtn.isHidden = true
         verificationCodeBtn.isEnabled = false
         resetPasswordBtn.isEnabled = false
+        resetPasswordBtn.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         warningLbl.text = ""
     }
     
@@ -83,7 +84,7 @@ class LoginVC: UIViewController {
                     self.warningLbl.text = "No user with that email was found. Please create an account below."
                 } else if String(describing: loginError?.localizedDescription) == "Optional(\"The password is invalid or the user does not have a password.\")" {
                     self.errorHaptic()
-                    self.warningLbl.text = "Incorrect email or password, please try again or reset password via email."
+                    self.warningLbl.text = "Incorrect password. Please try again or reset password via email below."
                     self.resetPasswordBtn.isEnabled = true
                     self.resetPasswordBtn.setTitleColor(#colorLiteral(red: 0.6222327082, green: 1, blue: 0.3476967309, alpha: 1), for: .normal)
                 } else if String(describing: loginError?.localizedDescription) == "Optional(\"The email address is badly formatted.\")" {
@@ -102,7 +103,7 @@ class LoginVC: UIViewController {
             if success {
                 Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
                     
-                    let sendVerificationPopup = UIAlertController(title: "Alternate Verification Code Sent", message: "Another verification email have been sent to \(self.emailField.text!). Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
+                    let sendVerificationPopup = UIAlertController(title: "Alternate Verification Code Sent", message: "Another verification email has been sent to \(self.emailField.text!). Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
                     let sendVerificationAction = UIAlertAction(title: "OK", style: .destructive) { (buttonTapped) in
                         self.successHaptic()
                         self.resetPasswordBtn.isEnabled = false
@@ -143,7 +144,7 @@ class LoginVC: UIViewController {
                 self.passwordField.text = ""
                 self.resetPasswordBtn.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
             } else {
-                let resetPasswordPopup = UIAlertController(title: "Reset Password Email Sent", message: "An email providing steps to reset your password has been sent to the email listed above. Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
+                let resetPasswordPopup = UIAlertController(title: "Reset Password Email Sent", message: "An email providing steps to reset your password have been sent to the email listed above. Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
                 let resetPasswordAction = UIAlertAction(title: "OK", style: .destructive) { (buttonTapped) in
                     self.successHaptic()
                     self.resetPasswordBtn.isEnabled = false

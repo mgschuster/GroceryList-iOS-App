@@ -72,7 +72,7 @@ class CreateAccountVC: UIViewController {
                         if passwordField.text == confirmPasswordField.text {
                             AuthService.instance.registerUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, andUsername: self.usernameField.text!, userCreationComplete: { (success, registrationError) in
                                 if success {
-                                    let verificationPopup = UIAlertController(title: "Verification Email Sent", message: "A verification email has been sent to \(self.emailField.text!). Please verify and log in. Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
+                                    let verificationPopup = UIAlertController(title: "Verification Email Sent", message: "A verification email has been sent to \(self.emailField.text!). Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
                                     let verificationAction = UIAlertAction(title: "OK", style: .destructive) { (buttonTapped) in
                                         do {
                                             self.successHaptic()
