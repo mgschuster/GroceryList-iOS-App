@@ -55,11 +55,12 @@ class LoginVC: UIViewController {
         verificationCodeBtn.isEnabled = false
         
         resetPasswordBtn.isEnabled = false
+        resetPasswordBtn.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
     }
     
     // Actions
     @IBAction func loginBtnWasPressed(_ sender: Any) {
-        if emailField.text != nil && passwordField.text != nil {
+        if emailField.text != "" && passwordField.text != "" {
             AuthService.instance.loginUser(withEmail: emailField.text!, andPassword: passwordField.text!, loginComplete: { (success, loginError) in
                 if success {
                     if Auth.auth().currentUser?.isEmailVerified == false {
@@ -89,22 +90,24 @@ class LoginVC: UIViewController {
                     self.resetPasswordBtn.setTitleColor(#colorLiteral(red: 0.6222327082, green: 1, blue: 0.3476967309, alpha: 1), for: .normal)
                 } else if String(describing: loginError?.localizedDescription) == "Optional(\"The email address is badly formatted.\")" {
                     self.errorHaptic()
-                    self.warningLbl.text = "Please insert correct email above."
+                    self.warningLbl.text = "Please insert correct email format."
                 } else {
                     print(String(describing: loginError?.localizedDescription))
                 }
             })
+        } else {
+            self.errorHaptic()
+            self.warningLbl.text = "Please fill in the form above."
         }
     }
     
     @IBAction func verificationCodeBtnWasPressed(_ sender: Any) {
         
-        AuthService.instance.loginUser(withEmail: emailField.text!, andPassword: passwordField.text!) { (success, loginError) in
-            if success {
-                Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
-                    
-                    let sendVerificationPopup = UIAlertController(title: "Alternate Verification Code Sent", message: "Another verification email has been sent to \(self.emailField.text!). Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
-                    let sendVerificationAction = UIAlertAction(title: "OK", style: .destructive) { (buttonTapped) in
+        let sendVerificationPopup = UIAlertController(title: "Resend Verfication Code?", message: "Another verification email will be sent to \(self.emailField.text!). Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
+        let sendVerificationAction = UIAlertAction(title: "RESEND VERIFICATION", style: .destructive) { (buttonTapped) in
+            AuthService.instance.loginUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, loginComplete: { (success, loginError) in
+                if success {
+                    Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
                         self.successHaptic()
                         self.resetPasswordBtn.isEnabled = false
                         self.warningLbl.text = ""
@@ -119,46 +122,103 @@ class LoginVC: UIViewController {
                         } catch {
                             print(error)
                         }
-                        
-                    }
-                    sendVerificationPopup.addAction(sendVerificationAction)
-                    self.present(sendVerificationPopup, animated: true, completion: nil)
-                    
-                    print(error.debugDescription)
-                })
-                
-            } else {
-                print(String(describing: loginError?.localizedDescription))
-            }
+                        print(String(describing: error?.localizedDescription))
+                    })
+                }  else {
+                    print(String(describing: loginError?.localizedDescription))
+                }
+            })
         }
+        
+        let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+        sendVerificationPopup.addAction(sendVerificationAction)
+        sendVerificationPopup.addAction(cancelAction)
+        self.present(sendVerificationPopup, animated: true, completion: nil)
+
+//        AuthService.instance.loginUser(withEmail: emailField.text!, andPassword: passwordField.text!) { (success, loginError) in
+//            if success {
+//                Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+//
+//                    let sendVerificationPopup = UIAlertController(title: "Resend Verfication Code?", message: "Another verification email will be sent to \(self.emailField.text!). Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
+//                    let sendVerificationAction = UIAlertAction(title: "RESEND VERIFICATION", style: .destructive) { (buttonTapped) in
+//                        self.successHaptic()
+//                        self.resetPasswordBtn.isEnabled = false
+//                        self.warningLbl.text = ""
+//                        self.emailField.text = ""
+//                        self.passwordField.text = ""
+//                        self.resetPasswordBtn.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+//                        self.verificationCodeBtn.isEnabled = false
+//                        self.verificationCodeBtn.isHidden = true
+//
+//                        do {
+//                            try Auth.auth().signOut()
+//                        } catch {
+//                            print(error)
+//                        }
+//                    }
+//                    let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+//                    sendVerificationPopup.addAction(sendVerificationAction)
+//                    sendVerificationPopup.addAction(cancelAction)
+//                    self.present(sendVerificationPopup, animated: true, completion: nil)
+//
+//                    print(error.debugDescription)
+//                })
+//
+//            } else {
+//                print(String(describing: loginError?.localizedDescription))
+//            }
+//        }
     }
     
     @IBAction func resetPswdBtnWasPressed(_ sender: Any) {
-        Auth.auth().sendPasswordReset(withEmail: self.emailField.text!) { (error) in
-            
-            if String(describing: error?.localizedDescription) == "Optional(\"An email address must be provided.\")" {
-                self.errorHaptic()
+        
+        let resetPasswordPopup = UIAlertController(title: "Reset Password?", message: "An email providing steps to reset your password will be sent to \(self.emailField.text!). Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
+        let resetPasswordAction = UIAlertAction(title: "RESET PASSWORD", style: .destructive) { (buttonTapped) in
+            Auth.auth().sendPasswordReset(withEmail: self.emailField.text!, completion: { (error) in
+                print("password reset email sent")
+                self.successHaptic()
                 self.resetPasswordBtn.isEnabled = false
-                self.warningLbl.text = "You must provide an email to reset your password."
+                self.warningLbl.text = ""
                 self.emailField.text = ""
                 self.passwordField.text = ""
                 self.resetPasswordBtn.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
-            } else {
-                let resetPasswordPopup = UIAlertController(title: "Reset Password Email Sent", message: "An email providing steps to reset your password have been sent to the email listed above. Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
-                let resetPasswordAction = UIAlertAction(title: "OK", style: .destructive) { (buttonTapped) in
-                    self.successHaptic()
-                    self.resetPasswordBtn.isEnabled = false
-                    self.warningLbl.text = ""
-                    self.emailField.text = ""
-                    self.passwordField.text = ""
-                    self.resetPasswordBtn.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
-                }
-                resetPasswordPopup.addAction(resetPasswordAction)
-                self.present(resetPasswordPopup, animated: true, completion: nil)
-            }
-
-            print(String(describing: error?.localizedDescription))
+                print(String(describing: error?.localizedDescription))
+            })
         }
+        
+        let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+        resetPasswordPopup.addAction(cancelAction)
+        resetPasswordPopup.addAction(resetPasswordAction)
+        self.present(resetPasswordPopup, animated: true, completion: nil)
+        
+//        Auth.auth().sendPasswordReset(withEmail: self.emailField.text!) { (error) in
+//
+//            if String(describing: error?.localizedDescription) == "Optional(\"An email address must be provided.\")" {
+//                self.errorHaptic()
+//                self.resetPasswordBtn.isEnabled = false
+//                self.warningLbl.text = "You must provide an email to reset your password."
+//                self.emailField.text = ""
+//                self.passwordField.text = ""
+//                self.resetPasswordBtn.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+//            } else {
+//                let resetPasswordPopup = UIAlertController(title: "Reset Password?", message: "An email providing steps to reset your password will be sent to \(self.emailField.text!). Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
+//                let resetPasswordAction = UIAlertAction(title: "RESET PASSWORD", style: .destructive) { (buttonTapped) in
+//                    self.successHaptic()
+//                    self.resetPasswordBtn.isEnabled = false
+//                    self.warningLbl.text = ""
+//                    self.emailField.text = ""
+//                    self.passwordField.text = ""
+//                    self.resetPasswordBtn.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+//                }
+//                let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+//
+//                resetPasswordPopup.addAction(cancelAction)
+//                resetPasswordPopup.addAction(resetPasswordAction)
+//                self.present(resetPasswordPopup, animated: true, completion: nil)
+//            }
+//
+//            print(String(describing: error?.localizedDescription))
+//        }
     }
     
     @IBAction func signUpBtnWasPressed(_ sender: Any) {
