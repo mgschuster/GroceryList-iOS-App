@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateAccountVC: UIViewController {
     
@@ -32,6 +33,7 @@ class CreateAccountVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         reloadUsernames()
+        warningLbl.text = ""
     }
     
     func reloadUsernames() {
@@ -70,11 +72,19 @@ class CreateAccountVC: UIViewController {
                         if passwordField.text == confirmPasswordField.text {
                             AuthService.instance.registerUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, andUsername: self.usernameField.text!, userCreationComplete: { (success, registrationError) in
                                 if success {
-                                    AuthService.instance.loginUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, loginComplete: { (success, nil) in
-                                        self.successHaptic()
-                                        self.dismiss(animated: true, completion: nil)
-                                        print("Successfully registered user")
-                                    })
+                                    let verificationPopup = UIAlertController(title: "Verification Email Sent", message: "A verification email has been sent to \(self.emailField.text!). Please verify and log in. Please allow up to one hour for this email to be sent.", preferredStyle: .alert)
+                                    let verificationAction = UIAlertAction(title: "OK", style: .destructive) { (buttonTapped) in
+                                        do {
+                                            self.successHaptic()
+                                            try Auth.auth().signOut()
+                                            let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
+                                            self.present(loginVC!, animated: true, completion: nil)
+                                        } catch {
+                                            print(error)
+                                        }
+                                    }
+                                    verificationPopup.addAction(verificationAction)
+                                    self.present(verificationPopup, animated: true, completion: nil)
                                 } else if String(describing: registrationError?.localizedDescription) == "Optional(\"The password must be 6 characters long or more.\")" {
                                     self.errorHaptic()
                                     self.warningLbl.text = "Password must be 6+ characters long."

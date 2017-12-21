@@ -20,6 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         if Auth.auth().currentUser == nil {
+            if Auth.auth().currentUser?.isEmailVerified == false {
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
+                window?.makeKeyAndVisible()
+                window?.rootViewController?.present(loginVC!, animated: true, completion: nil)
+            }
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
             window?.makeKeyAndVisible()

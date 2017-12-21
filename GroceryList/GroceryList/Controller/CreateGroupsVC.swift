@@ -30,6 +30,7 @@ class CreateGroupsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         groupTextField.delegate = self
+        groupTextField.addTarget(self, action: #selector(groupNameFieldDidChange), for: .editingChanged)
         descriptionTextField.delegate = self
         usernameSearchTextField.delegate = self
         usernameSearchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -39,6 +40,7 @@ class CreateGroupsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkmarkBtn.isHidden = true
+        warningLbl.text = ""
     }
     
     @objc func textFieldDidChange() {
@@ -51,6 +53,10 @@ class CreateGroupsVC: UIViewController {
                 self.tableView.reloadData()
             })
         }
+    }
+    
+    @objc func groupNameFieldDidChange() {
+        warningLbl.text = ""
     }
     
     // Actions

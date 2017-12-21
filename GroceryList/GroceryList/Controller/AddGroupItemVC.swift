@@ -30,11 +30,17 @@ class AddGroupItemVC: UIViewController {
         itemTextField.delegate = self
         descriptionTextField.delegate = self
         self.hideKeyboardWhenTappedAround()
+        itemTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadCurrentUser()
+        warningLbl.text = ""
+    }
+    
+    @objc func textFieldDidChange() {
+        warningLbl.text = ""
     }
     
     func loadCurrentUser() {
