@@ -122,7 +122,11 @@ class MeVC: UIViewController {
 
     func reloadNameName() {
         DataService.instance.printNameName(forUID: (Auth.auth().currentUser?.uid)!) { (returnedNameName) in
-            self.nameNameLbl.text = returnedNameName
+            if returnedNameName == "" {
+                self.nameNameLbl.text = "Please add a nickname below."
+            } else {
+                self.nameNameLbl.text = returnedNameName
+            }
         }
     }
     
@@ -208,12 +212,13 @@ class MeVC: UIViewController {
                             
                             if String(describing: error?.localizedDescription) == "Optional(\"This operation is sensitive and requires recent authentication. Log in again before retrying this request.\")" {
                                 self.errorHaptic()
-                                self.emailWarningLbl.text = "Recent authentication required. Please sign back in and try again."
+                                self.emailWarningLbl.text = "Recent authentication is required. Please sign back in and try again."
                                 self.currentEmail.text = ""
                                 self.newEmail.text = ""
                                 self.retypeNewEmail.text = ""
                             } else if error != nil {
                                 self.emailWarningLbl.text = "There was an error. Please try again."
+                                print(String(describing: error?.localizedDescription))
                             } else {
                                 DataService.instance.changeEmail(forUID: currentUID!, andAdjustedEmail: self.retypeNewEmail.text!)
                                 self.successHaptic()
@@ -223,7 +228,11 @@ class MeVC: UIViewController {
                                 self.reloadEmail()
                                 self.emailWarningLbl.text = "SUCCESS"
                                 
-                                print(String(describing: error?.localizedDescription))
+                                let changeSuccessPopup = UIAlertController(title: "SUCCESS", message: "Your email has been successfully changed. Check your initial email for confirmation.", preferredStyle: .alert)
+                                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                                changeSuccessPopup.addAction(okAction)
+                                self.present(changeSuccessPopup, animated: true, completion: nil)
+                                
                             }
                         })
                     })
@@ -264,7 +273,13 @@ class MeVC: UIViewController {
                                 self.reloadUsername()
                                 self.reloadUsernames()
                                 self.newUsername.text = ""
-                                self.usernameWarningLbl.text = "SUCCESS"
+                                self.usernameWarningLbl.text = ""
+                                
+                                let changeSuccessPopup = UIAlertController(title: "SUCCESS", message: "Your username has been successfully changed. CONGRATULATIONS!", preferredStyle: .alert)
+                                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                                changeSuccessPopup.addAction(okAction)
+                                self.present(changeSuccessPopup, animated: true, completion: nil)
+                                
                             })
                             let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
                             changeUsernamePopup.addAction(changeUsernameAction)
@@ -308,7 +323,7 @@ class MeVC: UIViewController {
                         Auth.auth().currentUser?.updatePassword(to: self.retypeNewPassword.text!, completion: { (error) in
                             if String(describing: error?.localizedDescription) == "Optional(\"This operation is sensitive and requires recent authentication. Log in again before retrying this request.\")" {
                                 self.errorHaptic()
-                                self.passwordWarningLbl.text = "Recent authentication required. Please sign back in and try again."
+                                self.passwordWarningLbl.text = "Recent authentication is required. Please sign back in and try again."
                                 self.newPassword.text = ""
                                 self.retypeNewPassword.text = ""
                             } else if error != nil {
@@ -317,7 +332,12 @@ class MeVC: UIViewController {
                                 self.successHaptic()
                                 self.newPassword.text = ""
                                 self.retypeNewPassword.text = ""
-                                self.passwordWarningLbl.text = "SUCCESS"
+                                self.passwordWarningLbl.text = ""
+                                
+                                let changeSuccessPopup = UIAlertController(title: "SUCCESS", message: "Your password has been successfully changed. CONGRATULATIONS!", preferredStyle: .alert)
+                                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                                changeSuccessPopup.addAction(okAction)
+                                self.present(changeSuccessPopup, animated: true, completion: nil)
                             }
                         })
                     })
@@ -346,9 +366,54 @@ class MeVC: UIViewController {
     }
     
     @IBAction func deleteAcntBtnWasPressed(_ sender: Any) {
+        let deletePopup = UIAlertController(title: "DELETE ACCOUNT", message: "This will fully delete your account and erase everything you ever worked for... (in this app). If this isn't permanent you can always sign out instead.", preferredStyle: .alert)
         
+        let deleteAction = UIAlertAction(title: "DELETE ACCOUNT", style: .destructive) { (buttonTapped) in
+            let confirmDeletePopup = UIAlertController(title: "LAST CHANCE...", message: "Are you sure you want to delete this account. Please choose wisely as this cannot be undone.", preferredStyle: .alert)
+            
+            let confirmDeleteAction = UIAlertAction(title: "YES I'M SURE", style: .destructive, handler: { (buttonTapped) in
+                DataService.instance.deleteFromUsernames(username: self.usernameLbl.text!)
+                DataService.instance.deleteUserFromDatabase(uid: (Auth.auth().currentUser?.uid)!)
+                
+                Auth.auth().currentUser?.delete(completion: { (error) in
+                    if error != nil {
+                        let deleteFailedPopup = UIAlertController(title: "ERROR", message: "There was an error deleting your account. Recent authentication is required. Please sign back in and try again another time.", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        deleteFailedPopup.addAction(okAction)
+                        self.present(deleteFailedPopup, animated: true, completion: nil)
+                    } else {
+                        let deleteSuccessPopup = UIAlertController(title: "SUCCESS", message: "Your account has been deleted. Please come back again soon...", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        deleteSuccessPopup.addAction(okAction)
+                        let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
+                        self.present(loginVC!, animated: true, completion: nil)
+                        self.present(deleteSuccessPopup, animated: true, completion: nil)
+                    }
+                })
+            })
+            let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+            confirmDeletePopup.addAction(confirmDeleteAction)
+            confirmDeletePopup.addAction(cancelAction)
+            self.present(confirmDeletePopup, animated: true, completion: nil)
+        }
+        
+        let logoutAction = UIAlertAction(title: "SIGN OUT", style: .default) { (buttonTapped) in
+            do {
+                self.warningHaptic()
+                try Auth.auth().signOut()
+                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
+                self.present(loginVC!, animated: true, completion: nil)
+            } catch {
+                print(error)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+        deletePopup.addAction(deleteAction)
+        deletePopup.addAction(logoutAction)
+        deletePopup.addAction(cancelAction)
+        self.present(deletePopup, animated: true, completion: nil)
     }
-
 }
 
 extension MeVC: UITextFieldDelegate {
