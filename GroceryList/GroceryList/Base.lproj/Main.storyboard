@@ -803,11 +803,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GjT-aU-GUd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
-            <point key="canvasLocation" x="1473" y="0.0"/>
-=======
-            <point key="canvasLocation" x="2253.5999999999999" y="0.0"/>
->>>>>>> scrolling-profile
+            <point key="canvasLocation" x="2182" y="0.0"/>
         </scene>
         <!--Groups-->
         <scene sceneID="wg7-f3-ORb">
@@ -1450,7 +1446,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0b-Vw-Qu0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1472.8" y="672.41379310344837"/>
+            <point key="canvasLocation" x="1473" y="698"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="ceu-dV-mHb">
