@@ -337,11 +337,11 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="324" height="55"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NICKNAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vD8-uB-HHN">
-                                                                <rect key="frame" x="0.0" y="0.0" width="96" height="17"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="17"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="pVc-6q-VsB"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
                                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -376,11 +376,11 @@
                                                         <rect key="frame" x="0.0" y="80" width="324" height="99"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHANGE NICKNAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tib-UG-aL8">
-                                                                <rect key="frame" x="0.0" y="0.0" width="177" height="17"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="156.5" height="17"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="2kZ-rT-g1N"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                                 <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -400,7 +400,7 @@
                                                                     <constraint firstAttribute="height" constant="11" id="8uX-yH-fTV"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="9"/>
-                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWx-wf-f3X" customClass="ShadowButton" customModule="GroceryList" customModuleProvider="target">
@@ -436,11 +436,11 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="324" height="55"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OT-cN-Flt">
-                                                                <rect key="frame" x="0.0" y="0.0" width="51.5" height="17"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="17"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="Zs6-og-k4x"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -475,11 +475,11 @@
                                                         <rect key="frame" x="0.0" y="80" width="324" height="159"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPDATE PRIMARY EMAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZ7-TB-YiU">
-                                                                <rect key="frame" x="0.0" y="0.0" width="198" height="17"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="175" height="17"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="fe8-IB-Jxy"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                                 <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -519,7 +519,7 @@
                                                                     <constraint firstAttribute="height" constant="11" id="0pK-Xw-FX3"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="11"/>
-                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOt-Iv-cjq" customClass="ShadowButton" customModule="GroceryList" customModuleProvider="target">
@@ -555,11 +555,11 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="324" height="55"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USERNAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umA-y6-dqT">
-                                                                <rect key="frame" x="0.0" y="0.0" width="95.5" height="17"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="118" height="17"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="kGL-oz-Aen"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -594,11 +594,11 @@
                                                         <rect key="frame" x="0.0" y="80" width="324" height="99"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHANGE USERNAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l07-JJ-n7j">
-                                                                <rect key="frame" x="0.0" y="0.0" width="176.5" height="17"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="156" height="17"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="6FU-zv-Iyp"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                                 <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -618,7 +618,7 @@
                                                                     <constraint firstAttribute="height" constant="11" id="dLt-jX-dX5"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="11"/>
-                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrl-Hu-UA8" customClass="ShadowButton" customModule="GroceryList" customModuleProvider="target">
@@ -651,11 +651,11 @@
                                                 <rect key="frame" x="25" y="799" width="324" height="159"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHANGE PASSWORD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8et-9v-e4m">
-                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="156.5" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="17" id="F7C-Kz-7ga"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -695,7 +695,7 @@
                                                             <constraint firstAttribute="height" constant="11" id="AV9-AO-4Id"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="11"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N90-lK-VCY" customClass="ShadowButton" customModule="GroceryList" customModuleProvider="target">
