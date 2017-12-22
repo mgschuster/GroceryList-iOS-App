@@ -28,11 +28,23 @@ class CreateAccountVC: UIViewController {
         passwordField.delegate = self
         confirmPasswordField.delegate = self
         self.hideKeyboardWhenTappedAround()
+        usernameField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        emailField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        confirmPasswordField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         reloadUsernames()
+        warningLbl.text = ""
+        usernameField.text = ""
+        emailField.text = ""
+        passwordField.text = ""
+        confirmPasswordField.text = ""
+    }
+    
+    @objc func textFieldDidChange() {
         warningLbl.text = ""
     }
     

@@ -92,6 +92,10 @@ class DataService {
         REF_USERNAMES.child(username).removeValue()
     }
     
+    func deleteUserFromDatabase(uid: String) {
+        REF_USERS.child(uid).removeValue()
+    }
+    
     func printNameName(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
         REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             let nameName = snapshot.childSnapshot(forPath: "name name").value as! String
