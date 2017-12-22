@@ -385,9 +385,9 @@ class MeVC: UIViewController {
                         let deleteSuccessPopup = UIAlertController(title: "SUCCESS", message: "Your account has been deleted. Please come back again soon...", preferredStyle: .alert)
                         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                         deleteSuccessPopup.addAction(okAction)
+                        self.present(deleteSuccessPopup, animated: true, completion: nil)
                         let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
                         self.present(loginVC!, animated: true, completion: nil)
-                        self.present(deleteSuccessPopup, animated: true, completion: nil)
                     }
                 })
             })
