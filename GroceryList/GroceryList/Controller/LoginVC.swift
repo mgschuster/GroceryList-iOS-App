@@ -41,6 +41,8 @@ class LoginVC: UIViewController {
         resetPasswordBtn.isEnabled = false
         resetPasswordBtn.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         warningLbl.text = ""
+        emailField.text = ""
+        passwordField.text = ""
     }
     
     @objc func passwordFieldDidChange() {
