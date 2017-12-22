@@ -26,13 +26,13 @@ class MeVC: UIViewController {
     @IBOutlet weak var profileNameLbl: UILabel!
     @IBOutlet weak var nameNameLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
-<<<<<<< HEAD
+
     @IBOutlet weak var nameBtn: ShadowButton!
     @IBOutlet weak var nameTextField: BluePlaceholder!
     @IBOutlet weak var warningLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-=======
+
     @IBOutlet weak var usernameLbl: UILabel!
     
     @IBOutlet weak var updateNicknameBtn: ShadowButton!
@@ -44,8 +44,6 @@ class MeVC: UIViewController {
     @IBOutlet weak var emailWarningLbl: UILabel!
     @IBOutlet weak var usernameWarningLbl: UILabel!
     @IBOutlet weak var passwordWarningLbl: UILabel!
-    
->>>>>>> scrolling-profile
     
     override func viewDidLoad() {
         super.viewDidLoad()
