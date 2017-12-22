@@ -22,24 +22,17 @@ class MeVC: UIViewController {
     @IBOutlet weak var currentPassword: BluePlaceholder!
     @IBOutlet weak var newPassword: BluePlaceholder!
     @IBOutlet weak var retypeNewPassword: BluePlaceholder!
-    
+
     @IBOutlet weak var profileNameLbl: UILabel!
     @IBOutlet weak var nameNameLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
-
-    @IBOutlet weak var nameBtn: ShadowButton!
-    @IBOutlet weak var nameTextField: BluePlaceholder!
-    @IBOutlet weak var warningLbl: UILabel!
-    @IBOutlet weak var nameLbl: UILabel!
-    @IBOutlet weak var scrollView: UIScrollView!
-
     @IBOutlet weak var usernameLbl: UILabel!
-    
+
     @IBOutlet weak var updateNicknameBtn: ShadowButton!
     @IBOutlet weak var updateEmailBtn: ShadowButton!
     @IBOutlet weak var changeUsernameBtn: ShadowButton!
     @IBOutlet weak var updatePasswordBtn: ShadowButton!
-    
+
     @IBOutlet weak var nicknameWarningLbl: UILabel!
     @IBOutlet weak var emailWarningLbl: UILabel!
     @IBOutlet weak var usernameWarningLbl: UILabel!
