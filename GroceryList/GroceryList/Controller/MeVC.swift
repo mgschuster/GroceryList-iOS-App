@@ -13,13 +13,10 @@ class MeVC: UIViewController {
 
     // Outlets
     @IBOutlet weak var newNameTextField: BluePlaceholder!
-    @IBOutlet weak var retypeNewName: BluePlaceholder!
     @IBOutlet weak var currentEmail: BluePlaceholder!
     @IBOutlet weak var newEmail: BluePlaceholder!
     @IBOutlet weak var retypeNewEmail: BluePlaceholder!
     @IBOutlet weak var newUsername: BluePlaceholder!
-    @IBOutlet weak var retypeNewUsername: BluePlaceholder!
-    @IBOutlet weak var currentPassword: BluePlaceholder!
     @IBOutlet weak var newPassword: BluePlaceholder!
     @IBOutlet weak var retypeNewPassword: BluePlaceholder!
 
@@ -38,6 +35,9 @@ class MeVC: UIViewController {
     @IBOutlet weak var usernameWarningLbl: UILabel!
     @IBOutlet weak var passwordWarningLbl: UILabel!
     
+    // Variables
+    var usernamesArray = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -48,7 +48,6 @@ class MeVC: UIViewController {
         newEmail.delegate = self
         retypeNewEmail.delegate = self
         newUsername.delegate = self
-        currentPassword.delegate = self
         newPassword.delegate = self
         retypeNewPassword.delegate = self
         
@@ -61,7 +60,6 @@ class MeVC: UIViewController {
         
         newUsername.addTarget(self, action: #selector(usernameTextFieldDidChange), for: .editingChanged)
         
-        currentPassword.addTarget(self, action: #selector(passwordTextFieldDidChange), for: .editingChanged)
         newPassword.addTarget(self, action: #selector(passwordTextFieldDidChange), for: .editingChanged)
         retypeNewPassword.addTarget(self, action: #selector(passwordTextFieldDidChange), for: .editingChanged)
 
@@ -69,17 +67,15 @@ class MeVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DataService.instance.printUsername(forUID: (Auth.auth().currentUser?.uid)!) { (returnedUsername) in
-            self.profileNameLbl.text = returnedUsername
-            self.usernameLbl.text = returnedUsername
-        }
+        reloadUsername()
         
         nicknameWarningLbl.text = ""
         emailWarningLbl.text = ""
         usernameWarningLbl.text = ""
         passwordWarningLbl.text = ""
 
-        emailLbl.text = Auth.auth().currentUser?.email
+        reloadEmail()
+        reloadUsernames()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,10 +98,55 @@ class MeVC: UIViewController {
     @objc func passwordTextFieldDidChange() {
         passwordWarningLbl.text = ""
     }
+    
+    func reloadEmail() {
+        DataService.instance.printDatabaseEmail(forUID: (Auth.auth().currentUser?.uid)!) { (returnedEmail) in
+            self.emailLbl.text = returnedEmail
+            
+            if self.emailLbl.text != Auth.auth().currentUser?.email {
+                DataService.instance.changeEmail(forUID: (Auth.auth().currentUser?.uid)!, andAdjustedEmail: (Auth.auth().currentUser?.email)!)
+                self.reloadEmail()
+            } else {
+                return
+            }
+            
+        }
+    }
+    
+    func reloadUsername() {
+        DataService.instance.printUsername(forUID: (Auth.auth().currentUser?.uid)!) { (returnedUsername) in
+            self.profileNameLbl.text = returnedUsername
+            self.usernameLbl.text = returnedUsername
+        }
+    }
 
     func reloadNameName() {
         DataService.instance.printNameName(forUID: (Auth.auth().currentUser?.uid)!) { (returnedNameName) in
             self.nameNameLbl.text = returnedNameName
+        }
+    }
+    
+    func reloadUsernames() {
+        DataService.instance.usernames(handler: { (returnedUsernameArray) in
+            self.usernamesArray = returnedUsernameArray
+        })
+    }
+    
+    func usernameAvailable(username: String) -> Bool {
+        var available: Bool?
+        
+        if usernamesArray.count >= 1 {
+            for user in usernamesArray {
+                if user == username {
+                    available = false
+                    break
+                } else {
+                    available = true
+                }
+            }
+            return available!
+        } else {
+            return true
         }
     }
     
@@ -138,7 +179,7 @@ class MeVC: UIViewController {
                         self.updateNicknameBtn.isEnabled = true
                         self.reloadNameName()
                         self.newNameTextField.text = ""
-                        self.nicknameWarningLbl.text = ""
+                        self.nicknameWarningLbl.text = "SUCCESS"
                     } else {
                         self.updateNicknameBtn.isEnabled = true
                     }
@@ -156,43 +197,158 @@ class MeVC: UIViewController {
     
     @IBAction func changeEmailBtnWasPressed(_ sender: Any) {
         
+        let currentUID = Auth.auth().currentUser?.uid
+        let changeEmailPopup = UIAlertController(title: "Update Email?", message: "Your email will be updated and an email will be sent to verify. Please double-check new email for any typos before updating.", preferredStyle: .alert)
+        
+        if currentEmail.text != "" && newEmail.text != "" && retypeNewEmail.text != "" {
+            if currentEmail.text == emailLbl.text {
+                if newEmail.text == retypeNewEmail.text {
+                    let changeEmailAction = UIAlertAction(title: "UPDATE EMAIL", style: .destructive, handler: { (buttonTapped) in
+                        Auth.auth().currentUser?.updateEmail(to: self.retypeNewEmail.text!, completion: { (error) in
+                            
+                            if String(describing: error?.localizedDescription) == "Optional(\"This operation is sensitive and requires recent authentication. Log in again before retrying this request.\")" {
+                                self.errorHaptic()
+                                self.emailWarningLbl.text = "Recent authentication required. Please sign back in and try again."
+                                self.currentEmail.text = ""
+                                self.newEmail.text = ""
+                                self.retypeNewEmail.text = ""
+                            } else if error != nil {
+                                self.emailWarningLbl.text = "There was an error. Please try again."
+                            } else {
+                                DataService.instance.changeEmail(forUID: currentUID!, andAdjustedEmail: self.retypeNewEmail.text!)
+                                self.successHaptic()
+                                self.currentEmail.text = ""
+                                self.newEmail.text = ""
+                                self.retypeNewEmail.text = ""
+                                self.reloadEmail()
+                                self.emailWarningLbl.text = "SUCCESS"
+                                
+                                print(String(describing: error?.localizedDescription))
+                            }
+                        })
+                    })
+                    let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+                    changeEmailPopup.addAction(changeEmailAction)
+                    changeEmailPopup.addAction(cancelAction)
+                    self.present(changeEmailPopup, animated: true, completion: nil)
+                } else {
+                    self.errorHaptic()
+                    self.emailWarningLbl.text = "New emails are not the same."
+                }
+            } else {
+                self.errorHaptic()
+                self.emailWarningLbl.text = "That is not your current email."
+            }
+        } else {
+            self.errorHaptic()
+            self.emailWarningLbl.text = "Please completely fill in all forms above."
+        }
     }
     
     @IBAction func changeUsernameBtnWasPressed(_ sender: Any) {
         
+        let currentUID = Auth.auth().currentUser?.uid
+        let changeUsernamePopup = UIAlertController(title: "Change Username?", message: "Your username is about to change. Make sure you really, really like it.", preferredStyle: .alert)
+        
+        if self.newUsername.text != "" && self.newUsername.text != "new username" {
+            if self.newUsername.text != self.profileNameLbl.text {
+                let usernameAvailable = self.usernameAvailable(username: self.newUsername.text!)
+                if self.newUsername.text!.count >= 5 && self.newUsername.text!.count <= 17 {
+                    if !self.newUsername.text!.contains(" ") {
+                        if usernameAvailable {
+                            let changeUsernameAction = UIAlertAction(title: "CHANGE USERNAME", style: .destructive, handler: { (buttonTapped) in
+                                DataService.instance.changeUsername(forUID: currentUID!, andAdjustedUsername: self.newUsername.text!)
+                                DataService.instance.addUsername(uid: currentUID!, username: self.newUsername.text!)
+                                DataService.instance.deleteFromUsernames(username: self.profileNameLbl.text!)
+                                self.successHaptic()
+                                self.reloadUsername()
+                                self.reloadUsernames()
+                                self.newUsername.text = ""
+                                self.usernameWarningLbl.text = "SUCCESS"
+                            })
+                            let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+                            changeUsernamePopup.addAction(changeUsernameAction)
+                            changeUsernamePopup.addAction(cancelAction)
+                            self.present(changeUsernamePopup, animated: true, completion: nil)
+                        } else {
+                            self.errorHaptic()
+                            self.usernameWarningLbl.text = "An account with that username already exists."
+                            self.newUsername.text = ""
+                        }
+                    } else {
+                        self.errorHaptic()
+                        self.usernameWarningLbl.text = "New username must not contain a space."
+                        self.newUsername.text = ""
+                    }
+                } else {
+                    self.errorHaptic()
+                    self.usernameWarningLbl.text = "Username must be between 5 and 17 characters."
+                    self.newUsername.text = ""
+                }
+            } else {
+                self.errorHaptic()
+                self.usernameWarningLbl.text = "New username is the same as current username. Please try again."
+                self.newUsername.text = ""
+            }
+        } else {
+            self.errorHaptic()
+            self.usernameWarningLbl.text = "Please fill in the form above."
+            self.newUsername.text = ""
+        }
     }
     
     @IBAction func changePswdBtnWasPressed(_ sender: Any) {
         
+        let changePasswordPopup = UIAlertController(title: "Change Password?", message: "Your password will be changed. This cannot be undone. Are you sure you want to do this?", preferredStyle: .alert)
+        
+        if newPassword.text != "" && retypeNewPassword.text != "" {
+            if newPassword.text == retypeNewPassword.text {
+                if retypeNewPassword.text!.count >= 6 {
+                    let changePasswordAction = UIAlertAction(title: "CHANGE PASSWORD", style: .destructive, handler: { (buttonTapped) in
+                        Auth.auth().currentUser?.updatePassword(to: self.retypeNewPassword.text!, completion: { (error) in
+                            if String(describing: error?.localizedDescription) == "Optional(\"This operation is sensitive and requires recent authentication. Log in again before retrying this request.\")" {
+                                self.errorHaptic()
+                                self.passwordWarningLbl.text = "Recent authentication required. Please sign back in and try again."
+                                self.newPassword.text = ""
+                                self.retypeNewPassword.text = ""
+                            } else if error != nil {
+                                print(String(describing: error?.localizedDescription))
+                            } else {
+                                self.successHaptic()
+                                self.newPassword.text = ""
+                                self.retypeNewPassword.text = ""
+                                self.passwordWarningLbl.text = "SUCCESS"
+                            }
+                        })
+                    })
+                    let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+                    changePasswordPopup.addAction(changePasswordAction)
+                    changePasswordPopup.addAction(cancelAction)
+                    self.present(changePasswordPopup, animated: true, completion: nil)
+                } else {
+                    self.errorHaptic()
+                    self.passwordWarningLbl.text = "Password must be 6+ characters long."
+                    self.newPassword.text = ""
+                    self.retypeNewPassword.text = ""
+                }
+            } else {
+                self.errorHaptic()
+                self.passwordWarningLbl.text = "Passwords do not match."
+                self.newPassword.text = ""
+                self.retypeNewPassword.text = ""
+            }
+        } else {
+            self.errorHaptic()
+            self.passwordWarningLbl.text = "Please fill in all forms above."
+            self.newPassword.text = ""
+            self.retypeNewPassword.text = ""
+        }
     }
     
-    @IBAction func nameBtnWasPressed(_ sender: Any) {
-//        if nameTextField.text != "" && nameTextField.text != "NAME..." && nameTextField.text != nil {
-//            if nameTextField.text != nameLbl.text {
-//                nameBtn.isEnabled = true
-//                let uid = Auth.auth().currentUser?.uid
-//
-//                DataService.instance.uploadNameName(forUID: uid!, andName: nameTextField.text!, sendComplete: { (isComplete) in
-//                    if isComplete {
-//                        self.successHaptic()
-//                        self.nameBtn.isEnabled = true
-//                        self.reloadNameName()
-//                        self.nameTextField.text = ""
-//                        self.warningLbl.text = ""
-//                    } else {
-//                        self.nameBtn.isEnabled = true
-//                    }
-//                })
-//            } else {
-//                errorHaptic()
-//                warningLbl.text = "That is the same name as above."
-//                nameTextField.text = ""
-//            }
-//        } else {
-//            errorHaptic()
-//            warningLbl.text = "Please fill in the form above."
-//        }
+    @IBAction func deleteAcntBtnWasPressed(_ sender: Any) {
+        
     }
+
 }
 
 extension MeVC: UITextFieldDelegate {

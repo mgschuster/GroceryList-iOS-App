@@ -73,6 +73,25 @@ class DataService {
         }
     }
     
+    func printDatabaseEmail(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
+        REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            let email = snapshot.childSnapshot(forPath: "email").value as! String
+            handler(email)
+        }
+    }
+    
+    func changeUsername(forUID uid: String, andAdjustedUsername username: String) {
+        REF_USERS.child(uid).updateChildValues(["username": username])
+    }
+    
+    func changeEmail(forUID uid: String, andAdjustedEmail email: String) {
+        REF_USERS.child(uid).updateChildValues(["email": email])
+    }
+    
+    func deleteFromUsernames(username: String) {
+        REF_USERNAMES.child(username).removeValue()
+    }
+    
     func printNameName(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
         REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             let nameName = snapshot.childSnapshot(forPath: "name name").value as! String
