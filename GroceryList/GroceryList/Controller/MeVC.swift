@@ -269,6 +269,8 @@ class MeVC: UIViewController {
                                 DataService.instance.changeUsername(forUID: currentUID!, andAdjustedUsername: self.newUsername.text!)
                                 DataService.instance.addUsername(uid: currentUID!, username: self.newUsername.text!)
                                 DataService.instance.deleteFromUsernames(username: self.profileNameLbl.text!)
+                                DataService.instance.changeMaster(currentUsername: self.profileNameLbl.text!, changedUsername: self.newUsername.text!)
+                                DataService.instance.changeUsersInGroup(currentUsername: self.profileNameLbl.text!, changedUsername: self.newUsername.text!, uid: currentUID!)
                                 self.successHaptic()
                                 self.reloadUsername()
                                 self.reloadUsernames()

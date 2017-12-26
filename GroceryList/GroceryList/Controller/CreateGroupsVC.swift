@@ -24,6 +24,7 @@ class CreateGroupsVC: UIViewController {
     // Variables
     var usernameArray = [String]()
     var chosenUserArray = [String]()
+    var currentUser = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,11 @@ class CreateGroupsVC: UIViewController {
         usernameSearchTextField.delegate = self
         usernameSearchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         self.hideKeyboardWhenTappedAround()
+        
+        DataService.instance.printUsername(forUID: (Auth.auth().currentUser?.uid)!) { (returnedUsername) in
+            self.chosenUserArray.append(returnedUsername)
+            self.currentUser = returnedUsername
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,12 +70,17 @@ class CreateGroupsVC: UIViewController {
         if groupTextField.text != "" && descriptionTextField.text != "DESCRIPTION (optional)" {
             
             DataService.instance.getIds(forUsernames: chosenUserArray, handler: { (usernameIdsArray) in
+                var usernameDict = [String: String]()
                 var usernameIds = usernameIdsArray
                 let currentUserId = Auth.auth().currentUser?.uid
                 
                 usernameIds.append(currentUserId!)
                 
-                DataService.instance.createGroup(withTitle: self.groupTextField.text!, andDescription: self.descriptionTextField.text!, forUsernames: usernameIds, handler: { (groupCreated) in
+                for i in 0..<self.chosenUserArray.count {
+                    usernameDict[self.chosenUserArray[i]] = usernameIds[i]
+                }
+                
+                DataService.instance.createGroup(withTitle: self.groupTextField.text!, andDescription: self.descriptionTextField.text!, andMaster: self.currentUser, forUsernames: usernameDict, handler: { (groupCreated) in
                     if groupCreated {
                         self.successHaptic()
                         self.dismiss(animated: true, completion: nil)

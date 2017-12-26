@@ -16,6 +16,7 @@ class GroupsVC: UIViewController {
     
     // Variables
     var groupsArray = [Group]()
+    var currentUsername = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class GroupsVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         reloadGroupsList()
+        reloadCurrentUser()
     }
     
     // Actions
@@ -37,6 +39,12 @@ class GroupsVC: UIViewController {
         DataService.instance.getAllGroups { (returnedGroupsArray) in
             self.groupsArray = returnedGroupsArray
             self.groupsTableView.reloadData()
+        }
+    }
+    
+    func reloadCurrentUser() {
+        DataService.instance.printUsername(forUID: (Auth.auth().currentUser?.uid)!) { (returnedUsername) in
+            self.currentUsername = returnedUsername
         }
     }
 }
@@ -67,25 +75,50 @@ extension GroupsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let selectedGroup = groupsArray[indexPath.row]
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE GROUP") { (rowAction, indexPath) in
-            self.heavyHaptic()
-            
-            let deleteGroupPopup = UIAlertController(title: "Delete Group?", message: "Deleting the group will remove all users and erase the group from memory. This cannot be undone.", preferredStyle: .actionSheet)
-            
-            let logoutAction = UIAlertAction(title: "DELETE", style: .destructive) { (buttonTapped) in
-                self.warningHaptic()
-                DataService.instance.removeGroup(forGroupUID: selectedGroup.key)
-                self.reloadGroupsList()
+        var rowActionArray = [UITableViewRowAction]()
+        
+        if selectedGroup.master == currentUsername {
+            let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE GROUP") { (rowAction, indexPath) in
+                self.heavyHaptic()
+                
+                let deleteGroupPopup = UIAlertController(title: "Delete Group?", message: "Deleting the group will remove all users and erase the group from memory. This cannot be undone.", preferredStyle: .actionSheet)
+                
+                let deleteAction = UIAlertAction(title: "DELETE", style: .destructive) { (buttonTapped) in
+                    self.warningHaptic()
+                    DataService.instance.removeGroup(forGroupUID: selectedGroup.key)
+                    self.reloadGroupsList()
+                }
+                
+                let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+                deleteGroupPopup.addAction(deleteAction)
+                deleteGroupPopup.addAction(cancelAction)
+                self.present(deleteGroupPopup, animated: true, completion: nil)
             }
             
-            let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
-            deleteGroupPopup.addAction(logoutAction)
-            deleteGroupPopup.addAction(cancelAction)
-            self.present(deleteGroupPopup, animated: true, completion: nil)
-            
+            deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+            rowActionArray.append(deleteAction)
         }
+        let leaveGroupAction = UITableViewRowAction(style: .destructive, title: "LEAVE GROUP", handler: { (rowAction, indexPath) in
+            
+            self.heavyHaptic()
+            
+            let removeGroupPopup = UIAlertController(title: "Leave Group?", message: "You are about to leave this group. This cannot be undone.", preferredStyle: .actionSheet)
+            
+            let removeAction = UIAlertAction(title: "LEAVE GROUP", style: .destructive, handler: { (buttonTapped) in
+                self.successHaptic()
+                DataService.instance.removeUserFromGroup(fromGroupUid: selectedGroup.key, andUserUid: (Auth.auth().currentUser?.uid)!)
+                self.reloadGroupsList()
+            })
+            
+            let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+            removeGroupPopup.addAction(removeAction)
+            removeGroupPopup.addAction(cancelAction)
+            self.present(removeGroupPopup, animated: true, completion: nil)
+        })
         
-        deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-        return [deleteAction]
+        leaveGroupAction.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        rowActionArray.append(leaveGroupAction)
+        
+        return rowActionArray
     }
 }

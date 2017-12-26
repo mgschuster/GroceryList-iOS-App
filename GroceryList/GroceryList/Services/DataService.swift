@@ -96,6 +96,43 @@ class DataService {
         REF_USERS.child(uid).removeValue()
     }
     
+    func changeMaster(currentUsername: String, changedUsername: String) {
+        var updatedUsername = ""
+        var groupUID = ""
+        
+        REF_GROUPS.observeSingleEvent(of: .value) { (groupSnapshot) in
+            guard let groupList = groupSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for group in groupList {
+                groupUID = group.key
+                let master = group.childSnapshot(forPath: "master").value as! String
+                if master == currentUsername {
+                    updatedUsername = changedUsername
+                    if updatedUsername != "" {
+                        self.REF_GROUPS.child(groupUID).updateChildValues(["master": updatedUsername])
+                    }
+                }
+            }
+        }
+    }
+    
+    func changeUsersInGroup(currentUsername: String, changedUsername: String, uid: String) {
+        
+        REF_GROUPS.observeSingleEvent(of: .value) { (groupSnapshot) in
+            guard let groupList = groupSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for group in groupList {
+                self.REF_GROUPS.child(group.key).child("members").observeSingleEvent(of: .value, with: { (memberSnapshot) in
+                    guard let memberList = memberSnapshot.children.allObjects as? [DataSnapshot] else { return }
+                    for member in memberList {
+                        if member.key == currentUsername {
+                            self.REF_GROUPS.child(group.key).child("members").child(currentUsername).removeValue()
+                            self.REF_GROUPS.child(group.key).child("members").updateChildValues([changedUsername: uid])
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
     func printNameName(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
         REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             let nameName = snapshot.childSnapshot(forPath: "name name").value as! String
@@ -184,20 +221,18 @@ class DataService {
     
     func getUsernamesFor(group: Group, handler: @escaping (_ emailArray: [String]) -> ()) {
         var usernameArray = [String]()
-        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
-            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+        
+        REF_GROUPS.child(group.key).child("members").observeSingleEvent(of: .value) { (usersSnapshot) in
+            guard let userSnapshot = usersSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for user in userSnapshot {
-                if group.members.contains(user.key) {
-                    let username = user.childSnapshot(forPath: "username").value as! String
-                    usernameArray.append(username)
-                }
+                usernameArray.append(user.key)
             }
             handler(usernameArray)
         }
     }
     
-    func createGroup(withTitle title: String, andDescription description: String, forUsernames usernames: [String], handler: @escaping (_ groupCreated: Bool) -> ()) {
-        REF_GROUPS.childByAutoId().updateChildValues(["title": title, "description": description, "list count": 0, "list check count": 0, "members": usernames])
+    func createGroup(withTitle title: String, andDescription description: String, andMaster master: String, forUsernames usernames: [String : String], handler: @escaping (_ groupCreated: Bool) -> ()) {
+        REF_GROUPS.childByAutoId().updateChildValues(["master": master, "title": title, "description": description, "list count": 0, "list check count": 0, "members": usernames])
         handler(true)
     }
     
@@ -221,17 +256,33 @@ class DataService {
     
     func getAllGroups(handler: @escaping (_ groupsArray: [Group]) -> ()) {
         var groupsArray = [Group]()
+        var currentUser = ""
+        var usernames = [String]()
+        
+        printUsername(forUID: (Auth.auth().currentUser?.uid)!) { (returnedUsername) in
+            currentUser = returnedUsername
+        }
+        
+        
         REF_GROUPS.observeSingleEvent(of: .value) { (groupSnapshot) in
             guard let groupSnapshot = groupSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for group in groupSnapshot {
-                let memberArray = group.childSnapshot(forPath: "members").value as! [String]
-                if memberArray.contains((Auth.auth().currentUser?.uid)!) {
-                    let title = group.childSnapshot(forPath: "title").value as! String
-                    let description = group.childSnapshot(forPath: "description").value as! String
-                    let listCount = group.childSnapshot(forPath: "list count").value as! Int
-                    let listCheckCount = group.childSnapshot(forPath: "list check count").value as! Int
-                    let group = Group(title: title, description: description, key: group.key, members: memberArray, listCount: listCount, listCheckCount: listCheckCount)
-                    groupsArray.append(group)
+                let memberDictionary = group.childSnapshot(forPath: "members").value as! NSDictionary
+                
+                for (key, _) in memberDictionary {
+                    usernames.append(key as! String)
+                    
+                    let username = key as! String
+                    
+                    if username == currentUser {
+                        let title = group.childSnapshot(forPath: "title").value as! String
+                        let description = group.childSnapshot(forPath: "description").value as! String
+                        let listCount = group.childSnapshot(forPath: "list count").value as! Int
+                        let listCheckCount = group.childSnapshot(forPath: "list check count").value as! Int
+                        let master = group.childSnapshot(forPath: "master").value as! String
+                        let group = Group(title: title, description: description, key: group.key, members: usernames, master: master, listCount: listCount, listCheckCount: listCheckCount)
+                        groupsArray.append(group)
+                    }
                 }
             }
             handler(groupsArray)
@@ -315,18 +366,40 @@ class DataService {
     }
     
     func removeUserFromGroup(fromGroupUid groupUid: String, andUserUid uid: String) {
+        
+        var currentUser = ""
+        printUsername(forUID: uid) { (returnedUsername) in
+            currentUser = returnedUsername
+        }
+
         REF_GROUPS.child(groupUid).child("members").observeSingleEvent(of: .value) { (snapshot) in
-            if let users = snapshot.value as? [String] {
-                if users.count > 1 {
-                    for i in 0..<users.count {
-                        if users[i] == uid {
-                            self.REF_GROUPS.child(groupUid).child("members").child("\(i)").removeValue()
-                        }
+            
+            guard let memberList = snapshot.children.allObjects as? [DataSnapshot] else { return }
+            for member in  memberList {
+                if memberList.count > 1 {
+                    if member.key == currentUser {
+                        self.REF_GROUPS.child(groupUid).child("members").child(currentUser).removeValue()
                     }
                 } else {
-                    self.REF_GROUPS.child(groupUid).removeValue()
+                    self.removeGroup(forGroupUID: groupUid)
                 }
             }
+            
+            
+//            REF_GROUPS.observeSingleEvent(of: .value) { (groupSnapshot) in
+//                guard let groupList = groupSnapshot.children.allObjects as? [DataSnapshot] else { return }
+//                for group in groupList {
+//                    self.REF_GROUPS.child(group.key).child("members").observeSingleEvent(of: .value, with: { (memberSnapshot) in
+//                        guard let memberList = memberSnapshot.children.allObjects as? [DataSnapshot] else { return }
+//                        for member in memberList {
+//                            if member.key == currentUsername {
+//                                self.REF_GROUPS.child(group.key).child("members").child(currentUsername).removeValue()
+//                                self.REF_GROUPS.child(group.key).child("members").updateChildValues([changedUsername: uid])
+//                            }
+//                        }
+//                    })
+//                }
+//            }
         }
     }
 }

@@ -13,6 +13,7 @@ class Group {
     private var _groupDesc: String
     private var _key: String
     private var _members: [String]
+    private var _master: String
     private var _listCount: Int
     private var _listCheckCount: Int
     
@@ -32,6 +33,10 @@ class Group {
         return _members
     }
     
+    var master: String {
+        return _master
+    }
+    
     var listCount: Int {
         return _listCount
     }
@@ -40,11 +45,12 @@ class Group {
         return _listCheckCount
     }
     
-    init(title: String, description: String, key: String, members: [String], listCount: Int, listCheckCount: Int) {
+    init(title: String, description: String, key: String, members: [String], master: String, listCount: Int, listCheckCount: Int) {
         self._groupTitle = title
         self._groupDesc = description
         self._key = key
         self._members = members
+        self._master = master
         self._listCount = listCount
         self._listCheckCount = listCheckCount
     }
