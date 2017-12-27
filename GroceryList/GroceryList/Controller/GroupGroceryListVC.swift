@@ -20,6 +20,7 @@ class GroupGroceryListVC: UIViewController {
     var group: Group?
     var groupListArray = [GroupList]()
     var currentUser = ""
+    var groupMembersArray = [String]()
     
     func initData(forGroup group: Group) {
         self.group = group
@@ -42,6 +43,7 @@ class GroupGroceryListVC: UIViewController {
         groupTitleLbl.text = group?.groupTitle
         DataService.instance.getUsernamesFor(group: group!) { (returnedUsernames) in
             self.groupMembersLbl.text = returnedUsernames.joined(separator: ", ")
+            self.groupMembersArray = returnedUsernames
         }
     }
     
@@ -94,6 +96,53 @@ extension GroupGroceryListVC: UITableViewDataSource, UITableViewDelegate {
         var rowActionsArray = [UITableViewRowAction]()
         
         let currentCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell
+        
+        let addedByStart = currentCell!.addedByLbl.text!.index(currentCell!.addedByLbl.text!.startIndex, offsetBy: 10)
+        let addedByEnd = currentCell!.addedByLbl.text!.index(before: currentCell!.addedByLbl.text!.endIndex)
+        let markedByStart = currentCell!.markedByLbl.text!.index(currentCell!.markedByLbl.text!.startIndex, offsetBy: 16)
+        let markedByEnd = currentCell!.markedByLbl.text!.index(before: currentCell!.markedByLbl.text!.endIndex)
+        
+        let addedByUser = currentCell!.addedByLbl.text![addedByStart...addedByEnd]
+        let markedByUser = currentCell!.markedByLbl.text![markedByStart...markedByEnd]
+
+        let addedBy = String(describing: addedByUser)
+        let markedBy = String(describing: markedByUser)
+        
+        print(addedBy)
+        print(markedBy)
+        print(groupMembersArray)
+        
+        if !(groupMembersArray.contains(markedBy)) && currentCell?.markedByLbl.text! != "Checked off by: - -" {
+            if !(currentCell?.markedByLbl.text?.contains(currentUser))! {
+                let uncheckAction = UITableViewRowAction(style: .default, title: "UNCHECK", handler: { (rowAction, indexPath) in
+                    self.successHaptic()
+                    guard let selectedCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell else { return }
+                    let groupUID = (self.group?.key)!
+                    DataService.instance.uncheckUser(forGroupUid: groupUID, andItem: selectedCell.itemLbl.text!)
+                    self.reloadGroupList()
+                })
+                uncheckAction.backgroundColor = #colorLiteral(red: 0.2117647059, green: 0.5607843137, blue: 1, alpha: 1)
+                rowActionsArray.append(uncheckAction)
+            }
+        }
+        
+        if !(groupMembersArray.contains(addedBy)) {
+            if !(currentCell?.addedByLbl.text?.contains(currentUser))! {
+                let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
+                    self.warningHaptic()
+                    guard let selectedCell = tableView.cellForRow(at: indexPath) as? GroupGroceryListCell else { return }
+                    
+                    if selectedCell.checkmark.isHidden == false {
+                        DataService.instance.decreaseListCheckCount(forGroupUid: uid)
+                    }
+                    
+                    DataService.instance.removeGroupItem(forUID: uid, andItem: selectedCell.itemLbl.text!)
+                    self.reloadGroupList()
+                }
+                deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+                rowActionsArray.append(deleteAction)
+            }
+        }
         
         if (currentCell?.addedByLbl.text?.contains(currentUser))! {
             let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in

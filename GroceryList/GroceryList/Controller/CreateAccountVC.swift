@@ -76,6 +76,7 @@ class CreateAccountVC: UIViewController {
     @IBAction func signUpBtnWasPressed(_ sender: Any) {
         if usernameField.text != nil && usernameField.text != "" && usernameField.text != "USERNAME" && emailField.text != "" && passwordField.text != nil && confirmPasswordField.text != nil {
             
+            self.reloadUsernames()
             let usernameAvailable = self.usernameAvailable(username: usernameField.text!)
             
             if usernameField.text!.count >= 5 && usernameField.text!.count <= 17 {
