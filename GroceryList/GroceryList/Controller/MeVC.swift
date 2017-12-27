@@ -261,9 +261,12 @@ class MeVC: UIViewController {
         
         if self.newUsername.text != "" && self.newUsername.text != "new username" {
             if self.newUsername.text != self.profileNameLbl.text {
-                let usernameAvailable = self.usernameAvailable(username: self.newUsername.text!)
                 if self.newUsername.text!.count >= 5 && self.newUsername.text!.count <= 17 {
                     if !self.newUsername.text!.contains(" ") {
+                        
+                        self.reloadUsernames()
+                        let usernameAvailable = self.usernameAvailable(username: self.newUsername.text!)
+                        
                         if usernameAvailable {
                             let changeUsernameAction = UIAlertAction(title: "CHANGE USERNAME", style: .destructive, handler: { (buttonTapped) in
                                 DataService.instance.changeUsername(forUID: currentUID!, andAdjustedUsername: self.newUsername.text!)
