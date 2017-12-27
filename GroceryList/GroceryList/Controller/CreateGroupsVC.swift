@@ -131,7 +131,7 @@ extension CreateGroupsVC: UITableViewDelegate, UITableViewDataSource {
             checkmarkBtn.isHidden = false
         } else {
             chosenUserArray = chosenUserArray.filter({ $0 != cell.usernameLbl.text! })
-            if chosenUserArray.count >= 1 {
+            if chosenUserArray.count > 1 {
                 groupMemberLbl.text = chosenUserArray.joined(separator: ", ")
             } else {
                 groupMemberLbl.text = "Add people to your group"

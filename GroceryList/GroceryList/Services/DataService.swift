@@ -66,6 +66,33 @@ class DataService {
         }
     }
     
+    func groupGroceryListItems(groupUID: String, handler: @escaping (_ usernameList: [String]) -> ()) {
+        var groceryListItems = [String]()
+        
+        REF_GROUPS.child(groupUID).child("grocery list").observeSingleEvent(of: .value) { (groceryListSnapshot) in
+            guard let groceryList = groceryListSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for item in groceryList {
+                groceryListItems.append(item.key)
+            }
+            
+            handler(groceryListItems)
+        }
+    }
+    
+    func userListItems(uid: String, handler: @escaping (_ usernameList: [String]) -> ()) {
+        var listItems = [String]()
+        
+        REF_USERS.child(uid).child("grocery list").observeSingleEvent(of: .value) { (listSnapshot) in
+            guard let groceryList = listSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for item in groceryList {
+                listItems.append(item.key)
+            }
+            handler(listItems)
+        }
+    }
+    
     func printUsername(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
         REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             let username = snapshot.childSnapshot(forPath: "username").value as! String
@@ -94,6 +121,40 @@ class DataService {
     
     func deleteUserFromDatabase(uid: String) {
         REF_USERS.child(uid).removeValue()
+    }
+    
+    func changeAddedBy(currentUsername: String, changedUsername: String) {
+        REF_GROUPS.observeSingleEvent(of: .value) { (groupSnapshot) in
+            guard let groupList = groupSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for group in groupList {
+                self.REF_GROUPS.child(group.key).child("grocery list").observeSingleEvent(of: .value, with: { (groceryListSnapshot) in
+                    guard let groceryList = groceryListSnapshot.children.allObjects as? [DataSnapshot] else { return }
+                    for groceryItem in groceryList {
+                        let addedBy = groceryItem.childSnapshot(forPath: "added by").value as! String
+                        if addedBy == currentUsername {
+                            self.REF_GROUPS.child(group.key).child("grocery list").child(groceryItem.key).updateChildValues(["added by": changedUsername])
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
+    func changeMarkedOffBy(currentUsername: String, changedUsername: String) {
+        REF_GROUPS.observeSingleEvent(of: .value) { (groupSnapshot) in
+            guard let groupList = groupSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for group in groupList {
+                self.REF_GROUPS.child(group.key).child("grocery list").observeSingleEvent(of: .value, with: { (groceryListSnapshot) in
+                    guard let groceryList = groceryListSnapshot.children.allObjects as? [DataSnapshot] else { return }
+                    for groceryItem in groceryList {
+                        let addedBy = groceryItem.childSnapshot(forPath: "marked off by").value as! String
+                        if addedBy == currentUsername {
+                            self.REF_GROUPS.child(group.key).child("grocery list").child(groceryItem.key).updateChildValues(["marked off by": changedUsername])
+                        }
+                    }
+                })
+            }
+        }
     }
     
     func changeMaster(currentUsername: String, changedUsername: String) {
@@ -384,22 +445,6 @@ class DataService {
                     self.removeGroup(forGroupUID: groupUid)
                 }
             }
-            
-            
-//            REF_GROUPS.observeSingleEvent(of: .value) { (groupSnapshot) in
-//                guard let groupList = groupSnapshot.children.allObjects as? [DataSnapshot] else { return }
-//                for group in groupList {
-//                    self.REF_GROUPS.child(group.key).child("members").observeSingleEvent(of: .value, with: { (memberSnapshot) in
-//                        guard let memberList = memberSnapshot.children.allObjects as? [DataSnapshot] else { return }
-//                        for member in memberList {
-//                            if member.key == currentUsername {
-//                                self.REF_GROUPS.child(group.key).child("members").child(currentUsername).removeValue()
-//                                self.REF_GROUPS.child(group.key).child("members").updateChildValues([changedUsername: uid])
-//                            }
-//                        }
-//                    })
-//                }
-//            }
         }
     }
 }
