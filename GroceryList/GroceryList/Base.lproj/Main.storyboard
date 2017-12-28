@@ -317,13 +317,27 @@
                                             <action selector="logoutBtnPressed:" destination="yUY-PP-jqE" eventType="touchUpInside" id="ruM-JE-DOr"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbJ-6t-WWp">
+                                        <rect key="frame" x="20" y="30" width="33" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="33" id="FAD-DI-RYh"/>
+                                            <constraint firstAttribute="height" constant="33" id="atD-bV-bCU"/>
+                                        </constraints>
+                                        <state key="normal" image="upgrade-accnt-btn"/>
+                                        <connections>
+                                            <action selector="upgradeBtnWasPressed:" destination="yUY-PP-jqE" eventType="touchUpInside" id="fnG-5c-QFz"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.56078431370000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="bSX-jl-eXh" firstAttribute="centerX" secondItem="YyC-6b-wgP" secondAttribute="centerX" id="3Ab-OQ-v8i"/>
+                                    <constraint firstItem="pbJ-6t-WWp" firstAttribute="centerY" secondItem="bSX-jl-eXh" secondAttribute="centerY" id="3Pu-cn-Ulm"/>
                                     <constraint firstAttribute="trailing" secondItem="GSN-M7-gmS" secondAttribute="trailing" constant="20" id="5dq-fa-3Cx"/>
+                                    <constraint firstItem="pbJ-6t-WWp" firstAttribute="top" secondItem="YyC-6b-wgP" secondAttribute="top" constant="30" id="HcO-Yr-X4n"/>
                                     <constraint firstItem="bSX-jl-eXh" firstAttribute="centerY" secondItem="GSN-M7-gmS" secondAttribute="centerY" id="L94-RZ-E6i"/>
                                     <constraint firstAttribute="height" constant="75" id="c6N-Jd-0iz"/>
+                                    <constraint firstItem="pbJ-6t-WWp" firstAttribute="leading" secondItem="YyC-6b-wgP" secondAttribute="leading" constant="20" id="j2L-bF-KlA"/>
                                     <constraint firstItem="GSN-M7-gmS" firstAttribute="top" secondItem="YyC-6b-wgP" secondAttribute="top" constant="30" id="nUe-z2-7MK"/>
                                 </constraints>
                             </view>
@@ -841,6 +855,7 @@
                         <outlet property="updateEmailBtn" destination="GOt-Iv-cjq" id="8mc-dS-xJd"/>
                         <outlet property="updateNicknameBtn" destination="ZWx-wf-f3X" id="8B3-Y6-VnN"/>
                         <outlet property="updatePasswordBtn" destination="N90-lK-VCY" id="m3J-m2-8dP"/>
+                        <outlet property="upgradeAccntBtn" destination="pbJ-6t-WWp" id="fhR-k6-h5R"/>
                         <outlet property="usernameLbl" destination="eqe-ge-RzU" id="KlY-KR-7zQ"/>
                         <outlet property="usernameWarningLbl" destination="8So-sH-r6x" id="zyg-c2-Gqe"/>
                     </connections>
@@ -1512,7 +1527,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Y9-BQ-eBq">
                                                 <rect key="frame" x="0.0" y="48" width="275" height="1"/>
@@ -1528,7 +1543,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iUd-iD-OOR">
                                                 <rect key="frame" x="0.0" y="105" width="275" height="1"/>
@@ -1868,6 +1883,7 @@
         <image name="me-tab" width="24" height="24"/>
         <image name="myCart" width="24" height="24"/>
         <image name="trash-btn" width="50" height="50"/>
+        <image name="upgrade-accnt-btn" width="50" height="50"/>
         <image name="x-button" width="50" height="50"/>
     </resources>
 </document>

@@ -119,6 +119,22 @@ class DataService {
         REF_USERNAMES.child(username).removeValue()
     }
     
+    func deleteFromGroups(username: String) {
+        REF_GROUPS.observeSingleEvent(of: .value) { (groupSnapshot) in
+            guard let groupList = groupSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for group in groupList {
+                self.REF_GROUPS.child(group.key).child("members").observeSingleEvent(of: .value, with: { (membersSnapshot) in
+                    guard let memberList = membersSnapshot.children.allObjects as? [DataSnapshot] else { return }
+                    for member in memberList {
+                        if member.key == username {
+                            self.REF_GROUPS.child(group.key).child("members").child(member.key).removeValue()
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
     func deleteUserFromDatabase(uid: String) {
         REF_USERS.child(uid).removeValue()
     }

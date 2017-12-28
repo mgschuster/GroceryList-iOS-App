@@ -29,7 +29,8 @@ class MeVC: UIViewController {
     @IBOutlet weak var updateEmailBtn: ShadowButton!
     @IBOutlet weak var changeUsernameBtn: ShadowButton!
     @IBOutlet weak var updatePasswordBtn: ShadowButton!
-
+    @IBOutlet weak var upgradeAccntBtn: UIButton!
+    
     @IBOutlet weak var nicknameWarningLbl: UILabel!
     @IBOutlet weak var emailWarningLbl: UILabel!
     @IBOutlet weak var usernameWarningLbl: UILabel!
@@ -67,6 +68,7 @@ class MeVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        upgradeAccntBtn.flash()
         reloadUsername()
         
         nicknameWarningLbl.text = ""
@@ -153,6 +155,16 @@ class MeVC: UIViewController {
             return true
         }
     }
+    
+    // Actions
+    @IBAction func upgradeBtnWasPressed(_ sender: Any) {
+        let upgradePopup = UIAlertController(title: "UPGRADE ACCOUNT \nComing Soon!", message: "A pro version of this app will be available soon! This will include MANY amazing features such as: \n\n\u{2022} Add people to your group. \n\u{2022} Create unlimited lists for yourself with unique color coding. \n\u{2022} Edit item names and descriptions in both your own and group lists. \n\u{2022} Increased syncing speed. \n\nPlease keep an eye out for updates and have a great day! \n\nTJ Schoost", preferredStyle: .alert)
+        let upgradeAction = UIAlertAction(title: "OK!", style: .cancel, handler: nil)
+        upgradePopup.addAction(upgradeAction)
+        present(upgradePopup, animated: true, completion: nil)
+    }
+    
+    
     
     @IBAction func logoutBtnPressed(_ sender: Any) {
         let logoutPopup = UIAlertController(title: "Sign Out?", message: "Are you sure you want to sign out?", preferredStyle: .actionSheet)
@@ -381,6 +393,7 @@ class MeVC: UIViewController {
             let confirmDeleteAction = UIAlertAction(title: "YES I'M SURE", style: .destructive, handler: { (buttonTapped) in
                 DataService.instance.deleteFromUsernames(username: self.usernameLbl.text!)
                 DataService.instance.deleteUserFromDatabase(uid: (Auth.auth().currentUser?.uid)!)
+                DataService.instance.deleteFromGroups(username: self.usernameLbl.text!)
                 
                 Auth.auth().currentUser?.delete(completion: { (error) in
                     if error != nil {
@@ -389,10 +402,6 @@ class MeVC: UIViewController {
                         deleteFailedPopup.addAction(okAction)
                         self.present(deleteFailedPopup, animated: true, completion: nil)
                     } else {
-//                        let deleteSuccessPopup = UIAlertController(title: "SUCCESS", message: "Your account has been deleted. Please come back again soon...", preferredStyle: .alert)
-//                        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                        deleteSuccessPopup.addAction(okAction)
-//                        self.present(deleteSuccessPopup, animated: true, completion: nil)
                         let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
                         self.present(loginVC!, animated: true, completion: nil)
                     }
