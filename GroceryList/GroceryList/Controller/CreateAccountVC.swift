@@ -91,8 +91,9 @@ class CreateAccountVC: UIViewController {
                                         do {
                                             self.successHaptic()
                                             try Auth.auth().signOut()
-                                            let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
-                                            self.present(loginVC!, animated: true, completion: nil)
+                                            self.dismiss(animated: true, completion: nil)
+//                                            let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
+//                                            self.present(loginVC!, animated: true, completion: nil)
                                         } catch {
                                             print(error)
                                         }
