@@ -1642,21 +1642,21 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="fRB-Hf-3D3">
-                                <rect key="frame" x="137.5" y="70" width="100" height="100"/>
+                                <rect key="frame" x="125" y="70" width="125" height="125"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Jap-pJ-DLc"/>
-                                    <constraint firstAttribute="width" constant="100" id="LJE-y6-xgM"/>
+                                    <constraint firstAttribute="height" constant="125" id="Jap-pJ-DLc"/>
+                                    <constraint firstAttribute="width" constant="125" id="LJE-y6-xgM"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fRB-Hf-3D3" firstAttribute="centerX" secondItem="hK2-Wm-n8W" secondAttribute="centerX" id="G7K-f4-maH"/>
-                            <constraint firstItem="fRB-Hf-3D3" firstAttribute="top" secondItem="lnc-7a-fgq" secondAttribute="top" constant="50" id="SRc-4T-2J1"/>
                             <constraint firstItem="hAq-Kg-DbR" firstAttribute="bottom" secondItem="lnc-7a-fgq" secondAttribute="bottom" id="nkj-ZN-R0x"/>
                             <constraint firstItem="hAq-Kg-DbR" firstAttribute="trailing" secondItem="lnc-7a-fgq" secondAttribute="trailing" id="pml-Rv-8rf"/>
                             <constraint firstItem="hAq-Kg-DbR" firstAttribute="leading" secondItem="lnc-7a-fgq" secondAttribute="leading" id="rvQ-xy-ObM"/>
                             <constraint firstItem="hAq-Kg-DbR" firstAttribute="top" secondItem="lnc-7a-fgq" secondAttribute="top" constant="225" id="uYZ-9y-3wL"/>
+                            <constraint firstItem="fRB-Hf-3D3" firstAttribute="top" secondItem="lnc-7a-fgq" secondAttribute="top" constant="50" id="vUc-jK-yv8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lnc-7a-fgq"/>
                     </view>
