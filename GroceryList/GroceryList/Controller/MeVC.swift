@@ -161,7 +161,7 @@ class MeVC: UIViewController {
 //        guard let url = URL(string: "https://itunes.apple.com/us/app/facebook/id284882215?mt=8") else {
 //            return
 //        }
-        let upgradePopup = UIAlertController(title: "UPGRADE ACCOUNT \n(Coming Soon)", message: "A PRO version of this app will be available soon! This will include MANY amazing features such as: \n\n\u{2022} Add people to your group. \n\u{2022} Create unlimited lists for yourself with unique color coding. \n\u{2022} Edit item names and descriptions in both your own and group lists. \n\u{2022} Increased syncing speed. \n\nPlease keep an eye out for updates and have a great day! \n\nTJ Schoost", preferredStyle: .alert)
+        let upgradePopup = UIAlertController(title: "UPGRADE ACCOUNT \n(Coming Soon)", message: "A PRO version of this app will be available soon! This will include MANY amazing features such as: \n\n\u{2022} Add people to your group. \n\u{2022} Create unlimited lists for yourself with unique color coding. \n\u{2022} Edit item names and descriptions in both your own and group lists. \n\u{2022} Increased syncing speed. \n\nPlease keep an eye out for updates and have a great day!", preferredStyle: .alert)
 //        let upAction = UIAlertAction(title: "UPGRADE ACCOUNT", style: .destructive) { (buttonTapped) in
 //            UIApplication.shared.open(url, options: [:], completionHandler: nil)
 //        }
@@ -392,15 +392,15 @@ class MeVC: UIViewController {
     }
     
     @IBAction func deleteAcntBtnWasPressed(_ sender: Any) {
+        let currentUsername = usernameLbl.text!
+        let currentUserUID = Auth.auth().currentUser?.uid
+        
         let deletePopup = UIAlertController(title: "DELETE ACCOUNT", message: "This will fully delete your account and erase everything you ever worked for... (in this app). If this isn't permanent you can always sign out instead.", preferredStyle: .alert)
         
         let deleteAction = UIAlertAction(title: "DELETE ACCOUNT", style: .destructive) { (buttonTapped) in
             let confirmDeletePopup = UIAlertController(title: "LAST CHANCE...", message: "Are you sure you want to delete this account. Please choose wisely as this cannot be undone.", preferredStyle: .alert)
             
             let confirmDeleteAction = UIAlertAction(title: "YES I'M SURE", style: .destructive, handler: { (buttonTapped) in
-                DataService.instance.deleteFromUsernames(username: self.usernameLbl.text!)
-                DataService.instance.deleteUserFromDatabase(uid: (Auth.auth().currentUser?.uid)!)
-                DataService.instance.deleteFromGroups(username: self.usernameLbl.text!)
                 
                 Auth.auth().currentUser?.delete(completion: { (error) in
                     if error != nil {
@@ -409,6 +409,9 @@ class MeVC: UIViewController {
                         deleteFailedPopup.addAction(okAction)
                         self.present(deleteFailedPopup, animated: true, completion: nil)
                     } else {
+                        DataService.instance.deleteFromUsernames(username: currentUsername)
+                        DataService.instance.deleteUserFromDatabase(uid: currentUserUID!)
+                        DataService.instance.deleteFromGroups(username: currentUsername)
                         let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
                         self.present(loginVC!, animated: true, completion: nil)
                     }
