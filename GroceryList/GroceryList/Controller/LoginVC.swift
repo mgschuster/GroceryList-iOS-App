@@ -83,10 +83,10 @@ class LoginVC: UIViewController {
                     }
                 } else if String(describing: loginError?.localizedDescription) == "Optional(\"There is no user record corresponding to this identifier. The user may have been deleted.\")" {
                     self.errorHaptic()
-                    self.warningLbl.text = "No user with that email was found. Please create an account below."
+                    self.warningLbl.text = "No user found. Please create an account below."
                 } else if String(describing: loginError?.localizedDescription) == "Optional(\"The password is invalid or the user does not have a password.\")" {
                     self.errorHaptic()
-                    self.warningLbl.text = "Incorrect password. Please try again or reset password via email below."
+                    self.warningLbl.text = "Incorrect password. Please try again or reset password."
                     self.resetPasswordBtn.isEnabled = true
                     self.resetPasswordBtn.setTitleColor(#colorLiteral(red: 0.6222327082, green: 1, blue: 0.3476967309, alpha: 1), for: .normal)
                 } else if String(describing: loginError?.localizedDescription) == "Optional(\"The email address is badly formatted.\")" {
