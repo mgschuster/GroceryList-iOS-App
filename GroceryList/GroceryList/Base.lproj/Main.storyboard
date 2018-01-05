@@ -1717,7 +1717,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="wkK-tV-LMa"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Iz-AY-API">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="5Iz-AY-API">
                                                 <rect key="frame" x="0.0" y="114" width="275" height="12"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="12" id="Hzn-Ws-8xv"/>
