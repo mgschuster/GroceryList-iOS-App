@@ -71,26 +71,31 @@ class AddPersonalItemVC: UIViewController {
     // Actions
     @IBAction func addItemBtnWasPressed(_ sender: Any) {
         if itemTextField.text != "" && itemTextField.text != "ITEM" && itemTextField.text != nil {
-            addBtn.isEnabled = true
-            self.reloadPersonalListItems()
-            let uid = Auth.auth().currentUser?.uid
-            
-            let available = itemAvailable(checkedItem: itemTextField.text!)
-            
-            if available {
-                DataService.instance.createPersonalItem(forUID: uid!, andListName: (list?.listTitle)!, andItem: itemTextField.text!, andDescription: descriptionTextField.text!, sendComplete: { (isComplete) in
-                    if isComplete {
-                        DataService.instance.increasePersonalListCount(uid: uid!, listName: (self.list?.listTitle)!)
-                        self.successHaptic()
-                        self.addBtn.isEnabled = true
-                        self.dismiss(animated: true, completion: nil)
-                    } else {
-                        self.addBtn.isEnabled = true
-                    }
-                })
+            if !(itemTextField.text?.contains("."))! {
+                addBtn.isEnabled = true
+                self.reloadPersonalListItems()
+                let uid = Auth.auth().currentUser?.uid
+                
+                let available = itemAvailable(checkedItem: itemTextField.text!)
+                
+                if available {
+                    DataService.instance.createPersonalItem(forUID: uid!, andListName: (list?.listTitle)!, andItem: itemTextField.text!, andDescription: descriptionTextField.text!, sendComplete: { (isComplete) in
+                        if isComplete {
+                            DataService.instance.increasePersonalListCount(uid: uid!, listName: (self.list?.listTitle)!)
+                            self.successHaptic()
+                            self.addBtn.isEnabled = true
+                            self.dismiss(animated: true, completion: nil)
+                        } else {
+                            self.addBtn.isEnabled = true
+                        }
+                    })
+                } else {
+                    errorHaptic()
+                    warningLbl.text = "That item is already on the list."
+                }
             } else {
                 errorHaptic()
-                warningLbl.text = "That item is already on the list."
+                warningLbl.text = "Item name cannot contain '.'"
             }
         } else {
             errorHaptic()

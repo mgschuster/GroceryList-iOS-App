@@ -46,19 +46,24 @@ class CreatePersonalListVC: UIViewController {
     
     @IBAction func createListBtnWasPressed(_ sender: Any) {
         if listNameTextField.text != "" && listNameTextField.text != "LIST NAME" {
-            self.reloadLists()
-            createListBtn.isEnabled = true
-            let uid = Auth.auth().currentUser?.uid
-            
-            DataService.instance.uploadPersonalList(withListName: listNameTextField.text!, andDescription: descriptionTextField.text!, forUID: uid!, sendComplete: { (isComplete) in
-                if isComplete {
-                    self.successHaptic()
-                    self.createListBtn.isEnabled = true
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    self.createListBtn.isEnabled = true
-                }
-            })
+            if !(listNameTextField.text?.contains("."))! {
+                self.reloadLists()
+                createListBtn.isEnabled = true
+                let uid = Auth.auth().currentUser?.uid
+                
+                DataService.instance.uploadPersonalList(withListName: listNameTextField.text!, andDescription: descriptionTextField.text!, forUID: uid!, sendComplete: { (isComplete) in
+                    if isComplete {
+                        self.successHaptic()
+                        self.createListBtn.isEnabled = true
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        self.createListBtn.isEnabled = true
+                    }
+                })
+            } else {
+                errorHaptic()
+                warningLbl.text = "List name cannot contain '.'"
+            }
         } else {
             errorHaptic()
             warningLbl.text = "Please fill in the form above."

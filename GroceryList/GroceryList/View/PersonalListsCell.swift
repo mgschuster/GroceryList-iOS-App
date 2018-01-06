@@ -32,4 +32,16 @@ class PersonalListsCell: UITableViewCell {
             self.listCountLbl.backgroundColor = #colorLiteral(red: 0.7098039216, green: 0.7098039216, blue: 0.7098039216, alpha: 1)
         }
     }
+    
+    @IBInspectable var selectionColor: UIColor = .gray {
+        didSet {
+            configureSelectedBackgroundView()
+        }
+    }
+    
+    func configureSelectedBackgroundView() {
+        let view = UIView()
+        view.backgroundColor = selectionColor
+        selectedBackgroundView = view
+    }
 }

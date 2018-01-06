@@ -80,27 +80,31 @@ class AddGroupItemVC: UIViewController {
     @IBAction func addBtnWasPressed(_ sender: Any) {
         
         if itemTextField.text != "" && itemTextField.text != "ITEM" && itemTextField.text != nil {
-            addBtn.isEnabled = true
-            self.reloadGroceryItems()
-            
-            let available = itemAvailable(checkedItem: itemTextField.text!)
-            
-            if available {
-                DataService.instance.createGroupItem(forGroupUid: (group?.key)!, andItem: itemTextField.text!, andDescription: descriptionTextField.text!, addedBy: currentUser, sendComplete: { (isComplete) in
-                    if isComplete {
-                        DataService.instance.increaseListCount(forGroupUid: (self.group?.key)!)
-                        self.successHaptic()
-                        self.addBtn.isEnabled = true
-                        self.dismiss(animated: true, completion: nil)
-                    } else {
-                        self.addBtn.isEnabled = true
-                    }
-                })
+            if !(itemTextField.text?.contains("."))! {
+                addBtn.isEnabled = true
+                self.reloadGroceryItems()
+                
+                let available = itemAvailable(checkedItem: itemTextField.text!)
+                
+                if available {
+                    DataService.instance.createGroupItem(forGroupUid: (group?.key)!, andItem: itemTextField.text!, andDescription: descriptionTextField.text!, addedBy: currentUser, sendComplete: { (isComplete) in
+                        if isComplete {
+                            DataService.instance.increaseListCount(forGroupUid: (self.group?.key)!)
+                            self.successHaptic()
+                            self.addBtn.isEnabled = true
+                            self.dismiss(animated: true, completion: nil)
+                        } else {
+                            self.addBtn.isEnabled = true
+                        }
+                    })
+                } else {
+                    errorHaptic()
+                    warningLbl.text = "That item is already on the list."
+                }
             } else {
                 errorHaptic()
-                warningLbl.text = "That item is already on the list."
+                warningLbl.text = "Item name cannot contain '.'"
             }
-            
         } else {
             errorHaptic()
             warningLbl.text = "Please fill in the form above."
