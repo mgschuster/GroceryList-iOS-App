@@ -22,12 +22,12 @@ class GroupsVC: UIViewController {
         super.viewDidLoad()
         groupsTableView.delegate = self
         groupsTableView.dataSource = self
-        reloadCurrentUser()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         reloadGroupsList()
+        reloadCurrentUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {

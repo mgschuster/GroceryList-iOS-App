@@ -35,13 +35,13 @@ class GroupGroceryListVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getCurrentUsername()
+        reloadUsernames()
+        reloadGroupList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         groupTitleLbl.text = group?.groupTitle
-        reloadUsernames()
-        reloadGroupList()
     }
     
     // Actions
@@ -56,20 +56,16 @@ class GroupGroceryListVC: UIViewController {
     }
     
     func reloadUsernames() {
-        DataService.instance.REF_GROUPS.observe(.value) { (snapshot) in
-            DataService.instance.getUsernamesFor(group: self.group!) { (returnedUsernames) in
-                self.groupMembersLbl.text = returnedUsernames.joined(separator: ", ")
-                self.groupMembersArray = returnedUsernames
-            }
+        DataService.instance.getUsernamesFor(group: group!) { (returnedUsernames) in
+            self.groupMembersLbl.text = returnedUsernames.joined(separator: ", ")
+            self.groupMembersArray = returnedUsernames
         }
     }
     
     func reloadGroupList() {
-        DataService.instance.REF_GROUPS.observe(.value) { (snapshot) in
-            DataService.instance.getAllGroupLists(forUID: (self.group?.key)!) { (returnedGroupListArray) in
-                self.groupListArray = returnedGroupListArray
-                self.tableView.reloadData()
-            }
+        DataService.instance.getAllGroupLists(forUID: (group?.key)!) { (returnedGroupListArray) in
+            self.groupListArray = returnedGroupListArray
+            self.tableView.reloadData()
         }
     }
     
