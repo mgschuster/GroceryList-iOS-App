@@ -22,29 +22,26 @@ class GroupsVC: UIViewController {
         super.viewDidLoad()
         groupsTableView.delegate = self
         groupsTableView.dataSource = self
+        reloadCurrentUser()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        reloadCurrentUser()
+        reloadGroupsList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadGroupsList()
     }
     
     // Actions
     @IBAction func createGroupBtnWasPressed(_ sender: Any) {
     }
     
-    
     func reloadGroupsList() {
-        DataService.instance.REF_GROUPS.observe(.value) { (snapshot) in
-            DataService.instance.getAllGroups { (returnedGroupsArray) in
-                self.groupsArray = returnedGroupsArray
-                self.groupsTableView.reloadData()
-            }
+        DataService.instance.getAllGroups { (returnedGroupsArray) in
+            self.groupsArray = returnedGroupsArray
+            self.groupsTableView.reloadData()
         }
     }
     
