@@ -80,6 +80,20 @@ class DataService {
         }
     }
     
+    func listItems(uid: String, listName: String, handler: @escaping (_ usernameList: [String]) -> ()) {
+        var listItems = [String]()
+        
+        REF_USERS.child(uid).child("lists").child(listName).child("items").observeSingleEvent(of: .value) { (snapshot) in
+            guard let list = snapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for item in list {
+                listItems.append(item.key)
+            }
+            
+            handler(listItems)
+        }
+    }
+    
     func userListItems(uid: String, handler: @escaping (_ usernameList: [String]) -> ()) {
         var listItems = [String]()
         
@@ -425,8 +439,49 @@ class DataService {
         }
     }
     
+    func increasePersonalListCount(uid: String, listName: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("listCount").observeSingleEvent(of: .value) { (snapshot) in
+            let listCount = snapshot.value as! Int
+            var value = listCount
+            value = value + 1
+            self.REF_USERS.child(uid).child("lists").child(listName).updateChildValues(["listCount": value])
+        }
+    }
+    
+    func decreasePersonalListCount(uid: String, listName: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("listCount").observeSingleEvent(of: .value) { (snapshot) in
+            let listCount = snapshot.value as! Int
+            var value = listCount
+            value = value - 1
+            self.REF_USERS.child(uid).child("lists").child(listName).updateChildValues(["listCount": value])
+        }
+    }
+    
+    func increasePersonalListCheckCount(uid: String, listName: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("listCheckCount").observeSingleEvent(of: .value) { (snapshot) in
+            let listCount = snapshot.value as! Int
+            var value = listCount
+            value = value + 1
+            self.REF_USERS.child(uid).child("lists").child(listName).updateChildValues(["listCheckCount": value])
+        }
+    }
+    
+    func decreasePersonalListCheckCount(uid: String, listName: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("listCheckCount").observeSingleEvent(of: .value) { (snapshot) in
+            let listCount = snapshot.value as! Int
+            var value = listCount
+            value = value - 1
+            self.REF_USERS.child(uid).child("lists").child(listName).updateChildValues(["listCheckCount": value])
+        }
+    }
+    
     func createGroupItem(forGroupUid uid: String, andItem item: String, andDescription description: String, addedBy: String, sendComplete: @escaping (_ status: Bool) -> ()) {
         REF_GROUPS.child(uid).child("grocery list").child(item).updateChildValues(["description": description, "added by": addedBy, "marked off by": "- -", "isSelected": false])
+        sendComplete(true)
+    }
+    
+    func createPersonalItem(forUID uid: String, andListName name: String, andItem item: String, andDescription description: String, sendComplete: @escaping (_ status: Bool) -> ()) {
+        REF_USERS.child(uid).child("lists").child(name).child("items").child(item).updateChildValues(["description": description, "isSelected": false])
         sendComplete(true)
     }
     

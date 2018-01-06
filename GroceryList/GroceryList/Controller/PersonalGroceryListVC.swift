@@ -41,6 +41,9 @@ class PersonalGroceryListVC: UIViewController {
     }
     
     @IBAction func createNewItemBtnWasPressed(_ sender: Any) {
+        guard let addPersonalItemVC = storyboard?.instantiateViewController(withIdentifier: "AddPersonalItemVC") as? AddPersonalItemVC else { return }
+        addPersonalItemVC.initData(forList: list!)
+        present(addPersonalItemVC, animated: true, completion: nil)
     }
     
     func reloadPersonalList() {
