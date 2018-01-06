@@ -222,6 +222,11 @@ class DataService {
         sendComplete(true)
     }
     
+    func uploadPersonalList(withListName name: String, andDescription description: String, forUID uid: String, sendComplete: @escaping (_ status: Bool) -> ()) {
+        REF_USERS.child(uid).child("lists").child(name).updateChildValues(["description": description, "listCount": 0, "listCheckCount": 0])
+        sendComplete(true)
+    }
+    
     func uploadNameName(forUID uid: String, andName name: String, sendComplete: @escaping (_ status: Bool) -> ()) {
         REF_USERS.child(uid).updateChildValues(["name name": name])
         sendComplete(true)
@@ -240,6 +245,24 @@ class DataService {
                 groceryListArray.append(groceryList)
             }
             handler(groceryListArray)
+        }
+    }
+    
+    func getAllUserLists(forUID uid: String, handler: @escaping (_ groceryList: [PersonalList]) -> ()) {
+        var personalListArray = [PersonalList]()
+        REF_USERS.child(uid).child("lists").observeSingleEvent(of: .value) { (listsSnapshot) in
+            guard let lists = listsSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for list in lists {
+                let listName = list.key
+                let description = list.childSnapshot(forPath: "description").value as! String
+                let listCount = list.childSnapshot(forPath: "listCount").value as! Int
+                let listCheckCount = list.childSnapshot(forPath: "listCheckCount").value as! Int
+                
+                let list = PersonalList(title: listName, description: description, listCount: listCount, listCheckCount: listCheckCount)
+                personalListArray.append(list)
+            }
+            handler(personalListArray)
         }
     }
     
@@ -440,6 +463,10 @@ class DataService {
     
     func removeGroup(forGroupUID groupUid: String) {
         REF_GROUPS.child(groupUid).removeValue()
+    }
+    
+    func removeUserList(forUID uid: String, andList listName: String) {
+        REF_USERS.child(uid).child("lists").child(listName).removeValue()
     }
     
     func removeUserFromGroup(fromGroupUid groupUid: String, andUserUid uid: String) {
