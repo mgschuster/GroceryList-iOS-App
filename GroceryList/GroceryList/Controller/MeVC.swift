@@ -78,6 +78,7 @@ class MeVC: UIViewController {
 
         reloadEmail()
         reloadUsernames()
+        reloadNameName()
     }
     
     override func viewWillAppear(_ animated: Bool) {

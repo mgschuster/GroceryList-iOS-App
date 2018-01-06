@@ -29,7 +29,6 @@ class CreatePersonalListVC: UIViewController {
         super.viewDidAppear(animated)
         warningLbl.text = ""
         reloadLists()
-        
     }
     
     @objc func textFieldDidChange() {
