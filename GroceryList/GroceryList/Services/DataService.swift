@@ -262,6 +262,23 @@ class DataService {
         }
     }
     
+    func getAllPersonalListItems(forUID uid: String, andListName listName: String, handler: @escaping (_ groceryList: [PersonalGroceryList]) -> ()) {
+        var itemArray = [PersonalGroceryList]()
+        
+        REF_USERS.child(uid).child("lists").child(listName).child("items").observeSingleEvent(of: .value) { (snapshot) in
+            guard let itemListSnapshot = snapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for item in itemListSnapshot {
+                let itemName = item.key
+                let description = item.childSnapshot(forPath: "description").value as! String
+                let selected = item.childSnapshot(forPath: "isSelected").value as! Bool
+                let item = PersonalGroceryList(item: itemName, description: description, isSelected: selected)
+                itemArray.append(item)
+            }
+            handler(itemArray)
+        }
+    }
+    
     func getAllUserLists(forUID uid: String, handler: @escaping (_ groceryList: [PersonalList]) -> ()) {
         var personalListArray = [PersonalList]()
         REF_USERS.child(uid).child("lists").observeSingleEvent(of: .value) { (listsSnapshot) in
@@ -503,8 +520,21 @@ class DataService {
         REF_USERS.child(uid).child("grocery list").child(name).updateChildValues(["isSelected": false])
     }
     
+    func checkOffPersonalItem(forUID uid: String, andList listName: String, andItem item: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("items").child(item).updateChildValues(["isSelected": true])
+    }
+    
+    func uncheckPersonalItem(forUID uid: String, andList listName: String, andItem item: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("items").child(item).updateChildValues(["isSelected": false])
+    }
+    
     func removeItem(forUID uid: String, andItem item: String) {
         REF_USERS.child(uid).child("grocery list").child(item).removeValue()
+    }
+    
+    func removePersonalItem(forUID uid: String, andList listName: String, andItem item: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("items").child(item).removeValue()
+        decreasePersonalListCount(uid: uid, listName: listName)
     }
     
     func removeGroupItem(forUID uid: String, andItem item: String) {

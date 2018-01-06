@@ -27,6 +27,11 @@ class MyListsVC: UIViewController {
         super.viewDidAppear(animated)
         reloadPersonalList()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadPersonalList()
+    }
 
     func reloadPersonalList() {
         let currentUID = Auth.auth().currentUser?.uid

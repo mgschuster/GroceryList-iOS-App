@@ -272,6 +272,11 @@
                                                 <color key="value" red="0.26854655150000001" green="0.62673616409999999" blue="0.2813494205" alpha="0.23195422539999999" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="checkmark" destination="YJK-0p-Sny" id="37t-RS-ha9"/>
+                                            <outlet property="descriptionLbl" destination="hMy-qd-bUO" id="sHT-Fr-fxm"/>
+                                            <outlet property="itemLbl" destination="UqY-Rl-lAd" id="cH3-ED-4yq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1736,7 +1741,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Item to Group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mb2-A3-wCR">
-                                        <rect key="frame" x="80.5" y="34.5" width="216" height="32.5"/>
+                                        <rect key="frame" x="79.5" y="34.5" width="216" height="32.5"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>

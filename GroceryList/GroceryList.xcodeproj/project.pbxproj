@@ -28,6 +28,7 @@
 		E71177B91FDF04780062072B /* GroceryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71177B81FDF04780062072B /* GroceryList.swift */; };
 		E72321311FF53E5D003D0161 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72321301FF53E5D003D0161 /* UIButtonExtension.swift */; };
 		E72B9CD01FEAA69C00529836 /* CircleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9CCF1FEAA69C00529836 /* CircleLabel.swift */; };
+		E76119C42000DA2E00E5B1C3 /* PersonalGroceryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76119C32000DA2E00E5B1C3 /* PersonalGroceryList.swift */; };
 		E78C5E9B1FCDD22D00327A34 /* MyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C5E9A1FCDD22D00327A34 /* MyListCell.swift */; };
 		E78C5E9D1FCDD24100327A34 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C5E9C1FCDD24100327A34 /* GroupCell.swift */; };
 		E79479241FFFD6BD00C08A87 /* MyListsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79479231FFFD6BD00C08A87 /* MyListsVC.swift */; };
@@ -75,6 +76,7 @@
 		E71177B81FDF04780062072B /* GroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryList.swift; sourceTree = "<group>"; };
 		E72321301FF53E5D003D0161 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		E72B9CCF1FEAA69C00529836 /* CircleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLabel.swift; sourceTree = "<group>"; };
+		E76119C32000DA2E00E5B1C3 /* PersonalGroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGroceryList.swift; sourceTree = "<group>"; };
 		E78C5E9A1FCDD22D00327A34 /* MyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCell.swift; sourceTree = "<group>"; };
 		E78C5E9C1FCDD24100327A34 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		E79479231FFFD6BD00C08A87 /* MyListsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListsVC.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				E7DCA7A71FE82D5500E011D9 /* Group.swift */,
 				E7F161511FE9596700A78BA3 /* GroupList.swift */,
 				E794792D2000974100C08A87 /* PersonalList.swift */,
+				E76119C32000DA2E00E5B1C3 /* PersonalGroceryList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				E72321311FF53E5D003D0161 /* UIButtonExtension.swift in Sources */,
 				E72B9CD01FEAA69C00529836 /* CircleLabel.swift in Sources */,
 				E7FC61EA1FE87E3800F3B00D /* AddGroupItemVC.swift in Sources */,
+				E76119C42000DA2E00E5B1C3 /* PersonalGroceryList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
