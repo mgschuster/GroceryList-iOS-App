@@ -32,7 +32,7 @@ class GroupsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Added below this
+        // Added below this        
         for group in groupsArray {
             DataService.instance.REF_GROUPS.child(group.key).observe(.value, with: { (snapshot) in
                 self.reloadGroupsList()
