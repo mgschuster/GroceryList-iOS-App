@@ -72,9 +72,21 @@ extension MyListsVC: UITableViewDelegate, UITableViewDataSource {
         let uid = Auth.auth().currentUser?.uid
 
         let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE LIST") { (rowAction, indexPath) in
-            self.warningHaptic()
-            DataService.instance.removeUserList(forUID: uid!, andList: selectedList.listTitle)
-            self.reloadPersonalList()
+            self.heavyHaptic()
+            
+            let deleteGroupPopup = UIAlertController(title: "Delete List?", message: "Deleting this list will erase it from memory. This cannot be undone.", preferredStyle: .actionSheet)
+            
+            let deleteAction = UIAlertAction(title: "DELETE", style: .destructive) { (buttonTapped) in
+                self.warningHaptic()
+                DataService.instance.removeUserList(forUID: uid!, andList: selectedList.listTitle)
+                self.reloadPersonalList()
+            }
+            
+            let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+            deleteGroupPopup.addAction(deleteAction)
+            deleteGroupPopup.addAction(cancelAction)
+            self.present(deleteGroupPopup, animated: true, completion: nil)
+            
         }
 
         deleteAction.backgroundColor = #colorLiteral(red: 0.9254901961, green: 0.2352941176, blue: 0.1019607843, alpha: 1)

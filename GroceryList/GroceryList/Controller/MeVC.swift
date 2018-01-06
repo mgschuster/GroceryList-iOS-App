@@ -162,7 +162,7 @@ class MeVC: UIViewController {
 //        guard let url = URL(string: "https://itunes.apple.com/us/app/facebook/id284882215?mt=8") else {
 //            return
 //        }
-        let upgradePopup = UIAlertController(title: "UPGRADE ACCOUNT \n(Coming Soon)", message: "A PRO version of this app will be available soon! This will include MANY amazing features such as: \n\n\u{2022} Add people to your group. \n\u{2022} Create unlimited lists for yourself with unique color coding. \n\u{2022} Edit item names and descriptions in both your own and group lists. \n\u{2022} Increased syncing speed. \n\nPlease keep an eye out for updates and have a great day!", preferredStyle: .alert)
+        let upgradePopup = UIAlertController(title: "UPGRADE ACCOUNT \n(Coming Soon)", message: "A PRO version of this app will be available soon! This will include MANY amazing features such as: \n\n\u{2022} Add people to your group. \n\u{2022} Unique color coding for your lists. \n\u{2022} Edit item names and descriptions in both your own and group lists. \n\u{2022} Increased syncing speed. \n\nPlease keep an eye out for updates and have a great day!", preferredStyle: .alert)
 //        let upAction = UIAlertAction(title: "UPGRADE ACCOUNT", style: .destructive) { (buttonTapped) in
 //            UIApplication.shared.open(url, options: [:], completionHandler: nil)
 //        }

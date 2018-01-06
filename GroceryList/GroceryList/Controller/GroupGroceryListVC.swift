@@ -42,6 +42,12 @@ class GroupGroceryListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         groupTitleLbl.text = group?.groupTitle
+        
+        // Added below this
+        DataService.instance.REF_GROUPS.child((group?.key)!).observe(.value) { (snapshot) in
+            self.reloadGroupList()
+            self.reloadUsernames()
+        }
     }
     
     // Actions

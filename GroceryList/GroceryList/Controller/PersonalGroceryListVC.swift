@@ -99,6 +99,7 @@ extension PersonalGroceryListVC: UITableViewDelegate, UITableViewDataSource {
         let uid = Auth.auth().currentUser?.uid
         let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
             self.warningHaptic()
+            
             guard let selectedCell = tableView.cellForRow(at: indexPath) as? PersonalGroceryListCell else { return }
             DataService.instance.removePersonalItem(forUID: uid!, andList: (self.list?.listTitle)!, andItem: selectedCell.itemLbl.text!)
             
