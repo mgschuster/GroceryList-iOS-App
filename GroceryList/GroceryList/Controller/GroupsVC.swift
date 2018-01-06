@@ -26,8 +26,12 @@ class GroupsVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        reloadGroupsList()
         reloadCurrentUser()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadGroupsList()
     }
     
     // Actions
@@ -36,9 +40,11 @@ class GroupsVC: UIViewController {
     
     
     func reloadGroupsList() {
-        DataService.instance.getAllGroups { (returnedGroupsArray) in
-            self.groupsArray = returnedGroupsArray
-            self.groupsTableView.reloadData()
+        DataService.instance.REF_GROUPS.observe(.value) { (snapshot) in
+            DataService.instance.getAllGroups { (returnedGroupsArray) in
+                self.groupsArray = returnedGroupsArray
+                self.groupsTableView.reloadData()
+            }
         }
     }
     
