@@ -34,16 +34,19 @@ class GroupGroceryListVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        reloadGroupList()
         getCurrentUsername()
+        reloadUsernames()
+        reloadGroupList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         groupTitleLbl.text = group?.groupTitle
-        DataService.instance.getUsernamesFor(group: group!) { (returnedUsernames) in
-            self.groupMembersLbl.text = returnedUsernames.joined(separator: ", ")
-            self.groupMembersArray = returnedUsernames
+        
+        // Added below this
+        DataService.instance.REF_GROUPS.child((group?.key)!).observe(.value) { (snapshot) in
+            self.reloadGroupList()
+            self.reloadUsernames()
         }
     }
     
@@ -56,6 +59,13 @@ class GroupGroceryListVC: UIViewController {
         guard let addGroupItemVC = storyboard?.instantiateViewController(withIdentifier: "AddGroupItemVC") as? AddGroupItemVC else { return }
         addGroupItemVC.initData(forGroup: group!)
         present(addGroupItemVC, animated: true, completion: nil)
+    }
+    
+    func reloadUsernames() {
+        DataService.instance.getUsernamesFor(group: group!) { (returnedUsernames) in
+            self.groupMembersLbl.text = returnedUsernames.joined(separator: ", ")
+            self.groupMembersArray = returnedUsernames
+        }
     }
     
     func reloadGroupList() {

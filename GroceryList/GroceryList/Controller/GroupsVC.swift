@@ -30,10 +30,19 @@ class GroupsVC: UIViewController {
         reloadCurrentUser()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Added below this        
+        for group in groupsArray {
+            DataService.instance.REF_GROUPS.child(group.key).observe(.value, with: { (snapshot) in
+                self.reloadGroupsList()
+            })
+        }
+    }
+    
     // Actions
     @IBAction func createGroupBtnWasPressed(_ sender: Any) {
     }
-    
     
     func reloadGroupsList() {
         DataService.instance.getAllGroups { (returnedGroupsArray) in

@@ -28,8 +28,16 @@
 		E71177B91FDF04780062072B /* GroceryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71177B81FDF04780062072B /* GroceryList.swift */; };
 		E72321311FF53E5D003D0161 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72321301FF53E5D003D0161 /* UIButtonExtension.swift */; };
 		E72B9CD01FEAA69C00529836 /* CircleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9CCF1FEAA69C00529836 /* CircleLabel.swift */; };
+		E76119C42000DA2E00E5B1C3 /* PersonalGroceryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76119C32000DA2E00E5B1C3 /* PersonalGroceryList.swift */; };
 		E78C5E9B1FCDD22D00327A34 /* MyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C5E9A1FCDD22D00327A34 /* MyListCell.swift */; };
 		E78C5E9D1FCDD24100327A34 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C5E9C1FCDD24100327A34 /* GroupCell.swift */; };
+		E79479241FFFD6BD00C08A87 /* MyListsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79479231FFFD6BD00C08A87 /* MyListsVC.swift */; };
+		E794792620008DEB00C08A87 /* CreatePersonalListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794792520008DEB00C08A87 /* CreatePersonalListVC.swift */; };
+		E794792820008F4900C08A87 /* PersonalGroceryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794792720008F4900C08A87 /* PersonalGroceryListVC.swift */; };
+		E794792A20008F6900C08A87 /* AddPersonalItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794792920008F6900C08A87 /* AddPersonalItemVC.swift */; };
+		E794792C200094A700C08A87 /* PersonalListsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794792B200094A700C08A87 /* PersonalListsCell.swift */; };
+		E794792E2000974100C08A87 /* PersonalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794792D2000974100C08A87 /* PersonalList.swift */; };
+		E79479302000A34400C08A87 /* PersonalGroceryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794792F2000A34400C08A87 /* PersonalGroceryListCell.swift */; };
 		E79A64F81FCCB95000DB05B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E79A64F71FCCB95000DB05B6 /* GoogleService-Info.plist */; };
 		E79D40971FE4356A00CD5A8C /* CreateGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */; };
 		E79D40991FE438D900CD5A8C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D40981FE438D900CD5A8C /* UserCell.swift */; };
@@ -68,8 +76,16 @@
 		E71177B81FDF04780062072B /* GroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryList.swift; sourceTree = "<group>"; };
 		E72321301FF53E5D003D0161 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		E72B9CCF1FEAA69C00529836 /* CircleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLabel.swift; sourceTree = "<group>"; };
+		E76119C32000DA2E00E5B1C3 /* PersonalGroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGroceryList.swift; sourceTree = "<group>"; };
 		E78C5E9A1FCDD22D00327A34 /* MyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCell.swift; sourceTree = "<group>"; };
 		E78C5E9C1FCDD24100327A34 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		E79479231FFFD6BD00C08A87 /* MyListsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListsVC.swift; sourceTree = "<group>"; };
+		E794792520008DEB00C08A87 /* CreatePersonalListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePersonalListVC.swift; sourceTree = "<group>"; };
+		E794792720008F4900C08A87 /* PersonalGroceryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGroceryListVC.swift; sourceTree = "<group>"; };
+		E794792920008F6900C08A87 /* AddPersonalItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPersonalItemVC.swift; sourceTree = "<group>"; };
+		E794792B200094A700C08A87 /* PersonalListsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalListsCell.swift; sourceTree = "<group>"; };
+		E794792D2000974100C08A87 /* PersonalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalList.swift; sourceTree = "<group>"; };
+		E794792F2000A34400C08A87 /* PersonalGroceryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGroceryListCell.swift; sourceTree = "<group>"; };
 		E79A64F71FCCB95000DB05B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Grocery List Google/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupsVC.swift; sourceTree = "<group>"; };
 		E79D40981FE438D900CD5A8C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -143,13 +159,17 @@
 			children = (
 				84638E971FC461DC008ED90A /* FeedVC.swift */,
 				84638E991FC461DC008ED90A /* GroupsVC.swift */,
+				E79479231FFFD6BD00C08A87 /* MyListsVC.swift */,
 				84F93B911FC468300057F802 /* MeVC.swift */,
 				84F93B931FC468490057F802 /* LoginVC.swift */,
 				84F93B951FC468570057F802 /* CreateAccountVC.swift */,
 				E71177B41FCE05850062072B /* CreateItemVC.swift */,
 				E79D40961FE4356A00CD5A8C /* CreateGroupsVC.swift */,
+				E794792520008DEB00C08A87 /* CreatePersonalListVC.swift */,
 				E7FC61E71FE8799700F3B00D /* GroupGroceryListVC.swift */,
+				E794792720008F4900C08A87 /* PersonalGroceryListVC.swift */,
 				E7FC61E91FE87E3800F3B00D /* AddGroupItemVC.swift */,
+				E794792920008F6900C08A87 /* AddPersonalItemVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -164,8 +184,10 @@
 				84F93B9D1FC5B99B0057F802 /* BluePlaceholder.swift */,
 				E78C5E9A1FCDD22D00327A34 /* MyListCell.swift */,
 				E78C5E9C1FCDD24100327A34 /* GroupCell.swift */,
+				E794792B200094A700C08A87 /* PersonalListsCell.swift */,
 				E79D40981FE438D900CD5A8C /* UserCell.swift */,
 				E7FC61E51FE8790D00F3B00D /* GroupGroceryListCell.swift */,
+				E794792F2000A34400C08A87 /* PersonalGroceryListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,6 +227,8 @@
 				E71177B81FDF04780062072B /* GroceryList.swift */,
 				E7DCA7A71FE82D5500E011D9 /* Group.swift */,
 				E7F161511FE9596700A78BA3 /* GroupList.swift */,
+				E794792D2000974100C08A87 /* PersonalList.swift */,
+				E76119C32000DA2E00E5B1C3 /* PersonalGroceryList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -338,12 +362,17 @@
 				84638E9A1FC461DC008ED90A /* GroupsVC.swift in Sources */,
 				84F93BA21FC5CC3A0057F802 /* AuthService.swift in Sources */,
 				E78C5E9B1FCDD22D00327A34 /* MyListCell.swift in Sources */,
+				E79479302000A34400C08A87 /* PersonalGroceryListCell.swift in Sources */,
 				E7FC61E61FE8790D00F3B00D /* GroupGroceryListCell.swift in Sources */,
 				E7B36ED01FE9ADD500447063 /* UIViewControllerExtenstion.swift in Sources */,
+				E794792A20008F6900C08A87 /* AddPersonalItemVC.swift in Sources */,
+				E79479241FFFD6BD00C08A87 /* MyListsVC.swift in Sources */,
 				E7FC61E81FE8799700F3B00D /* GroupGroceryListVC.swift in Sources */,
 				E7DCA7A81FE82D5500E011D9 /* Group.swift in Sources */,
 				84F93B9E1FC5B99B0057F802 /* BluePlaceholder.swift in Sources */,
+				E794792C200094A700C08A87 /* PersonalListsCell.swift in Sources */,
 				E79D40991FE438D900CD5A8C /* UserCell.swift in Sources */,
+				E794792820008F4900C08A87 /* PersonalGroceryListVC.swift in Sources */,
 				E71177B71FDEFB510062072B /* UIViewExtension.swift in Sources */,
 				84F93B961FC468570057F802 /* CreateAccountVC.swift in Sources */,
 				E71177B91FDF04780062072B /* GroceryList.swift in Sources */,
@@ -356,11 +385,14 @@
 				E7F161521FE9596700A78BA3 /* GroupList.swift in Sources */,
 				84F93B941FC468490057F802 /* LoginVC.swift in Sources */,
 				E7B46A4C1FEA16F900D8B6C1 /* HideKeyboardExtension.swift in Sources */,
+				E794792E2000974100C08A87 /* PersonalList.swift in Sources */,
 				E79D40971FE4356A00CD5A8C /* CreateGroupsVC.swift in Sources */,
 				84F93B981FC473960057F802 /* ShadowView.swift in Sources */,
+				E794792620008DEB00C08A87 /* CreatePersonalListVC.swift in Sources */,
 				E72321311FF53E5D003D0161 /* UIButtonExtension.swift in Sources */,
 				E72B9CD01FEAA69C00529836 /* CircleLabel.swift in Sources */,
 				E7FC61EA1FE87E3800F3B00D /* AddGroupItemVC.swift in Sources */,
+				E76119C42000DA2E00E5B1C3 /* PersonalGroceryList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

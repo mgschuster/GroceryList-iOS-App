@@ -1,31 +1,30 @@
 //
-//  AddGroupItemVC.swift
+//  AddPersonalItemVC.swift
 //  GroceryList
 //
-//  Created by Mitchell Schuster on 12/18/17.
-//  Copyright © 2017 TJSchoost. All rights reserved.
+//  Created by Mitchell Schuster on 1/5/18.
+//  Copyright © 2018 TJSchoost. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class AddGroupItemVC: UIViewController {
+class AddPersonalItemVC: UIViewController {
     
-    // Outlet
+    // Outlets
     @IBOutlet weak var itemTextField: BluePlaceholder!
     @IBOutlet weak var descriptionTextField: BluePlaceholder!
-    @IBOutlet weak var warningLbl: UILabel!
     @IBOutlet weak var addBtn: ShadowButton!
+    @IBOutlet weak var warningLbl: UILabel!
     
     // Variables
-    var group: Group?
-    var currentUser = ""
+    var list: PersonalList?
     var groceryItems = [String]()
     
-    func initData(forGroup group: Group) {
-        self.group = group
+    func initData(forList list: PersonalList) {
+        self.list = list
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         itemTextField.delegate = self
@@ -36,25 +35,18 @@ class AddGroupItemVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadCurrentUser()
         warningLbl.text = ""
-        reloadGroceryItems()
+        reloadPersonalListItems()
     }
     
     @objc func textFieldDidChange() {
         warningLbl.text = ""
     }
     
-    func loadCurrentUser() {
-        let currentUserUid = Auth.auth().currentUser?.uid
-        DataService.instance.printUsername(forUID: currentUserUid!) { (returnedUsername) in
-            self.currentUser = returnedUsername
-        }
-    }
-    
-    func reloadGroceryItems() {
-        DataService.instance.groupGroceryListItems(groupUID: (group?.key)!) { (returnedGroceryItems) in
-            self.groceryItems = returnedGroceryItems
+    func reloadPersonalListItems() {
+        let currentUID = Auth.auth().currentUser?.uid
+        DataService.instance.listItems(uid: currentUID!, listName: (list?.listTitle)!) { (returnedItems) in
+            self.groceryItems = returnedItems
         }
     }
     
@@ -77,19 +69,19 @@ class AddGroupItemVC: UIViewController {
     }
     
     // Actions
-    @IBAction func addBtnWasPressed(_ sender: Any) {
-        
+    @IBAction func addItemBtnWasPressed(_ sender: Any) {
         if itemTextField.text != "" && itemTextField.text != "ITEM" && itemTextField.text != nil {
             if !(itemTextField.text?.contains("."))! {
                 addBtn.isEnabled = true
-                self.reloadGroceryItems()
+                self.reloadPersonalListItems()
+                let uid = Auth.auth().currentUser?.uid
                 
                 let available = itemAvailable(checkedItem: itemTextField.text!)
                 
                 if available {
-                    DataService.instance.createGroupItem(forGroupUid: (group?.key)!, andItem: itemTextField.text!, andDescription: descriptionTextField.text!, addedBy: currentUser, sendComplete: { (isComplete) in
+                    DataService.instance.createPersonalItem(forUID: uid!, andListName: (list?.listTitle)!, andItem: itemTextField.text!, andDescription: descriptionTextField.text!, sendComplete: { (isComplete) in
                         if isComplete {
-                            DataService.instance.increaseListCount(forGroupUid: (self.group?.key)!)
+                            DataService.instance.increasePersonalListCount(uid: uid!, listName: (self.list?.listTitle)!)
                             self.successHaptic()
                             self.addBtn.isEnabled = true
                             self.dismiss(animated: true, completion: nil)
@@ -116,7 +108,7 @@ class AddGroupItemVC: UIViewController {
     }
 }
 
-extension AddGroupItemVC: UITextFieldDelegate {
+extension AddPersonalItemVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
     }

@@ -80,6 +80,20 @@ class DataService {
         }
     }
     
+    func listItems(uid: String, listName: String, handler: @escaping (_ usernameList: [String]) -> ()) {
+        var listItems = [String]()
+        
+        REF_USERS.child(uid).child("lists").child(listName).child("items").observeSingleEvent(of: .value) { (snapshot) in
+            guard let list = snapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for item in list {
+                listItems.append(item.key)
+            }
+            
+            handler(listItems)
+        }
+    }
+    
     func userListItems(uid: String, handler: @escaping (_ usernameList: [String]) -> ()) {
         var listItems = [String]()
         
@@ -222,6 +236,11 @@ class DataService {
         sendComplete(true)
     }
     
+    func uploadPersonalList(withListName name: String, andDescription description: String, forUID uid: String, sendComplete: @escaping (_ status: Bool) -> ()) {
+        REF_USERS.child(uid).child("lists").child(name).updateChildValues(["description": description, "listCount": 0, "listCheckCount": 0])
+        sendComplete(true)
+    }
+    
     func uploadNameName(forUID uid: String, andName name: String, sendComplete: @escaping (_ status: Bool) -> ()) {
         REF_USERS.child(uid).updateChildValues(["name name": name])
         sendComplete(true)
@@ -240,6 +259,41 @@ class DataService {
                 groceryListArray.append(groceryList)
             }
             handler(groceryListArray)
+        }
+    }
+    
+    func getAllPersonalListItems(forUID uid: String, andListName listName: String, handler: @escaping (_ groceryList: [PersonalGroceryList]) -> ()) {
+        var itemArray = [PersonalGroceryList]()
+        
+        REF_USERS.child(uid).child("lists").child(listName).child("items").observeSingleEvent(of: .value) { (snapshot) in
+            guard let itemListSnapshot = snapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for item in itemListSnapshot {
+                let itemName = item.key
+                let description = item.childSnapshot(forPath: "description").value as! String
+                let selected = item.childSnapshot(forPath: "isSelected").value as! Bool
+                let item = PersonalGroceryList(item: itemName, description: description, isSelected: selected)
+                itemArray.append(item)
+            }
+            handler(itemArray)
+        }
+    }
+    
+    func getAllUserLists(forUID uid: String, handler: @escaping (_ groceryList: [PersonalList]) -> ()) {
+        var personalListArray = [PersonalList]()
+        REF_USERS.child(uid).child("lists").observeSingleEvent(of: .value) { (listsSnapshot) in
+            guard let lists = listsSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for list in lists {
+                let listName = list.key
+                let description = list.childSnapshot(forPath: "description").value as! String
+                let listCount = list.childSnapshot(forPath: "listCount").value as! Int
+                let listCheckCount = list.childSnapshot(forPath: "listCheckCount").value as! Int
+                
+                let list = PersonalList(title: listName, description: description, listCount: listCount, listCheckCount: listCheckCount)
+                personalListArray.append(list)
+            }
+            handler(personalListArray)
         }
     }
     
@@ -402,8 +456,49 @@ class DataService {
         }
     }
     
+    func increasePersonalListCount(uid: String, listName: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("listCount").observeSingleEvent(of: .value) { (snapshot) in
+            let listCount = snapshot.value as! Int
+            var value = listCount
+            value = value + 1
+            self.REF_USERS.child(uid).child("lists").child(listName).updateChildValues(["listCount": value])
+        }
+    }
+    
+    func decreasePersonalListCount(uid: String, listName: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("listCount").observeSingleEvent(of: .value) { (snapshot) in
+            let listCount = snapshot.value as! Int
+            var value = listCount
+            value = value - 1
+            self.REF_USERS.child(uid).child("lists").child(listName).updateChildValues(["listCount": value])
+        }
+    }
+    
+    func increasePersonalListCheckCount(uid: String, listName: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("listCheckCount").observeSingleEvent(of: .value) { (snapshot) in
+            let listCount = snapshot.value as! Int
+            var value = listCount
+            value = value + 1
+            self.REF_USERS.child(uid).child("lists").child(listName).updateChildValues(["listCheckCount": value])
+        }
+    }
+    
+    func decreasePersonalListCheckCount(uid: String, listName: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("listCheckCount").observeSingleEvent(of: .value) { (snapshot) in
+            let listCount = snapshot.value as! Int
+            var value = listCount
+            value = value - 1
+            self.REF_USERS.child(uid).child("lists").child(listName).updateChildValues(["listCheckCount": value])
+        }
+    }
+    
     func createGroupItem(forGroupUid uid: String, andItem item: String, andDescription description: String, addedBy: String, sendComplete: @escaping (_ status: Bool) -> ()) {
         REF_GROUPS.child(uid).child("grocery list").child(item).updateChildValues(["description": description, "added by": addedBy, "marked off by": "- -", "isSelected": false])
+        sendComplete(true)
+    }
+    
+    func createPersonalItem(forUID uid: String, andListName name: String, andItem item: String, andDescription description: String, sendComplete: @escaping (_ status: Bool) -> ()) {
+        REF_USERS.child(uid).child("lists").child(name).child("items").child(item).updateChildValues(["description": description, "isSelected": false])
         sendComplete(true)
     }
     
@@ -425,8 +520,21 @@ class DataService {
         REF_USERS.child(uid).child("grocery list").child(name).updateChildValues(["isSelected": false])
     }
     
+    func checkOffPersonalItem(forUID uid: String, andList listName: String, andItem item: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("items").child(item).updateChildValues(["isSelected": true])
+    }
+    
+    func uncheckPersonalItem(forUID uid: String, andList listName: String, andItem item: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("items").child(item).updateChildValues(["isSelected": false])
+    }
+    
     func removeItem(forUID uid: String, andItem item: String) {
         REF_USERS.child(uid).child("grocery list").child(item).removeValue()
+    }
+    
+    func removePersonalItem(forUID uid: String, andList listName: String, andItem item: String) {
+        REF_USERS.child(uid).child("lists").child(listName).child("items").child(item).removeValue()
+        decreasePersonalListCount(uid: uid, listName: listName)
     }
     
     func removeGroupItem(forUID uid: String, andItem item: String) {
@@ -440,6 +548,10 @@ class DataService {
     
     func removeGroup(forGroupUID groupUid: String) {
         REF_GROUPS.child(groupUid).removeValue()
+    }
+    
+    func removeUserList(forUID uid: String, andList listName: String) {
+        REF_USERS.child(uid).child("lists").child(listName).removeValue()
     }
     
     func removeUserFromGroup(fromGroupUid groupUid: String, andUserUid uid: String) {

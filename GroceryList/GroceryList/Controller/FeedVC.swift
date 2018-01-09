@@ -29,6 +29,11 @@ class FeedVC: UIViewController {
         reloadGroceryList()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        reloadGroceryList()
+    }
+    
     // Actions
     @IBAction func deleteBtnWasPressed(_ sender: Any) {
         
